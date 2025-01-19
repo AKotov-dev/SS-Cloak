@@ -1,4 +1,4 @@
-# SS-Obfuscator
+# SS-Cloak
 Shadowsocks-Rust client (with GUI) and server (for VPS) with obfuscation  
 **Work directories:**
 + Client: ~/.config/ss-cloak-client; Service: /etc/systemd/user/ss-cloak-client.service
