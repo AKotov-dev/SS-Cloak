@@ -53,7 +53,11 @@ deb=1
 0=#!/bin/bash
 1=
 2=systemctl daemon-reload
-3=systemctl enable ss-obfuscator-server.service
+
+[AFTERREMOVE]
+0=#!/bin/bash
+1=
+2=systemctl daemon-reload
 
 [URL32]
 url32=https://github.com/AKotov-dev/SS-Cloak
