@@ -1,0 +1,12 @@
+[Unit]
+Description=SS-Obfuscator-Client Service
+Wants=network-online.target
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=bash -c 'ss-local -v -c ~/.config/ss-obfuscator-client/client.json > ~/.config/ss-obfuscator-client/ss-obfuscator-client.log'
+ExecStop=killall ss-local
+
+[Install]
+WantedBy=default.target

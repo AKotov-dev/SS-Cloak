@@ -1,0 +1,122 @@
+msgid ""
+msgstr "Content-Type: text/plain; charset=UTF-8"
+
+#: tmainform.autostartbox.caption
+msgid "Autostart after reboot"
+msgstr ""
+
+#: tmainform.camouflageedit.hint
+msgid "The site you are supposedly visiting"
+msgstr ""
+
+#: tmainform.camouflageedit.text
+msgctxt "tmainform.camouflageedit.text"
+msgid "www.bing.com"
+msgstr ""
+
+#: tmainform.caption
+msgid "SS-Cloak-Client "
+msgstr ""
+
+#: tmainform.clearbox.caption
+msgid "Clear cookies on start GUI"
+msgstr ""
+
+#: tmainform.clearbox.hint
+msgid "Mageia only"
+msgstr ""
+
+#: tmainform.dnscombobox.text
+msgid "1.1.1.1"
+msgstr ""
+
+#: tmainform.label1.caption
+msgid "Server IP:"
+msgstr ""
+
+#: tmainform.label2.caption
+msgid "Server port:"
+msgstr ""
+
+#: tmainform.label3.caption
+msgid "Сamouflage:"
+msgstr ""
+
+#: tmainform.label4.caption
+msgid "Local port:"
+msgstr ""
+
+#: tmainform.label5.caption
+msgid "DNS"
+msgstr ""
+
+#: tmainform.label6.caption
+msgid "Method:"
+msgstr ""
+
+#: tmainform.localportedit.hint
+msgid "Default: 1080"
+msgstr ""
+
+#: tmainform.localportedit.text
+msgid "1080"
+msgstr ""
+
+#: tmainform.methodcombobox.hint
+msgid "Encryption method"
+msgstr ""
+
+#: tmainform.methodcombobox.text
+msgid "aes-128-gcm"
+msgstr ""
+
+#: tmainform.savebtn.caption
+msgctxt "tmainform.savebtn.caption"
+msgid "Save settings"
+msgstr ""
+
+#: tmainform.savebtn.hint
+msgid "Save/Update Client and Server settings"
+msgstr ""
+
+#: tmainform.serverconfigs.caption
+msgctxt "tmainform.serverconfigs.caption"
+msgid "Server configs"
+msgstr ""
+
+#: tmainform.serverconfigs.hint
+msgid "Get Server configurations"
+msgstr ""
+
+#: tmainform.serveredit.hint
+msgid "Specify the IP of your server"
+msgstr ""
+
+#: tmainform.serveredit.text
+msgid "192.168.0.77"
+msgstr ""
+
+#: tmainform.serverportedit.hint
+msgid "Default: 443 (highly recommended)"
+msgstr ""
+
+#: tmainform.serverportedit.text
+msgid "443"
+msgstr ""
+
+#: tmainform.startbtn.caption
+msgid "Start"
+msgstr ""
+
+#: tmainform.statictext1.caption
+msgid "License: GPLv3   Author: alex_q_2000 (C) 2025   URL: https://github.com/AKotov-dev"
+msgstr ""
+
+#: tmainform.stopbtn.caption
+msgid "Stop"
+msgstr ""
+
+#: unit1.sgenerateconf
+msgid "Client and Server configurations will be recreated! Continue?"
+msgstr ""
+
