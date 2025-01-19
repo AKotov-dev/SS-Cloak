@@ -6,7 +6,7 @@ Shadowsocks-Rust client (with GUI) and server (for VPS) with obfuscation
   
 SS-Cloak-Server
 --
-Rent a VPS with a foreign IP address and install a package on it `ss-obfuscator-server` ([rpm/deb](https://github.com/AKotov-dev/SS-Cloak/releases))
+Rent a VPS with a foreign IP address and install a package on it `ss-cloak-server` ([rpm/deb](https://github.com/AKotov-dev/SS-Cloak/releases))
 
 SS-Cloak-Client
 --
