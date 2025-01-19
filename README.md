@@ -16,3 +16,4 @@ After that, start the server: `systemctl restart ss-cloak-server` and the client
   
 ![](https://github.com/AKotov-dev/SS-Cloak/blob/main/ScreenShots/Screenshot2.png)  
 
+**Similar project:** [SS-Obfuscator](https://github.com/AKotov-dev/SS-Obfuscator)
