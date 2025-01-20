@@ -14,6 +14,6 @@ Install the `ss-cloak-client` package to your computer, launch the GUI, enter th
   
 After that, start the server: `systemctl restart ss-cloak-server` and the client (`Start` button). Set up a connection in your browser via the SOCKS5 proxy 127.0.0.1:1080. Also check the box `Send DNS requests via SOCKS5 proxy`. For the `Chrome` browser, it is convenient to use the `Socks5 Configurator` plugin. You can check your new location here: https://whoer.net   
   
-![](https://github.com/AKotov-dev/SS-Cloak/blob/main/ScreenShots/Screenshot3.png)  
+![](https://github.com/AKotov-dev/SS-Cloak/blob/main/ScreenShots/ScreenShot3.png)  
 
 **Useful links:** [Shadowsocks-Rust](https://github.com/shadowsocks/shadowsocks-rust), [Cloak](https://github.com/cbeuw/Cloak). **Similar project:** [SS-Obfuscator](https://github.com/AKotov-dev/SS-Obfuscator).
