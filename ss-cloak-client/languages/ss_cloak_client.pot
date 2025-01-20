@@ -27,7 +27,7 @@ msgid "Mageia only"
 msgstr ""
 
 #: tmainform.dnscombobox.text
-msgid "1.1.1.1"
+msgid "1.1.1.1,1.0.0.1"
 msgstr ""
 
 #: tmainform.label1.caption
@@ -70,6 +70,16 @@ msgstr ""
 msgid "aes-128-gcm"
 msgstr ""
 
+#: tmainform.qrbtn.caption
+msgctxt "tmainform.qrbtn.caption"
+msgid "QR"
+msgstr ""
+
+#: tmainform.qrbtn.hint
+msgctxt "tmainform.qrbtn.hint"
+msgid "Get connection QR code"
+msgstr ""
+
 #: tmainform.savebtn.caption
 msgctxt "tmainform.savebtn.caption"
 msgid "Save settings"
@@ -85,6 +95,7 @@ msgid "Server configs"
 msgstr ""
 
 #: tmainform.serverconfigs.hint
+msgctxt "tmainform.serverconfigs.hint"
 msgid "Get Server configurations"
 msgstr ""
 
@@ -114,6 +125,11 @@ msgstr ""
 
 #: tmainform.stopbtn.caption
 msgid "Stop"
+msgstr ""
+
+#: tqrform.caption
+msgctxt "tqrform.caption"
+msgid "QR code"
 msgstr ""
 
 #: unit1.sgenerateconf

@@ -48,7 +48,8 @@ begin
 
     //Если файл лога отсутствует - создаём пустой и читаем до Terminate
     ExProcess.Parameters.Add(
-      '[[ -f ~/.config/ss-cloak-client/ss-cloak-client.log ]] || touch ' +
+      '[[ -f ~/.config/ss-cloak-client/ss-cloak-client.log ]] || touch '
+      +
       '~/.config/ss-cloak-client/ss-cloak-client.log && tail -n 100 -f ~/.config/ss-cloak-client/ss-cloak-client.log 2> >(grep -v truncated >&2)');
 
     ExProcess.Options := [poUsePipes, poStderrToOutPut];

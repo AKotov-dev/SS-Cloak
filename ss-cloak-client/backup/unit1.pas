@@ -21,6 +21,7 @@ type
     Label6: TLabel;
     GenProcess: TProcess;
     SaveDialog1: TSaveDialog;
+    QRBtn: TSpeedButton;
     ServerEdit: TEdit;
     ServerPortEdit: TEdit;
     CamouflageEdit: TEdit;
@@ -42,6 +43,7 @@ type
     procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
+    procedure QRBtnClick(Sender: TObject);
     procedure SaveBtnClick(Sender: TObject);
     procedure ServerConfigsClick(Sender: TObject);
     procedure StartBtnClick(Sender: TObject);
@@ -61,7 +63,7 @@ resourcestring
 
 implementation
 
-uses start_trd, portscan_trd;
+uses unit2, start_trd, portscan_trd;
 
   {$R *.lfm}
 
@@ -211,6 +213,11 @@ begin
   FShowLogTRD.Priority := tpNormal;
 end;
 
+procedure TMainForm.QRBtnClick(Sender: TObject);
+begin
+  if FileExists(GetUserDir + '.config/ss-cloak-client/config.json') then QRForm.Show;
+end;
+
 //Save Settings
 procedure TMainForm.SaveBtnClick(Sender: TObject);
 var
@@ -281,7 +288,6 @@ begin
     S.Add('    \"password\": \"$password\",');
     S.Add('    \"timeout\": 60,');
     S.Add('    \"method\": \"$encrypt_method\",');
-    S.Add('    \"ipv6_first\": true,');
     S.Add('    \"dns\": \"$nameserver\",');
     S.Add('    \"plugin\": \"ck-server\",');
     S.Add('    \"plugin_opts\": \"/etc/ss-cloak-server/ckserver.json\"');

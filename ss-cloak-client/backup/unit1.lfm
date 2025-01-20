@@ -1,12 +1,12 @@
 object MainForm: TMainForm
-  Left = 302
+  Left = 304
   Height = 655
   Top = 124
-  Width = 902
+  Width = 886
   ActiveControl = ServerEdit
   Caption = 'SS-Cloak-Client '
   ClientHeight = 655
-  ClientWidth = 902
+  ClientWidth = 886
   OnClose = FormClose
   OnCreate = FormCreate
   OnShow = FormShow
@@ -25,7 +25,7 @@ object MainForm: TMainForm
     AnchorSideLeft.Side = asrBottom
     AnchorSideTop.Control = StartBtn
     AnchorSideTop.Side = asrCenter
-    Left = 317
+    Left = 310
     Height = 17
     Top = 15
     Width = 69
@@ -38,7 +38,7 @@ object MainForm: TMainForm
     AnchorSideTop.Side = asrCenter
     Left = 8
     Height = 17
-    Top = 57
+    Top = 56
     Width = 76
     Caption = 'Сamouflage:'
   end
@@ -46,12 +46,13 @@ object MainForm: TMainForm
     AnchorSideLeft.Side = asrBottom
     AnchorSideTop.Control = StopBtn
     AnchorSideTop.Side = asrCenter
-    Left = 301
+    AnchorSideRight.Control = LocalPortEdit
+    Left = 315
     Height = 17
-    Top = 57
+    Top = 56
     Width = 64
-    Anchors = [akTop]
-    BorderSpacing.Left = 8
+    Anchors = [akTop, akRight]
+    BorderSpacing.Right = 2
     Caption = 'Local port:'
   end
   object ServerEdit: TEdit
@@ -75,7 +76,7 @@ object MainForm: TMainForm
     AnchorSideLeft.Side = asrBottom
     AnchorSideTop.Control = StartBtn
     AnchorSideTop.Side = asrCenter
-    Left = 388
+    Left = 381
     Height = 37
     Hint = 'Default: 443 (highly recommended)'
     Top = 5
@@ -96,7 +97,7 @@ object MainForm: TMainForm
     Left = 86
     Height = 37
     Hint = 'The site you are supposedly visiting'
-    Top = 47
+    Top = 46
     Width = 162
     Anchors = [akTop, akLeft, akRight]
     BorderSpacing.Left = 2
@@ -106,19 +107,17 @@ object MainForm: TMainForm
     Text = 'www.bing.com'
   end
   object LocalPortEdit: TEdit
-    AnchorSideLeft.Control = Label4
-    AnchorSideLeft.Side = asrBottom
+    AnchorSideLeft.Control = ServerPortEdit
     AnchorSideTop.Control = StopBtn
     AnchorSideTop.Side = asrCenter
     AnchorSideRight.Control = ServerPortEdit
     AnchorSideRight.Side = asrBottom
-    Left = 367
+    Left = 381
     Height = 37
     Hint = 'Default: 1080'
-    Top = 47
-    Width = 134
+    Top = 46
+    Width = 113
     Anchors = [akTop, akLeft, akRight]
-    BorderSpacing.Left = 2
     ParentShowHint = False
     ShowHint = True
     TabOrder = 4
@@ -128,12 +127,12 @@ object MainForm: TMainForm
     AnchorSideTop.Control = MethodComboBox
     AnchorSideTop.Side = asrBottom
     Left = 0
-    Height = 502
-    Top = 133
-    Width = 902
+    Height = 500
+    Top = 135
+    Width = 886
     Align = alBottom
     Anchors = [akTop, akLeft, akRight, akBottom]
-    BorderSpacing.Top = 8
+    BorderSpacing.Top = 10
     Font.Height = -12
     Font.Name = 'Monospace'
     ParentFont = False
@@ -146,7 +145,7 @@ object MainForm: TMainForm
   object StartBtn: TSpeedButton
     AnchorSideRight.Control = Owner
     AnchorSideRight.Side = asrBottom
-    Left = 804
+    Left = 788
     Height = 35
     Top = 6
     Width = 93
@@ -160,9 +159,9 @@ object MainForm: TMainForm
     AnchorSideRight.Side = asrBottom
     AnchorSideBottom.Control = LocalPortEdit
     AnchorSideBottom.Side = asrBottom
-    Left = 804
+    Left = 788
     Height = 35
-    Top = 48
+    Top = 47
     Width = 93
     Anchors = [akTop, akRight]
     BorderSpacing.Right = 5
@@ -173,7 +172,7 @@ object MainForm: TMainForm
     AnchorSideLeft.Control = SaveBtn
     AnchorSideTop.Control = StartBtn
     AnchorSideTop.Side = asrCenter
-    Left = 545
+    Left = 534
     Height = 32
     Top = 7
     Width = 166
@@ -186,10 +185,10 @@ object MainForm: TMainForm
     AnchorSideLeft.Control = AutoStartBox
     AnchorSideTop.Control = StopBtn
     AnchorSideTop.Side = asrCenter
-    Left = 545
+    Left = 534
     Height = 32
     Hint = 'Mageia only'
-    Top = 49
+    Top = 48
     Width = 190
     Caption = 'Clear cookies on start GUI'
     ParentShowHint = False
@@ -201,7 +200,7 @@ object MainForm: TMainForm
     AnchorSideTop.Control = StartBtn
     AnchorSideTop.Side = asrCenter
     AnchorSideRight.Control = StartBtn
-    Left = 787
+    Left = 771
     Height = 12
     Top = 17
     Width = 12
@@ -215,7 +214,7 @@ object MainForm: TMainForm
     Left = 0
     Height = 20
     Top = 635
-    Width = 902
+    Width = 886
     Align = alBottom
     Caption = 'License: GPLv3   Author: alex_q_2000 (C) 2025   URL: https://github.com/AKotov-dev'
     Font.Color = clGray
@@ -247,22 +246,18 @@ object MainForm: TMainForm
     Anchors = [akTop, akLeft, akRight]
     BorderSpacing.Left = 2
     ItemHeight = 0
-    ItemIndex = 0
     Items.Strings = (
-      '1.1.1.1'
-      '1.0.0.1'
-      '8.8.8.8'
-      '8.8.4.4'
-      '208.67.222.222'
-      '208.67.220.220'
+      '1.1.1.1,1.0.0.1'
+      '8.8.8.8,8.8.4.4'
+      '9.9.9.9,149.112.112.112'
     )
     TabOrder = 6
-    Text = '1.1.1.1'
+    Text = '1.1.1.1,1.0.0.1'
   end
   object Label6: TLabel
     AnchorSideTop.Control = MethodComboBox
     AnchorSideTop.Side = asrCenter
-    Left = 292
+    Left = 286
     Height = 17
     Top = 98
     Width = 50
@@ -274,11 +269,11 @@ object MainForm: TMainForm
     AnchorSideLeft.Side = asrBottom
     AnchorSideRight.Control = LocalPortEdit
     AnchorSideRight.Side = asrBottom
-    Left = 344
+    Left = 338
     Height = 37
     Hint = 'Encryption method'
     Top = 88
-    Width = 157
+    Width = 156
     Anchors = [akTop, akLeft, akRight]
     BorderSpacing.Left = 2
     ItemHeight = 0
@@ -296,7 +291,7 @@ object MainForm: TMainForm
     AnchorSideTop.Control = MethodComboBox
     AnchorSideBottom.Control = MethodComboBox
     AnchorSideBottom.Side = asrBottom
-    Left = 537
+    Left = 526
     Height = 37
     Hint = 'Save/Update Client and Server settings'
     Top = 88
@@ -308,17 +303,38 @@ object MainForm: TMainForm
     ParentShowHint = False
   end
   object ServerConfigs: TSpeedButton
+    AnchorSideLeft.Control = SaveBtn
+    AnchorSideLeft.Side = asrBottom
     AnchorSideTop.Control = MethodComboBox
     AnchorSideBottom.Control = MethodComboBox
     AnchorSideBottom.Side = asrBottom
-    Left = 675
+    Left = 650
     Height = 37
     Hint = 'Get Server configurations'
     Top = 88
     Width = 120
-    Anchors = [akTop, akBottom]
+    Anchors = [akTop, akLeft, akBottom]
+    BorderSpacing.Left = 4
     Caption = 'Server configs'
     OnClick = ServerConfigsClick
+    ShowHint = True
+    ParentShowHint = False
+  end
+  object QRBtn: TSpeedButton
+    AnchorSideLeft.Control = ServerConfigs
+    AnchorSideLeft.Side = asrBottom
+    AnchorSideTop.Control = MethodComboBox
+    AnchorSideBottom.Control = MethodComboBox
+    AnchorSideBottom.Side = asrBottom
+    Left = 774
+    Height = 37
+    Hint = 'Get connection QR code'
+    Top = 88
+    Width = 39
+    Anchors = [akTop, akLeft, akBottom]
+    BorderSpacing.Left = 4
+    Caption = 'QR'
+    OnClick = QRBtnClick
     ShowHint = True
     ParentShowHint = False
   end

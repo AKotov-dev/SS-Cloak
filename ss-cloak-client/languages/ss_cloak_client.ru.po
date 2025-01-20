@@ -37,7 +37,7 @@ msgid "Mageia only"
 msgstr "Только Mageia"
 
 #: tmainform.dnscombobox.text
-msgid "1.1.1.1"
+msgid "1.1.1.1,1.0.0.1"
 msgstr ""
 
 #: tmainform.label1.caption
@@ -80,6 +80,16 @@ msgstr "Метод шифрования"
 msgid "aes-128-gcm"
 msgstr ""
 
+#: tmainform.qrbtn.caption
+msgctxt "tmainform.qrbtn.caption"
+msgid "QR"
+msgstr ""
+
+#: tmainform.qrbtn.hint
+msgctxt "tmainform.qrbtn.hint"
+msgid "Get connection QR code"
+msgstr "Получить QR-код"
+
 #: tmainform.savebtn.caption
 msgctxt "tmainform.savebtn.caption"
 msgid "Save settings"
@@ -95,6 +105,7 @@ msgid "Server configs"
 msgstr ""
 
 #: tmainform.serverconfigs.hint
+msgctxt "tmainform.serverconfigs.hint"
 msgid "Get Server configurations"
 msgstr "Получить конфигурации Сервера"
 
@@ -125,6 +136,11 @@ msgstr "Лицензия: GPLv3   Автор: alex_q_2000 (C) 2025   URL: https:
 #: tmainform.stopbtn.caption
 msgid "Stop"
 msgstr "Стоп"
+
+#: tqrform.caption
+msgctxt "tqrform.caption"
+msgid "QR code"
+msgstr "QR-код"
 
 #: unit1.sgenerateconf
 msgid "Client and Server configurations will be recreated! Continue?"

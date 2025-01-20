@@ -19,12 +19,14 @@
 {"hash":120555561,"name":"tmainform.clearbox.caption","sourcebytes":[67,108,101,97,114,32,99,111,111,107,105,101,115,32,111,110,32,115,116,97,114,116,32,71,85,73],"value":"Clear cookies on start GUI"},
 {"hash":250918102,"name":"tmainform.statictext1.caption","sourcebytes":[76,105,99,101,110,115,101,58,32,71,80,76,118,51,32,32,32,65,117,116,104,111,114,58,32,97,108,101,120,95,113,95,50,48,48,48,32,40,67,41,32,50,48,50,53,32,32,32,85,82,76,58,32,104,116,116,112,115,58,47,47,103,105,116,104,117,98,46,99,111,109,47,65,75,111,116,111,118,45,100,101,118],"value":"License: GPLv3   Author: alex_q_2000 (C) 2025   URL: https://github.com/AKotov-dev"},
 {"hash":18739,"name":"tmainform.label5.caption","sourcebytes":[68,78,83],"value":"DNS"},
-{"hash":68424737,"name":"tmainform.dnscombobox.text","sourcebytes":[49,46,49,46,49,46,49],"value":"1.1.1.1"},
+{"hash":134690545,"name":"tmainform.dnscombobox.text","sourcebytes":[49,46,49,46,49,46,49,44,49,46,48,46,48,46,49],"value":"1.1.1.1,1.0.0.1"},
 {"hash":63632682,"name":"tmainform.label6.caption","sourcebytes":[77,101,116,104,111,100,58],"value":"Method:"},
 {"hash":118128628,"name":"tmainform.methodcombobox.hint","sourcebytes":[69,110,99,114,121,112,116,105,111,110,32,109,101,116,104,111,100],"value":"Encryption method"},
 {"hash":71236509,"name":"tmainform.methodcombobox.text","sourcebytes":[97,101,115,45,49,50,56,45,103,99,109],"value":"aes-128-gcm"},
 {"hash":227185059,"name":"tmainform.savebtn.hint","sourcebytes":[83,97,118,101,47,85,112,100,97,116,101,32,67,108,105,101,110,116,32,97,110,100,32,83,101,114,118,101,114,32,115,101,116,116,105,110,103,115],"value":"Save/Update Client and Server settings"},
 {"hash":87462691,"name":"tmainform.savebtn.caption","sourcebytes":[83,97,118,101,32,115,101,116,116,105,110,103,115],"value":"Save settings"},
 {"hash":181151155,"name":"tmainform.serverconfigs.hint","sourcebytes":[71,101,116,32,83,101,114,118,101,114,32,99,111,110,102,105,103,117,114,97,116,105,111,110,115],"value":"Get Server configurations"},
-{"hash":114822675,"name":"tmainform.serverconfigs.caption","sourcebytes":[83,101,114,118,101,114,32,99,111,110,102,105,103,115],"value":"Server configs"}
+{"hash":114822675,"name":"tmainform.serverconfigs.caption","sourcebytes":[83,101,114,118,101,114,32,99,111,110,102,105,103,115],"value":"Server configs"},
+{"hash":172600613,"name":"tmainform.qrbtn.hint","sourcebytes":[71,101,116,32,99,111,110,110,101,99,116,105,111,110,32,81,82,32,99,111,100,101],"value":"Get connection QR code"},
+{"hash":1378,"name":"tmainform.qrbtn.caption","sourcebytes":[81,82],"value":"QR"}
 ]}

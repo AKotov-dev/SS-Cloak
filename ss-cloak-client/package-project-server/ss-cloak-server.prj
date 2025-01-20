@@ -2,7 +2,7 @@
 name=ss-cloak-server
 
 [VERSION]
-version=0.1
+version=0.2
 
 [RELEASE]
 release=0.mgx9
@@ -46,13 +46,15 @@ deb=1
 0=/usr/bin/ssserver
 1=/usr/bin/ck-server
 2=/etc/systemd/system/ss-cloak-server.service
-3=/etc/ss-cloak-server/
-4=/usr/share/doc/ss-cloak-server/
+3=/usr/share/doc/ss-cloak-server/
 
 [AFTERINSTALL]
 0=#!/bin/bash
 1=
-2=systemctl daemon-reload
+2=if [ ! -d /etc/ss-cloak-server ]; then mkdir /etc/ss-cloak-server; fi
+3=
+4=systemctl daemon-reload
+5=systemctl enable ss-cloak-server
 
 [AFTERREMOVE]
 0=#!/bin/bash
@@ -63,7 +65,7 @@ deb=1
 url32=https://github.com/AKotov-dev/SS-Cloak
 
 [PROGRAMNAME]
-programname=ss-cloak-server
+programname=SS-Cloak-Server
 
 [DEVTOOL]
 devtool=Shell
@@ -72,5 +74,10 @@ devtool=Shell
 toolversion=unknown
 
 [INFO]
-0=+ Initial Release
-1=+ RPM and DEB packages
+0=v0.2
+1=+ Enable ss-cloak-server
+2=+ RPM and DEB packages
+3=
+4=v0.1
+5=+ Initial Release
+6=+ RPM and DEB packages

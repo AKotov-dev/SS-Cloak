@@ -2,7 +2,7 @@
 name=ss-cloak-client
 
 [VERSION]
-version=0.1
+version=0.2
 
 [RELEASE]
 release=0.mrx9
@@ -31,7 +31,7 @@ urlcopy=https://github.com/AKotov-dev/SS-Cloak
 license=GPLv3
 
 [DEPS]
-deps=systemd
+deps=systemd qrencode
 
 [META]
 meta=0
@@ -43,17 +43,18 @@ noarch=0
 deb=1
 
 [FILES]
-0=/usr/local/bin/sslocal
-1=/usr/local/bin/ssserver
-2=/usr/local/bin/ssservice
-3=/usr/local/bin/ck-client
-4=/usr/local/bin/ck-server
-5=/usr/bin/ss-cloak-client
-6=/usr/share/icons/ss-cloak-client.png
-7=/etc/systemd/user/ss-cloak-client.service
-8=/usr/share/applications/ss-cloak-client.desktop
-9=/usr/share/ss-cloak-client/
-10=/usr/share/doc/ss-cloak-client/
+0=/usr/local/bin/ssurl
+1=/usr/local/bin/sslocal
+2=/usr/local/bin/ssserver
+3=/usr/local/bin/ssservice
+4=/usr/local/bin/ck-client
+5=/usr/local/bin/ck-server
+6=/usr/bin/ss-cloak-client
+7=/usr/share/icons/ss-cloak-client.png
+8=/etc/systemd/user/ss-cloak-client.service
+9=/usr/share/applications/ss-cloak-client.desktop
+10=/usr/share/ss-cloak-client/
+11=/usr/share/doc/ss-cloak-client/
 
 [AFTERINSTALL]
 0=#!/bin/bash
@@ -69,7 +70,7 @@ deb=1
 url32=https://github.com/AKotov-dev/SS-Cloak
 
 [PROGRAMNAME]
-programname=ss=cloak-client
+programname=SS-Cloak-Client
 
 [DEVTOOL]
 devtool=Lazarus
@@ -78,6 +79,12 @@ devtool=Lazarus
 toolversion=3.6
 
 [INFO]
-0=v0.1
-1=+ Initial Release
-2=+ RPM & DEB packages
+0=v0.2
+1=+ `ss-cloak-client.service` update
+2=+ `ss-cloak-server.service` update
+3=+ Getting QR code for connection
+4=+ RPM & DEB packages
+5=
+6=v0.1
+7=+ Initial Release
+8=+ RPM & DEB packages
