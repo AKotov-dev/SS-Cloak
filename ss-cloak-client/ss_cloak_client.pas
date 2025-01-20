@@ -18,8 +18,8 @@ uses
 
 begin
   RequireDerivedFormResource := True;
-  Application.Title := 'SS-Cloak-Client v0.2 (ck-client v2.19.0)';
-  Application.Scaled := True;
+  Application.Title:='SS-Cloak-Client v0.2 (ck-client v2.10.0)';
+  Application.Scaled:=True;
   Application.Initialize;
   Application.CreateForm(TMainForm, MainForm);
   Application.CreateForm(TQRForm, QRForm);
