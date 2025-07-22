@@ -5,7 +5,7 @@ unit Unit1;
 interface
 
 uses
-  Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls,
+  Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls, StrUtils,
   Buttons, IniPropStorage, FileUtil, ExtCtrls, Process, IniFiles, DefaultTranslator;
 
 type
@@ -331,8 +331,22 @@ begin
   if not FileExists(GetUserDir + '.config/ss-cloak-client/server-conf.tar.gz') then Exit;
 
   if (SaveDialog1.Execute) then
+  begin
+   { if not SameText(ExtractFileExt(SaveDialog1.FileName), '.gz') then
+      SaveDialog1.FileName := SaveDialog1.FileName + '.tar.gz';
+    }
+
+    if not AnsiEndsText('.tar.gz', SaveDialog1.FileName) then
+    begin
+      if SameText(ExtractFileExt(SaveDialog1.FileName), '.gz') then
+        SaveDialog1.FileName := ChangeFileExt(SaveDialog1.FileName, '.tar.gz')
+      else
+        SaveDialog1.FileName := SaveDialog1.FileName + '.tar.gz';
+    end;
+
     CopyFile(GetUserDir + '.config/ss-cloak-client/server-conf.tar.gz',
       SaveDialog1.FileName, [cffOverwriteFile]);
+  end;
 end;
 
 end.

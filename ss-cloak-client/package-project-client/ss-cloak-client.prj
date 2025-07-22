@@ -2,7 +2,7 @@
 name=ss-cloak-client
 
 [VERSION]
-version=0.2
+version=0.3
 
 [RELEASE]
 release=0.mrx9
@@ -76,15 +76,25 @@ programname=SS-Cloak-Client
 devtool=Lazarus
 
 [TOOLVERSION]
-toolversion=3.6
+toolversion=3.8
 
 [INFO]
-0=v0.2
-1=+ `ss-cloak-client.service` update
-2=+ `ss-cloak-server.service` update
-3=+ Getting QR code for connection
-4=+ RPM & DEB packages
-5=
-6=v0.1
-7=+ Initial Release
-8=+ RPM & DEB packages
+0=v0.3
+1=+ Recompiling to Lazarus-3.8
+2=+ Corrected filter when saving `server-conf.tar.gz`
+3=+ Update: shadowsocks-v1.23.5
+4=+ Update: ck-client/ck-server v2.11.0
+5=+ Сhanged the prefix of the package `ss-cloak-server` to `mrx9`
+6=+ RPM & DEB packages
+7=
+8=**Note:** Before updating the server package, delete the previous one manually.
+9=
+10=v0.2
+11=+ `ss-cloak-client.service` update
+12=+ `ss-cloak-server.service` update
+13=+ Getting QR code for connection
+14=+ RPM & DEB packages
+15=
+16=v0.1
+17=+ Initial Release
+18=+ RPM & DEB packages

@@ -1,7 +1,7 @@
 object MainForm: TMainForm
-  Left = 304
+  Left = 300
   Height = 655
-  Top = 124
+  Top = 125
   Width = 886
   ActiveControl = ServerEdit
   Caption = 'SS-Cloak-Client '
@@ -11,7 +11,7 @@ object MainForm: TMainForm
   OnCreate = FormCreate
   OnShow = FormShow
   SessionProperties = 'Height;Left;Top;Width;SaveDialog1.InitialDir'
-  LCLVersion = '3.6.0.0'
+  LCLVersion = '3.8.0.0'
   object Label1: TLabel
     AnchorSideTop.Control = StartBtn
     AnchorSideTop.Side = asrCenter
@@ -308,13 +308,13 @@ object MainForm: TMainForm
     AnchorSideTop.Control = MethodComboBox
     AnchorSideBottom.Control = MethodComboBox
     AnchorSideBottom.Side = asrBottom
-    Left = 650
+    Left = 649
     Height = 37
     Hint = 'Get Server configurations'
     Top = 88
     Width = 120
     Anchors = [akTop, akLeft, akBottom]
-    BorderSpacing.Left = 4
+    BorderSpacing.Left = 3
     Caption = 'Server configs'
     OnClick = ServerConfigsClick
     ShowHint = True
@@ -326,13 +326,13 @@ object MainForm: TMainForm
     AnchorSideTop.Control = MethodComboBox
     AnchorSideBottom.Control = MethodComboBox
     AnchorSideBottom.Side = asrBottom
-    Left = 774
+    Left = 772
     Height = 37
     Hint = 'Get connection QR code'
     Top = 88
     Width = 39
     Anchors = [akTop, akLeft, akBottom]
-    BorderSpacing.Left = 4
+    BorderSpacing.Left = 3
     Caption = 'QR'
     OnClick = QRBtnClick
     ShowHint = True
@@ -344,9 +344,8 @@ object MainForm: TMainForm
     Top = 152
   end
   object SaveDialog1: TSaveDialog
-    DefaultExt = '.tar.gz'
     FileName = 'server-conf.tar.gz'
-    Filter = 'Archive [.tar.gz]|.tar.gz'
+    Filter = 'Archive [.tar.gz]|*.tar.gz'
     InitialDir = '~/'
     Options = [ofOverwritePrompt, ofEnableSizing, ofViewDetail]
     Left = 160
