@@ -28,6 +28,6 @@
 {"hash":27583363,"name":"tmainform.camouflageedit.hint","sourcebytes":[84,104,101,32,100,111,109,97,105,110,32,119,101,32,97,114,101,32,109,97,115,113,117,101,114,97,100,105,110,103,32,97,115],"value":"The domain we are masquerading as"},
 {"hash":162066141,"name":"tmainform.camouflageedit.text","sourcebytes":[119,119,119,46,98,105,110,103,46,99,111,109],"value":"www.bing.com"},
 {"hash":77621411,"name":"tmainform.label7.caption","sourcebytes":[66,121,112,97,115,115],"value":"Bypass"},
-{"hash":36604313,"name":"tmainform.combobox1.hint","sourcebytes":[67,104,97,110,103,101,115,32,111,110,32,116,104,101,32,102,108,121],"value":"Changes on the fly"},
+{"hash":8078318,"name":"tmainform.combobox1.hint","sourcebytes":[67,104,97,110,103,101,115,32,97,102,116,101,114,32,112,114,101,115,115,105,110,103,32,116,104,101,32,34,83,116,97,114,116,34,32,98,117,116,116,111,110],"value":"Changes after pressing the \"Start\" button"},
 {"hash":13717,"name":"tmainform.combobox1.text","sourcebytes":[46,114,117],"value":".ru"}
 ]}

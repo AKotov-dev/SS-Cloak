@@ -40,7 +40,8 @@ begin
   GetQR.Parameters.Clear;
   GetQR.Parameters.Add('-c');
   GetQR.Parameters.Add(
-    'qrencode "$(ssurl --encode ~/.config/ss-cloak-client/config.json)" -o ~/.config/ss-cloak-client/qr.xpm --margin=4 --type=XPM');
+    'qrencode "$(ssurl --encode <(jq ' + '''' + 'del(.acl)' + '''' +
+    ' ~/.config/ss-cloak-client/config.json)" -o ~/.config/ss-cloak-client/qr.xpm --margin=4 --type=XPM');
 
   //Получаем картинку
   GetQR.Execute;

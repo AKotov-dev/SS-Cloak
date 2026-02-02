@@ -312,7 +312,7 @@ object MainForm: TMainForm
     AnchorSideRight.Side = asrBottom
     Left = 83
     Height = 37
-    Hint = 'The site we are masquerading as'
+    Hint = 'The domain we are masquerading as'
     Top = 47
     Width = 186
     Anchors = [akTop, akLeft, akRight]
@@ -352,7 +352,7 @@ object MainForm: TMainForm
     AnchorSideTop.Side = asrCenter
     Left = 591
     Height = 37
-    Hint = 'Changes on the fly'
+    Hint = 'Changes after pressing "Start"'
     Top = 5
     Width = 100
     BorderSpacing.Left = 2

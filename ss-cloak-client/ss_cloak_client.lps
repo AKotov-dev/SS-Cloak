@@ -40,7 +40,7 @@
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="29"/>
-        <UsageCount Value="43"/>
+        <UsageCount Value="45"/>
       </Unit>
       <Unit>
         <Filename Value="unit1.pas"/>
@@ -50,9 +50,8 @@
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="Unit1"/>
         <IsVisibleTab Value="True"/>
-        <TopLine Value="329"/>
-        <CursorPos X="3" Y="137"/>
-        <UsageCount Value="43"/>
+        <CursorPos X="13"/>
+        <UsageCount Value="45"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit>
@@ -61,14 +60,14 @@
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="19"/>
-        <UsageCount Value="39"/>
+        <UsageCount Value="41"/>
       </Unit>
       <Unit>
         <Filename Value="portscan_trd.pas"/>
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="21"/>
-        <UsageCount Value="39"/>
+        <UsageCount Value="41"/>
       </Unit>
       <Unit>
         <Filename Value="unit2.pas"/>
@@ -78,8 +77,8 @@
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="Unit2"/>
         <EditorIndex Value="-1"/>
-        <CursorPos X="12"/>
-        <UsageCount Value="26"/>
+        <CursorPos X="13"/>
+        <UsageCount Value="28"/>
       </Unit>
       <Unit>
         <Filename Value="/usr/share/fpcsrc/rtl/objpas/sysutils/finah.inc"/>

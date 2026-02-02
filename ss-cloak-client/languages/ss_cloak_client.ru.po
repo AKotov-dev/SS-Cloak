@@ -29,8 +29,8 @@ msgid "SS-Cloak-Client "
 msgstr ""
 
 #: tmainform.combobox1.hint
-msgid "Changes on the fly"
-msgstr "Меняется налету"
+msgid "Changes after pressing the \"Start\" button"
+msgstr "Меняется после нажатия кнопки \"Старт\""
 
 #: tmainform.combobox1.text
 msgid ".ru"

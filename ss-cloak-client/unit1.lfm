@@ -352,7 +352,7 @@ object MainForm: TMainForm
     AnchorSideTop.Side = asrCenter
     Left = 591
     Height = 37
-    Hint = 'Changes on the fly'
+    Hint = 'Changes after pressing the "Start" button'
     Top = 5
     Width = 100
     BorderSpacing.Left = 2

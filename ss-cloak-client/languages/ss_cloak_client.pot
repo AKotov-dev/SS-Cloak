@@ -19,7 +19,7 @@ msgid "SS-Cloak-Client "
 msgstr ""
 
 #: tmainform.combobox1.hint
-msgid "Changes on the fly"
+msgid "Changes after pressing the \"Start\" button"
 msgstr ""
 
 #: tmainform.combobox1.text
