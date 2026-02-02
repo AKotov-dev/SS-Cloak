@@ -18,7 +18,7 @@ uses
 
 begin
   RequireDerivedFormResource := True;
-  Application.Title:='SS-Cloak-Client v0.3 (ck-client v2.11.0)';
+  Application.Title:='SS-Cloak-Client v0.4 (ck-client v2.11.0)';
   Application.Scaled:=True;
   Application.Initialize;
   Application.CreateForm(TMainForm, MainForm);

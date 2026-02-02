@@ -14,7 +14,9 @@ type
 
   TMainForm = class(TForm)
     AutoStartBox: TCheckBox;
-    ClearBox: TCheckBox;
+    CamouflageEdit: TComboBox;
+    ComboBox1: TComboBox;
+    Label7: TLabel;
     MethodComboBox: TComboBox;
     DNSComboBox: TComboBox;
     Label5: TLabel;
@@ -24,7 +26,6 @@ type
     QRBtn: TSpeedButton;
     ServerEdit: TEdit;
     ServerPortEdit: TEdit;
-    CamouflageEdit: TEdit;
     LocalPortEdit: TEdit;
     IniPropStorage1: TIniPropStorage;
     Label1: TLabel;
@@ -39,7 +40,6 @@ type
     StaticText1: TStaticText;
     StopBtn: TSpeedButton;
     procedure AutoStartBoxChange(Sender: TObject);
-    procedure ClearBoxChange(Sender: TObject);
     procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -49,6 +49,7 @@ type
     procedure StartBtnClick(Sender: TObject);
     procedure StopBtnClick(Sender: TObject);
     procedure StartProcess(command: string);
+    procedure CreateBypass;
   private
 
   public
@@ -87,6 +88,25 @@ begin
   end;
 end;
 
+//Создаём файл ~/.config/ss-cloak-client/bypass.acl
+procedure TMainForm.CreateBypass;
+var
+  S: TStringList;
+begin
+  try
+    S := TStringList.Create;
+
+    S.Add('[proxy_all]');
+    S.Add('[bypass_list]');
+    S.Add(Trim(ComboBox1.Text));
+
+    S.SaveToFile(GetUserDir + '.config/ss-cloak-client/bypass.acl');
+
+  finally
+    S.Free;
+  end;
+end;
+
 //Проверка чекбокса ClearBox (очистка кеш/cookies)
 function CheckClear: boolean;
 begin
@@ -114,8 +134,12 @@ end;
 //Start
 procedure TMainForm.StartBtnClick(Sender: TObject);
 begin
+  //Создаём/обновляем ~/.config/ss-cloak-client/bypass.acl
+  CreateBypass;
+
   //Быстрая очистка вывода перед стартом
   LogMemo.Clear;
+
   //Запускаем сервис
   StartProcess('systemctl --user restart ss-cloak-client.service');
 end;
@@ -183,17 +207,6 @@ begin
   Screen.Cursor := crDefault;
 end;
 
-//Файл-флаг автоочистки кеша и кукисов
-procedure TMainForm.ClearBoxChange(Sender: TObject);
-var
-  S: ansistring;
-begin
-  if not ClearBox.Checked then
-    RunCommand('/bin/bash', ['-c', 'rm -f ~/.config/ss-cloak-client/clear'], S)
-  else
-    RunCommand('/bin/bash', ['-c', 'touch ~/.config/ss-cloak-client/clear'], S);
-end;
-
 //MainForm, запуск потоков
 procedure TMainForm.FormShow(Sender: TObject);
 var
@@ -201,7 +214,6 @@ var
 begin
   IniPropStorage1.Restore;
 
-  ClearBox.Checked := CheckClear;
   AutoStartBox.Checked := CheckAutoStart;
 
   //Запуск потока проверки состояния локального порта
@@ -273,8 +285,9 @@ begin
     S.Add('    \"password\": \"$password\",');
     S.Add('    \"timeout\": 60,');
     S.Add('    \"nameserver\": \"$nameserver\",');
+    S.Add('    \"acl\": \"' + GetUserDir + '.config/ss-cloak-client/bypass.acl' + '\",');
     S.Add('    \"plugin\": \"ck-client\",');
-    S.Add('    \"plugin_opts\": \"Transport=direct;ProxyMethod=shadowsocks;EncryptionMethod=$encrypt_method;UID=$ck_uid;PublicKey=$public_key;ServerName=$redirect_url;BrowserSig=$browser;NumConn=4;StreamTimeout=300\"');
+    S.Add('    \"plugin_opts\": \"Transport=direct;ProxyMethod=shadowsocks;EncryptionMethod=$encrypt_method;UID=$ck_uid;PublicKey=$public_key;ServerName=$redirect_url;BrowserSig=$browser;NumConn=6;StreamTimeout=300\"');
     S.Add('}');
     S.Add('">~/.config/ss-cloak-client/config.json');
     S.Add('');

@@ -16,8 +16,8 @@ msgid "Autostart after reboot"
 msgstr "Автостарт после перезагрузки"
 
 #: tmainform.camouflageedit.hint
-msgid "The site you are supposedly visiting"
-msgstr "Сайт, который вы якобы посещаете"
+msgid "The domain we are masquerading as"
+msgstr "Домен, под который маскируемся"
 
 #: tmainform.camouflageedit.text
 msgctxt "tmainform.camouflageedit.text"
@@ -28,41 +28,45 @@ msgstr ""
 msgid "SS-Cloak-Client "
 msgstr ""
 
-#: tmainform.clearbox.caption
-msgid "Clear cookies on start GUI"
-msgstr "Очистить cookies при старте GUI"
+#: tmainform.combobox1.hint
+msgid "Changes on the fly"
+msgstr "Меняется налету"
 
-#: tmainform.clearbox.hint
-msgid "Mageia only"
-msgstr "Только Mageia"
+#: tmainform.combobox1.text
+msgid ".ru"
+msgstr ""
 
 #: tmainform.dnscombobox.text
 msgid "1.1.1.1,1.0.0.1"
 msgstr ""
 
 #: tmainform.label1.caption
-msgid "Server IP:"
-msgstr "IP cервера:"
+msgid "Server IP"
+msgstr "IP cервера"
 
 #: tmainform.label2.caption
-msgid "Server port:"
-msgstr "Порт сервера:"
+msgid "Server port"
+msgstr "Порт сервера"
 
 #: tmainform.label3.caption
-msgid "Сamouflage:"
-msgstr "Камуфляж:"
+msgid "Сamouflage"
+msgstr "Камуфляж"
 
 #: tmainform.label4.caption
-msgid "Local port:"
-msgstr "Локальный порт:"
+msgid "Local port"
+msgstr "Локальный порт"
 
 #: tmainform.label5.caption
 msgid "DNS"
 msgstr ""
 
 #: tmainform.label6.caption
-msgid "Method:"
-msgstr "Метод:"
+msgid "Method"
+msgstr "Метод"
+
+#: tmainform.label7.caption
+msgid "Bypass"
+msgstr "Байпас"
 
 #: tmainform.localportedit.hint
 msgid "Default: 1080"

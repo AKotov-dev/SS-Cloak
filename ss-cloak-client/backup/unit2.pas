@@ -28,9 +28,9 @@ var
 
 implementation
 
-  {$R *.lfm}
+{$R *.lfm}
 
-  { TQRForm }
+{ TQRForm }
 
 procedure TQRForm.FormShow(Sender: TObject);
 begin

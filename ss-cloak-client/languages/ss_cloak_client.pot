@@ -6,7 +6,7 @@ msgid "Autostart after reboot"
 msgstr ""
 
 #: tmainform.camouflageedit.hint
-msgid "The site you are supposedly visiting"
+msgid "The domain we are masquerading as"
 msgstr ""
 
 #: tmainform.camouflageedit.text
@@ -18,12 +18,12 @@ msgstr ""
 msgid "SS-Cloak-Client "
 msgstr ""
 
-#: tmainform.clearbox.caption
-msgid "Clear cookies on start GUI"
+#: tmainform.combobox1.hint
+msgid "Changes on the fly"
 msgstr ""
 
-#: tmainform.clearbox.hint
-msgid "Mageia only"
+#: tmainform.combobox1.text
+msgid ".ru"
 msgstr ""
 
 #: tmainform.dnscombobox.text
@@ -31,19 +31,19 @@ msgid "1.1.1.1,1.0.0.1"
 msgstr ""
 
 #: tmainform.label1.caption
-msgid "Server IP:"
+msgid "Server IP"
 msgstr ""
 
 #: tmainform.label2.caption
-msgid "Server port:"
+msgid "Server port"
 msgstr ""
 
 #: tmainform.label3.caption
-msgid "Сamouflage:"
+msgid "Сamouflage"
 msgstr ""
 
 #: tmainform.label4.caption
-msgid "Local port:"
+msgid "Local port"
 msgstr ""
 
 #: tmainform.label5.caption
@@ -51,7 +51,11 @@ msgid "DNS"
 msgstr ""
 
 #: tmainform.label6.caption
-msgid "Method:"
+msgid "Method"
+msgstr ""
+
+#: tmainform.label7.caption
+msgid "Bypass"
 msgstr ""
 
 #: tmainform.localportedit.hint
