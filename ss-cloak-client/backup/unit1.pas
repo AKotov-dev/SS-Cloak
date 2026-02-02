@@ -66,7 +66,8 @@ var
   MainForm: TMainForm;
 
 resourcestring
-  SGenerateConf = 'Client and Server configurations will be recreated! Continue?';
+  SGenerateConf =
+    'Based on the entered data, a configuration link will be created for the Client (overwrite) and Server (downloadable archive for your VPS). Continue?';
 
 implementation
 
@@ -282,7 +283,7 @@ end;
 
 procedure TMainForm.BackupBtnClick(Sender: TObject);
 begin
-    if not FileExists(GetUserDir + '.config/ss-cloak-client/config.json') then Exit;
+  if not FileExists(GetUserDir + '.config/ss-cloak-client/config.json') then Exit;
 
   if (SaveDialog2.Execute) then
   begin

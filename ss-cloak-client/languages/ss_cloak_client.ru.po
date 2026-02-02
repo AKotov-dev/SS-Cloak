@@ -156,8 +156,8 @@ msgid "Start"
 msgstr "Старт"
 
 #: tmainform.statictext1.caption
-msgid "License: GPLv3   Author: alex_q_2000 (C) 2025   URL: https://github.com/AKotov-dev"
-msgstr "Лицензия: GPLv3   Автор: alex_q_2000 (C) 2025   URL: https://github.com/AKotov-dev"
+msgid "License: GPLv3   Author: alex_q_2000 (C) 2026   URL: https://github.com/AKotov-dev/SS-Cloak"
+msgstr "Лицензия: GPLv3   Автор: alex_q_2000 (C) 2026   URL: https://github.com/AKotov-dev/SS-Cloak"
 
 #: tmainform.stopbtn.caption
 msgid "Stop"
