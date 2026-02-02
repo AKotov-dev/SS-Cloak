@@ -6,7 +6,7 @@ msgid "Autostart after reboot"
 msgstr ""
 
 #: tmainform.backupbtn.caption
-msgid "Client"
+msgid "Client conf"
 msgstr ""
 
 #: tmainform.backupbtn.hint
@@ -98,18 +98,18 @@ msgstr ""
 
 #: tmainform.savebtn.caption
 msgctxt "tmainform.savebtn.caption"
-msgid "Save settings"
+msgid "Create conf"
 msgstr ""
 
 #: tmainform.savebtn.hint
 msgid ""
-"Save/Update Client and Server settings\n"
+"Create Client and Server settings\n"
 "New UID, PublicKey, PrivateKey, BypassUID, etc."
 msgstr ""
 
 #: tmainform.serverconfigs.caption
 msgctxt "tmainform.serverconfigs.caption"
-msgid "Server configs"
+msgid "Server conf"
 msgstr ""
 
 #: tmainform.serverconfigs.hint

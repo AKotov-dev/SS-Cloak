@@ -16,7 +16,7 @@ msgid "Autostart after reboot"
 msgstr "Автостарт после перезагрузки"
 
 #: tmainform.backupbtn.caption
-msgid "Client"
+msgid "Client conf"
 msgstr ""
 
 #: tmainform.backupbtn.hint
@@ -24,7 +24,7 @@ msgid ""
 "Get Client configuration\n"
 "~/.config/ss-cloak-client/config.json"
 msgstr ""
-"Получить конфигурацию клиента\n"
+"Получить конфигурацию Клиента\n"
 "~/.config/ss-cloak-client/config.json"
 
 #: tmainform.bypassbox.hint
@@ -110,20 +110,20 @@ msgstr "Получить QR-код"
 
 #: tmainform.savebtn.caption
 msgctxt "tmainform.savebtn.caption"
-msgid "Save settings"
+msgid "Create conf"
 msgstr ""
 
 #: tmainform.savebtn.hint
 msgid ""
-"Save/Update Client and Server settings\n"
+"Create Client and Server settings\n"
 "New UID, PublicKey, PrivateKey, BypassUID, etc."
 msgstr ""
-"Сохранить/Обновить настройки Клиента и Сервера\n"
+"Создать настройки Клиента и Сервера\n"
 "Новые UID, PublicKey, PrivateKey, BypassUID, etc."
 
 #: tmainform.serverconfigs.caption
 msgctxt "tmainform.serverconfigs.caption"
-msgid "Server configs"
+msgid "Server conf"
 msgstr ""
 
 #: tmainform.serverconfigs.hint
