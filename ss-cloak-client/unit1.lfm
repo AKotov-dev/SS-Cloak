@@ -126,10 +126,10 @@ object MainForm: TMainForm
   object StartBtn: TSpeedButton
     AnchorSideRight.Control = Owner
     AnchorSideRight.Side = asrBottom
-    Left = 812
+    Left = 805
     Height = 35
     Top = 6
-    Width = 93
+    Width = 100
     Anchors = [akTop, akRight]
     BorderSpacing.Right = 5
     Caption = 'Start'
@@ -140,10 +140,10 @@ object MainForm: TMainForm
     AnchorSideRight.Side = asrBottom
     AnchorSideBottom.Control = LocalPortEdit
     AnchorSideBottom.Side = asrBottom
-    Left = 812
+    Left = 805
     Height = 35
     Top = 47
-    Width = 93
+    Width = 100
     Anchors = [akTop, akRight]
     BorderSpacing.Right = 5
     Caption = 'Stop'
@@ -166,7 +166,7 @@ object MainForm: TMainForm
     AnchorSideTop.Control = StartBtn
     AnchorSideTop.Side = asrCenter
     AnchorSideRight.Control = StartBtn
-    Left = 795
+    Left = 788
     Height = 12
     Top = 17
     Width = 12
