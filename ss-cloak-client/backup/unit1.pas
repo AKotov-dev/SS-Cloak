@@ -6,7 +6,8 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls, StrUtils,
-  Buttons, IniPropStorage, FileUtil, ExtCtrls, Process, IniFiles, DefaultTranslator;
+  Buttons, IniPropStorage, FileUtil, ExtCtrls, Process, IniFiles,
+  DefaultTranslator;
 
 type
 
@@ -15,7 +16,7 @@ type
   TMainForm = class(TForm)
     AutoStartBox: TCheckBox;
     CamouflageEdit: TComboBox;
-    ComboBox1: TComboBox;
+    BypassBox: TComboBox;
     Label7: TLabel;
     MethodComboBox: TComboBox;
     DNSComboBox: TComboBox;
@@ -50,6 +51,7 @@ type
     procedure StopBtnClick(Sender: TObject);
     procedure StartProcess(command: string);
     procedure CreateBypass;
+    procedure SaveINI;
   private
 
   public
@@ -70,6 +72,26 @@ uses unit2, start_trd, portscan_trd;
 
   { TMainForm }
 
+
+//Сохранение настроек (TEdit и прочее)
+procedure TMainForm.SaveINI;
+var
+  INI: TIniFile;
+begin
+  try
+    //Запоминаем настройки INI
+    INI := TINIFile.Create(GetUserDir + '.config/ss-cloak-client/ss-cloak-client.ini');
+    INI.WriteString('settings', 'server', ServerEdit.Text);
+    INI.WriteString('settings', 'server_port', ServerPortEdit.Text);
+    INI.WriteString('settings', 'camouflage', CamouflageEdit.Text);
+    INI.WriteString('settings', 'local_port', LocalPortEdit.Text);
+    INI.WriteString('settings', 'dns', DNSComboBox.Text);
+    INI.WriteString('settings', 'method', MethodComboBox.Text);
+    INI.WriteString('settings', 'bypass', BypassBox.Text);
+  finally
+    INI.Free;
+  end;
+end;
 
 //Общая процедура запуска команд (асинхронная)
 procedure TMainForm.StartProcess(command: string);
@@ -98,7 +120,7 @@ begin
 
     S.Add('[proxy_all]');
     S.Add('[bypass_list]');
-    S.Add(Trim(ComboBox1.Text));
+    S.Add(Trim(BypassBox.Text));
 
     S.SaveToFile(GetUserDir + '.config/ss-cloak-client/bypass.acl');
 
@@ -133,7 +155,42 @@ end;
 
 //Start
 procedure TMainForm.StartBtnClick(Sender: TObject);
+var
+  JSONFile, Cmd, S: string;
 begin
+  //Редактируем клиентский конфиг (если что-то менялось)
+  JSONFile := GetUserDir + '.config/ss-cloak-client/config.json';
+
+  // Если файл есть
+  if FileExists(JSONFile) then
+  begin
+    // меняем server
+    Cmd := Format('sed -i ''s/"server": *"[^"]*"/"server": "%s"/'' "%s"',
+      [ServerEdit.Text, JSONFile]);
+    RunCommand('bash', ['-c', Cmd], S);
+    //server_port
+    Cmd := Format('sed -i ''s/"server_port": *[0-9]*/"server_port": %s/'' "%s"',
+      [ServerPortEdit.Text, JSONFile]);
+    RunCommand('bash', ['-c', Cmd], S);
+    //local_port
+    Cmd := Format('sed -i ''s/"local_port": *[0-9]*/"local_port": %s/'' "%s"',
+      [LocalPortEdit.Text, JSONFile]);
+    RunCommand('bash', ['-c', Cmd], S);
+    //method
+    Cmd := Format('sed -i ''s/"method": *"[^"]*"/"method": "%s"/'' "%s"',
+      [MethodComboBox.Text, JSONFile]);
+    RunCommand('bash', ['-c', Cmd], S);
+    //nameserver
+    Cmd := Format('sed -i ''s/"nameserver": *"[^"]*"/"nameserver": "%s"/'' "%s"',
+      [DNSComboBox.Text, JSONFile]);
+    RunCommand('bash', ['-c', Cmd], S);
+  end
+  else
+    Exit;
+
+  //Сохраняем настройки формы
+  SaveINI;
+
   //Создаём/обновляем ~/.config/ss-cloak-client/bypass.acl
   CreateBypass;
 
@@ -179,6 +236,7 @@ begin
       LocalPortEdit.Text := INI.ReadString('settings', 'local_port', '1080');
       DNSComboBox.Text := INI.ReadString('settings', 'dns', '1.1.1.1');
       MethodComboBox.Text := INI.ReadString('settings', 'method', 'aes-128-gcm');
+      BypassBox.Text:= INI.ReadString('settings', 'bypass', '.ru');
     end;
   finally
     INI.Free;
@@ -233,7 +291,6 @@ end;
 //Save Settings
 procedure TMainForm.SaveBtnClick(Sender: TObject);
 var
-  INI: TIniFile;
   S: TStringList;
 begin
   if MessageDlg(SGenerateConf, mtWarning, [mbYes, mbCancel], 0) <> mrYes then  Exit;
@@ -242,15 +299,8 @@ begin
     //Stop Client
     StopBtn.Click;
 
-    //Запоминаем настройки INI
-    INI := TINIFile.Create(GetUserDir +
-      '.config/ss-cloak-client/ss-cloak-client.ini');
-    INI.WriteString('settings', 'server', ServerEdit.Text);
-    INI.WriteString('settings', 'server_port', ServerPortEdit.Text);
-    INI.WriteString('settings', 'camouflage', CamouflageEdit.Text);
-    INI.WriteString('settings', 'local_port', LocalPortEdit.Text);
-    INI.WriteString('settings', 'dns', DNSComboBox.Text);
-    INI.WriteString('settings', 'method', MethodComboBox.Text);
+    //Сохраняем настройки формы (TEdit и прочее)
+    SaveINI;
 
     //Create ~/.config/ss-cloak-client/config-gen.sh
     S := TStringList.Create;
@@ -334,7 +384,6 @@ begin
     ServerConfigs.Click;
   finally
     S.Free;
-    INI.Free;
   end;
 end;
 

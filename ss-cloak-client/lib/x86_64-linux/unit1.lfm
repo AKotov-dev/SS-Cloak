@@ -1,7 +1,7 @@
 object MainForm: TMainForm
-  Left = 300
+  Left = 309
   Height = 665
-  Top = 125
+  Top = 129
   Width = 920
   ActiveControl = ServerEdit
   Caption = 'SS-Cloak-Client '
@@ -345,7 +345,7 @@ object MainForm: TMainForm
     Width = 41
     Caption = 'Bypass'
   end
-  object ComboBox1: TComboBox
+  object BypassBox: TComboBox
     AnchorSideLeft.Control = Label7
     AnchorSideLeft.Side = asrBottom
     AnchorSideTop.Control = StartBtn

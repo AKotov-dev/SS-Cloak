@@ -15,6 +15,17 @@ msgstr ""
 msgid "Autostart after reboot"
 msgstr "Автостарт после перезагрузки"
 
+#: tmainform.bypassbox.hint
+#, fuzzy
+msgctxt "tmainform.bypassbox.hint"
+msgid "Changes after pressing the \"Start\" button"
+msgstr "Меняется после нажатия кнопки \"Старт\""
+
+#: tmainform.bypassbox.text
+msgctxt "tmainform.bypassbox.text"
+msgid ".ru"
+msgstr ""
+
 #: tmainform.camouflageedit.hint
 msgid "The domain we are masquerading as"
 msgstr "Домен, под который маскируемся"
@@ -26,14 +37,6 @@ msgstr ""
 
 #: tmainform.caption
 msgid "SS-Cloak-Client "
-msgstr ""
-
-#: tmainform.combobox1.hint
-msgid "Changes after pressing the \"Start\" button"
-msgstr "Меняется после нажатия кнопки \"Старт\""
-
-#: tmainform.combobox1.text
-msgid ".ru"
 msgstr ""
 
 #: tmainform.dnscombobox.text
@@ -149,3 +152,4 @@ msgstr "QR-код"
 #: unit1.sgenerateconf
 msgid "Client and Server configurations will be recreated! Continue?"
 msgstr "Конфигурации Клиента и Сервера будут созданы заново! Продолжить?"
+
