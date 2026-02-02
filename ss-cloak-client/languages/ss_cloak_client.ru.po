@@ -15,6 +15,18 @@ msgstr ""
 msgid "Autostart after reboot"
 msgstr "Автостарт после перезагрузки"
 
+#: tmainform.backupbtn.caption
+msgid "Client"
+msgstr ""
+
+#: tmainform.backupbtn.hint
+msgid ""
+"Get Client configuration\n"
+"~/.config/ss-cloak-client/config.json"
+msgstr ""
+"Получить конфигурацию клиента\n"
+"~/.config/ss-cloak-client/config.json"
+
 #: tmainform.bypassbox.hint
 msgctxt "tmainform.bypassbox.hint"
 msgid "Bypassing domain zones"
@@ -102,8 +114,12 @@ msgid "Save settings"
 msgstr ""
 
 #: tmainform.savebtn.hint
-msgid "Save/Update Client and Server settings"
-msgstr "Сохранить/Обновить настройки Клиента и Сервера"
+msgid ""
+"Save/Update Client and Server settings\n"
+"New UID, PublicKey, PrivateKey, BypassUID, etc."
+msgstr ""
+"Сохранить/Обновить настройки Клиента и Сервера\n"
+"Новые UID, PublicKey, PrivateKey, BypassUID, etc."
 
 #: tmainform.serverconfigs.caption
 msgctxt "tmainform.serverconfigs.caption"
@@ -112,8 +128,12 @@ msgstr ""
 
 #: tmainform.serverconfigs.hint
 msgctxt "tmainform.serverconfigs.hint"
-msgid "Get Server configurations"
-msgstr "Получить конфигурации Сервера"
+msgid ""
+"Get Server configurations\n"
+"~/.config/ss-cloak/client/server-conf.tar.gz"
+msgstr ""
+"Получить конфигурации Сервера\n"
+"~/.config/ss-cloak/client/server-conf.tar.gz"
 
 #: tmainform.serveredit.hint
 msgid "Specify the IP of your server"

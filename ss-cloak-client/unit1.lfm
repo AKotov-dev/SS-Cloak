@@ -2,12 +2,12 @@ object MainForm: TMainForm
   Left = 300
   Height = 665
   Top = 128
-  Width = 927
+  Width = 910
   ActiveControl = ServerEdit
   Caption = 'SS-Cloak-Client '
   ClientHeight = 665
-  ClientWidth = 927
-  SessionProperties = 'Height;Left;Top;Width;SaveDialog1.InitialDir'
+  ClientWidth = 910
+  SessionProperties = 'Height;Left;SaveDialog1.InitialDir;Top;Width;SaveDialog2.InitialDir'
   LCLVersion = '4.4.0.0'
   OnClose = FormClose
   OnCreate = FormCreate
@@ -25,7 +25,7 @@ object MainForm: TMainForm
     AnchorSideLeft.Side = asrBottom
     AnchorSideTop.Control = StartBtn
     AnchorSideTop.Side = asrCenter
-    Left = 327
+    Left = 320
     Height = 17
     Top = 15
     Width = 66
@@ -47,7 +47,7 @@ object MainForm: TMainForm
     AnchorSideTop.Control = StopBtn
     AnchorSideTop.Side = asrCenter
     AnchorSideRight.Control = LocalPortEdit
-    Left = 332
+    Left = 325
     Height = 17
     Top = 56
     Width = 61
@@ -76,7 +76,7 @@ object MainForm: TMainForm
     AnchorSideLeft.Side = asrBottom
     AnchorSideTop.Control = StartBtn
     AnchorSideTop.Side = asrCenter
-    Left = 395
+    Left = 388
     Height = 37
     Hint = 'Default: 443 (highly recommended)'
     Top = 5
@@ -93,7 +93,7 @@ object MainForm: TMainForm
     AnchorSideTop.Side = asrCenter
     AnchorSideRight.Control = ServerPortEdit
     AnchorSideRight.Side = asrBottom
-    Left = 395
+    Left = 388
     Height = 37
     Hint = 'Default: 1080'
     Top = 46
@@ -110,7 +110,7 @@ object MainForm: TMainForm
     Left = 0
     Height = 510
     Top = 135
-    Width = 927
+    Width = 910
     Align = alBottom
     Anchors = [akTop, akLeft, akRight, akBottom]
     BorderSpacing.Top = 10
@@ -126,7 +126,7 @@ object MainForm: TMainForm
   object StartBtn: TSpeedButton
     AnchorSideRight.Control = Owner
     AnchorSideRight.Side = asrBottom
-    Left = 829
+    Left = 812
     Height = 35
     Top = 6
     Width = 93
@@ -140,7 +140,7 @@ object MainForm: TMainForm
     AnchorSideRight.Side = asrBottom
     AnchorSideBottom.Control = LocalPortEdit
     AnchorSideBottom.Side = asrBottom
-    Left = 829
+    Left = 812
     Height = 35
     Top = 47
     Width = 93
@@ -153,7 +153,7 @@ object MainForm: TMainForm
     AnchorSideLeft.Control = SaveBtn
     AnchorSideTop.Control = StopBtn
     AnchorSideTop.Side = asrCenter
-    Left = 561
+    Left = 546
     Height = 32
     Top = 48
     Width = 166
@@ -166,7 +166,7 @@ object MainForm: TMainForm
     AnchorSideTop.Control = StartBtn
     AnchorSideTop.Side = asrCenter
     AnchorSideRight.Control = StartBtn
-    Left = 812
+    Left = 795
     Height = 12
     Top = 17
     Width = 12
@@ -180,7 +180,7 @@ object MainForm: TMainForm
     Left = 0
     Height = 20
     Top = 645
-    Width = 927
+    Width = 910
     Align = alBottom
     Caption = 'License: GPLv3   Author: alex_q_2000 (C) 2025   URL: https://github.com/AKotov-dev'
     Font.Color = clGray
@@ -224,7 +224,7 @@ object MainForm: TMainForm
   object Label6: TLabel
     AnchorSideTop.Control = MethodComboBox
     AnchorSideTop.Side = asrCenter
-    Left = 302
+    Left = 296
     Height = 17
     Top = 98
     Width = 47
@@ -236,11 +236,11 @@ object MainForm: TMainForm
     AnchorSideLeft.Side = asrBottom
     AnchorSideRight.Control = LocalPortEdit
     AnchorSideRight.Side = asrBottom
-    Left = 351
+    Left = 345
     Height = 37
     Hint = 'Encryption method'
     Top = 88
-    Width = 157
+    Width = 156
     Anchors = [akTop, akLeft, akRight]
     BorderSpacing.Left = 2
     ItemHeight = 0
@@ -256,50 +256,53 @@ object MainForm: TMainForm
   end
   object SaveBtn: TSpeedButton
     AnchorSideTop.Control = MethodComboBox
+    AnchorSideRight.Control = ServerConfigs
     AnchorSideBottom.Control = MethodComboBox
     AnchorSideBottom.Side = asrBottom
-    Left = 553
+    Left = 538
     Height = 37
-    Hint = 'Save/Update Client and Server settings'
+    Hint = 'Save/Update Client and Server settings'#10'New UID, PublicKey, PrivateKey, BypassUID, etc.'
     Top = 88
     Width = 120
-    Anchors = [akTop, akBottom]
+    Anchors = [akTop, akRight, akBottom]
+    BorderSpacing.Right = 3
     Caption = 'Save settings'
     ShowHint = True
     ParentShowHint = False
     OnClick = SaveBtnClick
   end
   object ServerConfigs: TSpeedButton
-    AnchorSideLeft.Control = SaveBtn
     AnchorSideLeft.Side = asrBottom
     AnchorSideTop.Control = MethodComboBox
+    AnchorSideRight.Control = BackupBtn
     AnchorSideBottom.Control = MethodComboBox
     AnchorSideBottom.Side = asrBottom
-    Left = 676
+    Left = 661
     Height = 37
-    Hint = 'Get Server configurations'
+    Hint = 'Get Server configurations'#10'~/.config/ss-cloak/client/server-conf.tar.gz'
     Top = 88
     Width = 120
-    Anchors = [akTop, akLeft, akBottom]
-    BorderSpacing.Left = 3
+    Anchors = [akTop, akRight, akBottom]
+    BorderSpacing.Right = 3
     Caption = 'Server configs'
     ShowHint = True
     ParentShowHint = False
     OnClick = ServerConfigsClick
   end
   object QRBtn: TSpeedButton
-    AnchorSideLeft.Control = ServerConfigs
     AnchorSideLeft.Side = asrBottom
     AnchorSideTop.Control = MethodComboBox
+    AnchorSideRight.Control = Owner
+    AnchorSideRight.Side = asrBottom
     AnchorSideBottom.Control = MethodComboBox
     AnchorSideBottom.Side = asrBottom
-    Left = 799
+    Left = 868
     Height = 37
     Hint = 'Get connection QR code'
     Top = 88
-    Width = 39
-    Anchors = [akTop, akLeft, akBottom]
-    BorderSpacing.Left = 3
+    Width = 37
+    Anchors = [akTop, akRight, akBottom]
+    BorderSpacing.Right = 5
     Caption = 'QR'
     ShowHint = True
     ParentShowHint = False
@@ -340,7 +343,7 @@ object MainForm: TMainForm
     AnchorSideLeft.Control = SaveBtn
     AnchorSideTop.Control = StartBtn
     AnchorSideTop.Side = asrCenter
-    Left = 553
+    Left = 538
     Height = 17
     Top = 15
     Width = 41
@@ -351,7 +354,7 @@ object MainForm: TMainForm
     AnchorSideLeft.Side = asrBottom
     AnchorSideTop.Control = StartBtn
     AnchorSideTop.Side = asrCenter
-    Left = 596
+    Left = 581
     Height = 37
     Hint = 'Bypassing domain zones'
     Top = 5
@@ -378,7 +381,7 @@ object MainForm: TMainForm
     Text = '.ru'
   end
   object Image1: TImage
-    Left = 600
+    Left = 512
     Height = 128
     Top = 120
     Width = 128
@@ -527,6 +530,24 @@ object MainForm: TMainForm
     }
     Visible = False
   end
+  object BackupBtn: TSpeedButton
+    AnchorSideLeft.Side = asrBottom
+    AnchorSideTop.Control = MethodComboBox
+    AnchorSideRight.Control = QRBtn
+    AnchorSideBottom.Control = MethodComboBox
+    AnchorSideBottom.Side = asrBottom
+    Left = 784
+    Height = 37
+    Hint = 'Get Client configuration'#10'~/.config/ss-cloak-client/config.json'
+    Top = 88
+    Width = 81
+    Anchors = [akTop, akRight, akBottom]
+    BorderSpacing.Right = 3
+    Caption = 'Client'
+    ShowHint = True
+    ParentShowHint = False
+    OnClick = BackupBtnClick
+  end
   object IniPropStorage1: TIniPropStorage
     StoredValues = <>
     Left = 56
@@ -535,7 +556,6 @@ object MainForm: TMainForm
   object SaveDialog1: TSaveDialog
     FileName = 'server-conf.tar.gz'
     Filter = 'Archive [.tar.gz]|*.tar.gz'
-    InitialDir = '~/'
     Options = [ofOverwritePrompt, ofEnableSizing, ofViewDetail]
     Left = 160
     Top = 152
@@ -559,6 +579,13 @@ object MainForm: TMainForm
     WindowWidth = 0
     FillAttribute = 0
     Left = 256
+    Top = 152
+  end
+  object SaveDialog2: TSaveDialog
+    FileName = 'config.json'
+    Filter = 'Client config [.json]|*.json'
+    Options = [ofOverwritePrompt, ofEnableSizing, ofViewDetail]
+    Left = 352
     Top = 152
   end
 end

@@ -19,9 +19,9 @@
 {"hash":87863124,"name":"tmainform.label6.caption","sourcebytes":[77,101,116,104,111,100],"value":"Method"},
 {"hash":118128628,"name":"tmainform.methodcombobox.hint","sourcebytes":[69,110,99,114,121,112,116,105,111,110,32,109,101,116,104,111,100],"value":"Encryption method"},
 {"hash":71236509,"name":"tmainform.methodcombobox.text","sourcebytes":[97,101,115,45,49,50,56,45,103,99,109],"value":"aes-128-gcm"},
-{"hash":227185059,"name":"tmainform.savebtn.hint","sourcebytes":[83,97,118,101,47,85,112,100,97,116,101,32,67,108,105,101,110,116,32,97,110,100,32,83,101,114,118,101,114,32,115,101,116,116,105,110,103,115],"value":"Save/Update Client and Server settings"},
+{"hash":211764158,"name":"tmainform.savebtn.hint","sourcebytes":[83,97,118,101,47,85,112,100,97,116,101,32,67,108,105,101,110,116,32,97,110,100,32,83,101,114,118,101,114,32,115,101,116,116,105,110,103,115,10,78,101,119,32,85,73,68,44,32,80,117,98,108,105,99,75,101,121,44,32,80,114,105,118,97,116,101,75,101,121,44,32,66,121,112,97,115,115,85,73,68,44,32,101,116,99,46],"value":"Save/Update Client and Server settings\nNew UID, PublicKey, PrivateKey, BypassUID, etc."},
 {"hash":87462691,"name":"tmainform.savebtn.caption","sourcebytes":[83,97,118,101,32,115,101,116,116,105,110,103,115],"value":"Save settings"},
-{"hash":181151155,"name":"tmainform.serverconfigs.hint","sourcebytes":[71,101,116,32,83,101,114,118,101,114,32,99,111,110,102,105,103,117,114,97,116,105,111,110,115],"value":"Get Server configurations"},
+{"hash":266741658,"name":"tmainform.serverconfigs.hint","sourcebytes":[71,101,116,32,83,101,114,118,101,114,32,99,111,110,102,105,103,117,114,97,116,105,111,110,115,10,126,47,46,99,111,110,102,105,103,47,115,115,45,99,108,111,97,107,47,99,108,105,101,110,116,47,115,101,114,118,101,114,45,99,111,110,102,46,116,97,114,46,103,122],"value":"Get Server configurations\n~/.config/ss-cloak/client/server-conf.tar.gz"},
 {"hash":114822675,"name":"tmainform.serverconfigs.caption","sourcebytes":[83,101,114,118,101,114,32,99,111,110,102,105,103,115],"value":"Server configs"},
 {"hash":172600613,"name":"tmainform.qrbtn.hint","sourcebytes":[71,101,116,32,99,111,110,110,101,99,116,105,111,110,32,81,82,32,99,111,100,101],"value":"Get connection QR code"},
 {"hash":1378,"name":"tmainform.qrbtn.caption","sourcebytes":[81,82],"value":"QR"},
@@ -29,5 +29,7 @@
 {"hash":162066141,"name":"tmainform.camouflageedit.text","sourcebytes":[119,119,119,46,98,105,110,103,46,99,111,109],"value":"www.bing.com"},
 {"hash":77621411,"name":"tmainform.label7.caption","sourcebytes":[66,121,112,97,115,115],"value":"Bypass"},
 {"hash":242882515,"name":"tmainform.bypassbox.hint","sourcebytes":[66,121,112,97,115,115,105,110,103,32,100,111,109,97,105,110,32,122,111,110,101,115],"value":"Bypassing domain zones"},
-{"hash":13717,"name":"tmainform.bypassbox.text","sourcebytes":[46,114,117],"value":".ru"}
+{"hash":13717,"name":"tmainform.bypassbox.text","sourcebytes":[46,114,117],"value":".ru"},
+{"hash":255901598,"name":"tmainform.backupbtn.hint","sourcebytes":[71,101,116,32,67,108,105,101,110,116,32,99,111,110,102,105,103,117,114,97,116,105,111,110,10,126,47,46,99,111,110,102,105,103,47,115,115,45,99,108,111,97,107,45,99,108,105,101,110,116,47,99,111,110,102,105,103,46,106,115,111,110],"value":"Get Client configuration\n~/.config/ss-cloak-client/config.json"},
+{"hash":77790292,"name":"tmainform.backupbtn.caption","sourcebytes":[67,108,105,101,110,116],"value":"Client"}
 ]}

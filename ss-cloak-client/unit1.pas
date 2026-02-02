@@ -26,6 +26,7 @@ type
     GenProcess: TProcess;
     SaveDialog1: TSaveDialog;
     QRBtn: TSpeedButton;
+    SaveDialog2: TSaveDialog;
     ServerEdit: TEdit;
     ServerPortEdit: TEdit;
     LocalPortEdit: TEdit;
@@ -38,10 +39,12 @@ type
     Shape1: TShape;
     SaveBtn: TSpeedButton;
     ServerConfigs: TSpeedButton;
+    BackupBtn: TSpeedButton;
     StartBtn: TSpeedButton;
     StaticText1: TStaticText;
     StopBtn: TSpeedButton;
     procedure AutoStartBoxChange(Sender: TObject);
+    procedure BackupBtnClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -275,6 +278,25 @@ begin
     RunCommand('/bin/bash', ['-c',
       'systemctl --user enable ss-cloak-client.service'], S);
   Screen.Cursor := crDefault;
+end;
+
+procedure TMainForm.BackupBtnClick(Sender: TObject);
+begin
+    if not FileExists(GetUserDir + '.config/ss-cloak-client/config.json') then Exit;
+
+  if (SaveDialog2.Execute) then
+  begin
+    if not AnsiEndsText('.json', SaveDialog2.FileName) then
+    begin
+      if SameText(ExtractFileExt(SaveDialog2.FileName), '.json') then
+        SaveDialog2.FileName := ChangeFileExt(SaveDialog2.FileName, '.json')
+      else
+        SaveDialog2.FileName := SaveDialog2.FileName + '.json';
+    end;
+
+    CopyFile(GetUserDir + '.config/ss-cloak-client/config.json',
+      SaveDialog2.FileName, [cffOverwriteFile]);
+  end;
 end;
 
 //MainForm, запуск потоков
