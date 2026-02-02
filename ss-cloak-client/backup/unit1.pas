@@ -213,7 +213,7 @@ var
   INI: TIniFile;
   bmp: TBitmap;
 begin
-    // Устраняем баг иконки приложения
+  // Устраняем баг иконки приложения
   bmp := TBitmap.Create;
   try
     bmp.PixelFormat := pf32bit;

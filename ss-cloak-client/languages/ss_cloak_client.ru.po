@@ -16,10 +16,9 @@ msgid "Autostart after reboot"
 msgstr "Автостарт после перезагрузки"
 
 #: tmainform.bypassbox.hint
-#, fuzzy
 msgctxt "tmainform.bypassbox.hint"
-msgid "Changes after pressing the \"Start\" button"
-msgstr "Меняется после нажатия кнопки \"Старт\""
+msgid "Bypassing domain zones"
+msgstr "Обход доменных зон"
 
 #: tmainform.bypassbox.text
 msgctxt "tmainform.bypassbox.text"
@@ -152,4 +151,3 @@ msgstr "QR-код"
 #: unit1.sgenerateconf
 msgid "Client and Server configurations will be recreated! Continue?"
 msgstr "Конфигурации Клиента и Сервера будут созданы заново! Продолжить?"
-
