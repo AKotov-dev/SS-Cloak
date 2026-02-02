@@ -216,37 +216,48 @@ begin
   if not DirectoryExists(GetUserDir + '.config/ss-cloak-client') then
     MkDir(GetUserDir + '.config/ss-cloak-client');
 
-  //Для настроек по нажатию Start (server, server_port, password и local_port)
+  // Для настроек по нажатию Start (server, server_port, password и local_port)
   config := GetUserDir + '.config/ss-cloak-client/config.json';
 
   if FileExists(config) then
   begin
-    //server
-    if RunCommand('jq', ['-r', '.server', config], S) then
+    // server
+    if RunCommand('sed', ['-n',
+      's/.*"server"[[:space:]]*:[[:space:]]*"\([^"]*\)".*/\1/p', config], S) then
       ServerEdit.Text := Trim(S);
-    //server_port
-    if RunCommand('jq', ['-r', '.server_port', config], S) then
+
+    // server_port
+    if RunCommand('sed', ['-n',
+      's/.*"server_port"[[:space:]]*:[[:space:]]*\([0-9]*\).*/\1/p', config], S) then
       ServerPortEdit.Text := Trim(S);
-    //local_port
-    if RunCommand('jq', ['-r', '.local_port', config], S) then
+
+    // local_port
+    if RunCommand('sed', ['-n',
+      's/.*"local_port"[[:space:]]*:[[:space:]]*\([0-9]*\).*/\1/p', config], S) then
       LocalPortEdit.Text := Trim(S);
-    //method
-    if RunCommand('jq', ['-r', '.method', config], S) then
+
+    // method
+    if RunCommand('sed', ['-n',
+      's/.*"method"[[:space:]]*:[[:space:]]*"\([^"]*\)".*/\1/p', config], S) then
       MethodComboBox.Text := Trim(S);
-    //nameserver
-    if RunCommand('jq', ['-r', '.nameserver', config], S) then
+
+    // nameserver
+    if RunCommand('sed', ['-n',
+      's/.*"nameserver"[[:space:]]*:[[:space:]]*"\([^"]*\)".*/\1/p', config], S) then
       DNSComboBox.Text := Trim(S);
-    //ServerName (plugin)
-    if RunCommand('jq', ['-r',
-      '.plugin_opts | split(";")[] | select(startswith("ServerName=")) | split("=")[1]',
-      config], S) then
+
+    // ServerName (plugin_opts)
+    if RunCommand('sed', ['-n', 's/.*ServerName=\([^;]*\).*/\1/p', config], S) then
       CamouflageEdit.Text := Trim(S);
   end;
 
+  // bypass.acl
   config := GetUserDir + '.config/ss-cloak-client/bypass.acl';
   if FileExists(config) then
+  begin
     if RunCommand('grep', ['^\.', config], S) then
       BypassBox.Text := Trim(S);
+  end;
 end;
 
 procedure TMainForm.FormClose(Sender: TObject; var CloseAction: TCloseAction);
