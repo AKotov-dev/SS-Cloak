@@ -17,6 +17,7 @@ type
     AutoStartBox: TCheckBox;
     CamouflageEdit: TComboBox;
     BypassBox: TComboBox;
+    Image1: TImage;
     Label7: TLabel;
     MethodComboBox: TComboBox;
     DNSComboBox: TComboBox;
@@ -210,7 +211,18 @@ end;
 procedure TMainForm.FormCreate(Sender: TObject);
 var
   INI: TIniFile;
+  bmp: TBitmap;
 begin
+    // Устраняем баг иконки приложения
+  bmp := TBitmap.Create;
+  try
+    bmp.PixelFormat := pf32bit;
+    bmp.Assign(Image1.Picture.Graphic);
+    Application.Icon.Assign(bmp);
+  finally
+    bmp.Free;
+  end;
+
   try
     MainForm.Caption := Application.Title;
 
@@ -236,7 +248,7 @@ begin
       LocalPortEdit.Text := INI.ReadString('settings', 'local_port', '1080');
       DNSComboBox.Text := INI.ReadString('settings', 'dns', '1.1.1.1');
       MethodComboBox.Text := INI.ReadString('settings', 'method', 'aes-128-gcm');
-      BypassBox.Text:= INI.ReadString('settings', 'bypass', '.ru');
+      BypassBox.Text := INI.ReadString('settings', 'bypass', '.ru');
     end;
   finally
     INI.Free;
