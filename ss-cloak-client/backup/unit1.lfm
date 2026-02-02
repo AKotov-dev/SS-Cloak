@@ -261,7 +261,7 @@ object MainForm: TMainForm
     AnchorSideBottom.Side = asrBottom
     Left = 539
     Height = 37
-    Hint = 'Create Client and Server settings'
+    Hint = 'Create Client and Server settings'#10'New UID, PublicKey, PrivateKey, BypassUID, etc.'
     Top = 88
     Width = 120
     Anchors = [akTop, akRight, akBottom]

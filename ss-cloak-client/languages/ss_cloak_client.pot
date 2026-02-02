@@ -153,6 +153,6 @@ msgid "QR code"
 msgstr ""
 
 #: unit1.sgenerateconf
-msgid "Client and Server configurations will be recreated! Continue?"
+msgid "Based on the entered data, a configuration link will be created for the Client (overwrite) and Server (downloadable archive for your VPS). Continue?"
 msgstr ""
 
