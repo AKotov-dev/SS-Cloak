@@ -246,7 +246,7 @@ begin
       CamouflageEdit.Text := INI.ReadString('settings', 'camouflage',
         'www.bing.com');
       LocalPortEdit.Text := INI.ReadString('settings', 'local_port', '1080');
-      DNSComboBox.Text := INI.ReadString('settings', 'dns', '1.1.1.1');
+      DNSComboBox.Text := INI.ReadString('settings', 'dns', '1.1.1.1,8.8.8.8');
       MethodComboBox.Text := INI.ReadString('settings', 'method', 'aes-128-gcm');
       BypassBox.Text := INI.ReadString('settings', 'bypass', '.ru');
     end;
