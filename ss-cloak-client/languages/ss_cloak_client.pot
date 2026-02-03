@@ -38,6 +38,18 @@ msgstr ""
 msgid "SS-Cloak-Client "
 msgstr ""
 
+#: tmainform.createbtn.caption
+msgctxt "tmainform.createbtn.caption"
+msgid "Create conf"
+msgstr ""
+
+#: tmainform.createbtn.hint
+msgctxt "tmainform.createbtn.hint"
+msgid ""
+"Create Client and Server settings\n"
+"New UID, PublicKey, PrivateKey, BypassUID, etc."
+msgstr ""
+
 #: tmainform.dnscombobox.text
 msgid "1.1.1.1,1.0.0.1"
 msgstr ""
@@ -94,17 +106,6 @@ msgstr ""
 #: tmainform.qrbtn.hint
 msgctxt "tmainform.qrbtn.hint"
 msgid "Get connection QR code"
-msgstr ""
-
-#: tmainform.savebtn.caption
-msgctxt "tmainform.savebtn.caption"
-msgid "Create conf"
-msgstr ""
-
-#: tmainform.savebtn.hint
-msgid ""
-"Create Client and Server settings\n"
-"New UID, PublicKey, PrivateKey, BypassUID, etc."
 msgstr ""
 
 #: tmainform.serverconfigs.caption

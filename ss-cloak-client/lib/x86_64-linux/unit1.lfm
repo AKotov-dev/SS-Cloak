@@ -150,7 +150,7 @@ object MainForm: TMainForm
     OnClick = StopBtnClick
   end
   object AutoStartBox: TCheckBox
-    AnchorSideLeft.Control = SaveBtn
+    AnchorSideLeft.Control = CreateBtn
     AnchorSideTop.Control = StopBtn
     AnchorSideTop.Side = asrCenter
     Left = 547
@@ -254,7 +254,7 @@ object MainForm: TMainForm
     TabOrder = 7
     Text = 'aes-128-gcm'
   end
-  object SaveBtn: TSpeedButton
+  object CreateBtn: TSpeedButton
     AnchorSideTop.Control = MethodComboBox
     AnchorSideRight.Control = ServerConfigs
     AnchorSideBottom.Control = MethodComboBox
@@ -269,7 +269,7 @@ object MainForm: TMainForm
     Caption = 'Create conf'
     ShowHint = True
     ParentShowHint = False
-    OnClick = SaveBtnClick
+    OnClick = CreateBtnClick
   end
   object ServerConfigs: TSpeedButton
     AnchorSideLeft.Side = asrBottom
@@ -340,7 +340,7 @@ object MainForm: TMainForm
     Text = 'www.bing.com'
   end
   object Label7: TLabel
-    AnchorSideLeft.Control = SaveBtn
+    AnchorSideLeft.Control = CreateBtn
     AnchorSideTop.Control = StartBtn
     AnchorSideTop.Side = asrCenter
     Left = 539

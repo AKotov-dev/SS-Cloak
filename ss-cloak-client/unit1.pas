@@ -36,7 +36,7 @@ type
     Label4: TLabel;
     LogMemo: TMemo;
     Shape1: TShape;
-    SaveBtn: TSpeedButton;
+    CreateBtn: TSpeedButton;
     ServerConfigs: TSpeedButton;
     BackupBtn: TSpeedButton;
     StartBtn: TSpeedButton;
@@ -48,7 +48,7 @@ type
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure QRBtnClick(Sender: TObject);
-    procedure SaveBtnClick(Sender: TObject);
+    procedure CreateBtnClick(Sender: TObject);
     procedure ServerConfigsClick(Sender: TObject);
     procedure StartBtnClick(Sender: TObject);
     procedure StopBtnClick(Sender: TObject);
@@ -145,7 +145,7 @@ begin
   //Редактируем клиентский конфиг (если что-то менялось)
   JSONFile := GetUserDir + '.config/ss-cloak-client/config.json';
 
-  // Если файл есть
+  // Если файл существует - пишем новые настройки из полей
   if FileExists(JSONFile) then
   begin
     // меняем server
@@ -173,7 +173,6 @@ begin
     Cmd := Format('sed -i ''s/ServerName=[^;]*/ServerName=%s/'' "%s"',
       [CamouflageEdit.Text, JSONFile]);
     RunCommand('bash', ['-c', Cmd], S);
-
   end
   else
     Exit;
@@ -216,7 +215,7 @@ begin
   if not DirectoryExists(GetUserDir + '.config/ss-cloak-client') then
     MkDir(GetUserDir + '.config/ss-cloak-client');
 
-  // Для настроек по нажатию Start (server, server_port, password и local_port)
+  // Если конфигурация клиента существует - читаем настройки в поля
   config := GetUserDir + '.config/ss-cloak-client/config.json';
 
   if FileExists(config) then
@@ -249,7 +248,10 @@ begin
     // ServerName (plugin_opts)
     if RunCommand('sed', ['-n', 's/.*ServerName=\([^;]*\).*/\1/p', config], S) then
       CamouflageEdit.Text := Trim(S);
-  end;
+  end
+  else
+    //Иначе блокируем запуск и ждём создания конфигурации клиента
+    StartBtn.Enabled := False;
 
   // bypass.acl
   config := GetUserDir + '.config/ss-cloak-client/bypass.acl';
@@ -325,7 +327,7 @@ begin
 end;
 
 //Save Settings
-procedure TMainForm.SaveBtnClick(Sender: TObject);
+procedure TMainForm.CreateBtnClick(Sender: TObject);
 var
   S: TStringList;
 begin
@@ -415,6 +417,10 @@ begin
 
     //Upload Server Configs archive
     ServerConfigs.Click;
+
+    //Если конфиг клиента успешно создан - разрешить старт
+    if FileExists(GetUserDir + '.config/ss-cloak-client/config.json') then
+      StartBtn.Enabled := True;
   finally
     S.Free;
   end;
