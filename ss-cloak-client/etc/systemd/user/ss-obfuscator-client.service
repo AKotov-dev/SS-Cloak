@@ -5,8 +5,11 @@ After=network.target
 
 [Service]
 Type=simple
-ExecStart=bash -c 'ss-local -v -c ~/.config/ss-obfuscator-client/client.json > ~/.config/ss-obfuscator-client/ss-obfuscator-client.log'
+ExecStart=/bin/bash -c 'ss-local -v -c ~/.config/ss-obfuscator-client/client.json > ~/.config/ss-obfuscator-client/ss-obfuscator-client.log'
 ExecStop=killall ss-local
+
+Restart=on-failure
+RestartPreventExitStatus=23
 
 [Install]
 WantedBy=default.target
