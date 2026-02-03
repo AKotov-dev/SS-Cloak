@@ -412,7 +412,7 @@ begin
   else
   begin
     //Автозапуск самого прокси, поскольку при перезагрузке прокси будет недоступен
-    //  AutoStartBox.Checked := True;
+    AutoStartBox.Checked := True;
     //Делаем скрипт звпуска ~/.config/xraygui/swproxy.sh
     CreateSWProxy;
     //Запуск System-Wide Proxy если он уже работает
