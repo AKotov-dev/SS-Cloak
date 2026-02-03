@@ -1,5 +1,5 @@
 # SS-Cloak
-Shadowsocks-Rust client (with GUI) and server (for VPS) with obfuscation  
+Shadowsocks-Rust client (with GUI) and server (for VPS) with obfuscation.  
   
 **Dependencies:** systemd qrencode gtk2  
   
