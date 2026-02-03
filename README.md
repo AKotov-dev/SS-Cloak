@@ -19,40 +19,16 @@ Install the `ss-cloak-client` package to your computer, launch the GUI, enter th
   
 After that, start the server: `systemctl restart ss-cloak-server` and the client (`Start` button). Set up a connection in your browser via the SOCKS5 proxy 127.0.0.1:1080. Also check the box `Send DNS requests via SOCKS5 proxy`. For the `Chrome` browser, it is convenient to use the `Socks5 Configurator` plugin. You can check your new location here: https://whoer.net 
 
-## System-wide proxy, DNS, and limitations
+## System‑wide Proxy mode and DNS considerations
 
-Starting from `ss-cloak-client v0.4`, a `System-wide Proxy` (SWP) mode and domain zone bypass (direct connections outside the proxy, e.g. .ru, .ir, etc.) were introduced.
+Starting with `ss-cloak-client v0.4`, a `System‑wide Proxy (SWP)` mode and `domain zone bypassing` were introduced (direct connections that bypass proxy, e.g. .ru, .ir, etc.).
 
-System-wide Proxy significantly improves traffic coverage for GUI applications (browsers, messengers, etc.), however it is NOT fully hermetic by itself.
+The `System‑wide Proxy` mode hermetically seals the `GUI session`, including DNS resolution (browsers and other GUI applications). However, in desktop environments based on `gsettings + libproxy`, the `env/CLI` layer receives proxy variables as `all_proxy/ALL_PROXY=socks://…`. This results in `SOCKS4‑level usage`, meaning `DNS resolution is performed locally`, unlike `socks5h://`, where DNS is resolved through the proxy.
 
-### Important note about DNS
+For `reliable use of System‑wide Proxy mode` in `XFCE`, `LXDE` (as well as `i3, IceWM, OpenBox`), it is strongly recommended to install [XDE‑Proxy‑GUI](https://github.com/AKotov-dev/xde-proxy-gui), which ensures correct and consistent proxy handling in GUI sessions.
 
-DNS resolution is not automatically tunneled through a system proxy.
+For `robust DNS protection against MITM attacks` when a proxy is `not used`, it is `recommended` to use [DNSCrypt‑GUI](https://github.com/AKotov-dev/dnscrypt-gui).
 
-In desktop environments based on `gsettings + libproxy`, proxy settings are exported into the environment as:
-```
-ALL_PROXY=socks://127.0.0.1:1080
-```
-This format implies local DNS resolution (SOCKS4-like behavior) and does not provide remote DNS resolution as in `socks5h://`.
-
-**As a result:**
-- TCP/HTTPS traffic is proxied
-- DNS queries are still sent via the system resolver
-- If the system DNS is unencrypted (e.g. 8.8.8.8), DNS traffic may be observable on the network
-
-### Recommendations
-
-- For reliable and secure usage of System-wide Proxy mode, it is strongly recommended to:
-- Use a local encrypted DNS resolver, such as [DNSCrypt-GUI](https://github.com/AKotov-dev/dnscrypt-gui)
-- This ensures DNS confidentiality even when DNS is not routed through the proxy.
-
-In lightweight DEs or WMs (XFCE, LXDE, i3, IceWM, OpenBox), install [XDE-Proxy-GUI](https://github.com/AKotov-dev/xde-proxy-gui) for consistent proxy configuration across GUI applications.
-
-If `System-wide Proxy` is unavailable in your DE, browser extensions (e.g. `Socks5 Configurator)` may be used as a fallback.
-
-### Summary
-- System-wide Proxy ≠ DNS protection
-- DNS must be encrypted separately
-- Proxy + encrypted DNS = predictable and clean behavior
+If `System‑wide Proxy` is not feasible in your desktop environment, a practical alternative is to use `browser‑level proxy extensions`, such as `Socks5 Configurator`.
   
 **Useful links:** [Shadowsocks-Rust](https://github.com/shadowsocks/shadowsocks-rust), [Cloak](https://github.com/cbeuw/Cloak). **Similar project:** [SS-Obfuscator](https://github.com/AKotov-dev/SS-Obfuscator).
