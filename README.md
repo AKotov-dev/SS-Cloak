@@ -21,7 +21,7 @@ After that, start the server: `systemctl restart ss-cloak-server` and the client
 
 ## System‑wide Proxy mode and DNS considerations
 
-Starting with `ss-cloak-client v0.4`, a `System‑wide Proxy (SWP)` mode and `domain zone bypassing` were introduced (direct connections that bypass proxy, e.g. .ru, .ir, etc.).
+Starting with `ss-cloak-client v0.4`, a `System‑wide Proxy (SWP)` mode and `domain zone bypassing` were introduced (direct connections that bypass proxy, e.g. `.ru`, `.ir`, etc.).
 
 The `System‑wide Proxy` mode hermetically seals the `GUI session`, including DNS resolution (browsers and other GUI applications). However, in desktop environments based on `gsettings + libproxy`, the `env/CLI` layer receives proxy variables as `all_proxy/ALL_PROXY=socks://…`. This results in `SOCKS4‑level usage`, meaning `DNS resolution is performed locally`, unlike `socks5h://`, where DNS is resolved through the proxy.
 
