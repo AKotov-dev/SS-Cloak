@@ -1,0 +1,113 @@
+[NAME]
+name=ss-cloak-client
+
+[VERSION]
+version=0.4
+
+[RELEASE]
+release=0.mrx10
+
+[GROUP]
+group=Accessibility
+
+[DESCRIPTION]
+0=Shadowsocks-Rust + Cloak obfuscator Client
+1=---
+2=More information: /usr/share/doc/package_name/repack.txt
+
+[MAINTAINER]
+maintainer=Alex Kotov
+
+[VENDOR]
+vendor=alex_q_2000 (C) 2026
+
+[SUMMARY]
+summary=Shadowsocks-Rust + Cloak obfuscator Client
+
+[URLCOPY]
+urlcopy=https://github.com/AKotov-dev/SS-Cloak
+
+[LICENSE]
+license=GPLv3
+
+[DEPS]
+deps=systemd qrencode lib64proxy-gnome gtk2
+
+[META]
+meta=0
+
+[NOARCH]
+noarch=0
+
+[DEB]
+deb=0
+
+[FILES]
+0=/usr/local/bin/ssurl
+1=/usr/local/bin/sslocal
+2=/usr/local/bin/ssserver
+3=/usr/local/bin/ssservice
+4=/usr/local/bin/ck-client
+5=/usr/local/bin/ck-server
+6=/usr/bin/ss-cloak-client
+7=/usr/share/icons/ss-cloak-client.png
+8=/etc/systemd/user/ss-cloak-client.service
+9=/usr/share/applications/ss-cloak-client.desktop
+10=/usr/share/ss-cloak-client/
+11=/usr/share/doc/ss-cloak-client/
+
+[AFTERINSTALL]
+0=#!/bin/bash
+1=
+2=systemctl daemon-reload
+
+[AFTERREMOVE]
+0=#!/bin/bash
+1=
+2=systemctl daemon-reload
+
+[URL32]
+url32=https://github.com/AKotov-dev/SS-Cloak
+
+[PROGRAMNAME]
+programname=SS-Cloak-Client
+
+[DEVTOOL]
+devtool=Lazarus
+
+[TOOLVERSION]
+toolversion=4.4
+
+[INFO]
+0=v0.4
+1=+ Bypass domain zones
+2=+ System-wide proxy mode (SWP)
+3=+ Improved logging format
+4=+ List of camouflage domains
+5=+ Unloading client configuration
+6=+ Recompiling to Lazarus-4.4
+7=+ ck-server / ck-client-2.12.0
+8=+ shadowsocks-rust-1.24.0
+9=+ Self-contained RPM & DEB packages
+10=
+11=**Note:** RPM-packages for Mageia-9 (*.mrx9*) and Mageia-10 (*.mrx10). In Mageia-10, lib64proxy-kde has been replaced by lib64proxy1 / lib64proxy-gnome. DEB packages for Ubuntu >= 25.04.
+12=
+13=v0.3
+14=+ Recompiling to Lazarus-3.8
+15=+ Corrected filter when saving `server-conf.tar.gz`
+16=+ Update: shadowsocks-v1.23.5
+17=+ Update: ck-client/ck-server v2.11.0
+18=+ Сhanged the prefix of the package `ss-cloak-server` to `mrx9`
+19=+ RPM & DEB packages
+20=
+21=**Note:** Before updating the server package, delete the previous one manually.
+22=
+23=v0.2
+24=+ `ss-cloak-client.service` update
+25=+ `ss-cloak-server.service` update
+26=+ Getting QR code for connection
+27=+ RPM & DEB packages
+28=
+29=v0.1
+30=+ Initial Release
+31=+ RPM & DEB packages
