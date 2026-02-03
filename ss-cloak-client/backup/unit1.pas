@@ -187,9 +187,9 @@ begin
 
     S.Add('[proxy_all]');
     S.Add('[bypass_list]');
-    S.Add('127.0.0.1');
-    S.Add('localhost');
-    S.Add('::1');
+//    S.Add('127.0.0.1');
+//    S.Add('localhost');
+//    S.Add('::1');
     S.Add(Trim(BypassBox.Text));
 
     S.SaveToFile(GetUserDir + '.config/ss-cloak-client/bypass.acl');
@@ -389,8 +389,11 @@ begin
   Application.ProcessMessages;
 
   if not AutoStartBox.Checked then
+  begin
+    SWPBox.Checked := False;
     RunCommand('/bin/bash', ['-c',
-      'systemctl --user disable ss-cloak-client.service'], S)
+      'systemctl --user disable ss-cloak-client.service'], S);
+  end
   else
     RunCommand('/bin/bash', ['-c',
       'systemctl --user enable ss-cloak-client.service'], S);
