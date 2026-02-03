@@ -336,8 +336,14 @@ begin
       CamouflageEdit.Text := Trim(S);
   end
   else
+  begin
     //Иначе блокируем запуск и ждём создания конфигурации клиента
     StartBtn.Enabled := False;
+    AutoStartBox.Checked := False;
+    SWPBox.Checked := False;
+    AutoStartBox.Enabled := False;
+    SWPBox.Enabled := False;
+  end;
 
   // bypass.acl
   config := GetUserDir + '.config/ss-cloak-client/bypass.acl';
@@ -537,9 +543,13 @@ begin
     //Upload Server Configs archive
     ServerConfigs.Click;
 
-    //Если конфиг клиента успешно создан - разрешить старт
+    //Если конфиг клиента успешно создан - разрешить старт и переключатели Autostart/SWP
     if FileExists(GetUserDir + '.config/ss-cloak-client/config.json') then
+    begin
       StartBtn.Enabled := True;
+      AutoStartBox.Enabled := True;
+      SWPBox.Enabled := True;
+    end;
   finally
     S.Free;
   end;
