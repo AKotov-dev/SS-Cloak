@@ -155,10 +155,13 @@ object MainForm: TMainForm
     AnchorSideTop.Side = asrCenter
     Left = 547
     Height = 32
+    Hint = 'Autostart on reboot'
     Top = 48
     Width = 90
     BorderSpacing.Left = 8
     Caption = 'Autostart'
+    ParentShowHint = False
+    ShowHint = True
     TabOrder = 5
     OnChange = AutoStartBoxChange
   end

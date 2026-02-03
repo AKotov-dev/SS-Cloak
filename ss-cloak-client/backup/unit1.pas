@@ -346,6 +346,12 @@ begin
     if RunCommand('grep', ['^\.', config], S) then
       BypassBox.Text := Trim(S);
   end;
+
+  //SWP ?
+  if FileExists(GetUserDir + '.config/ss-cloak-client/swproxy.sh') then
+    SWPBox.Checked := True
+  else
+    SWPBox.Checked := False;
 end;
 
 procedure TMainForm.FormClose(Sender: TObject; var CloseAction: TCloseAction);
@@ -397,7 +403,8 @@ begin
   Screen.Cursor := crHourGlass;
   Application.ProcessMessages;
 
-  if (not SWPBox.Checked) and FileExists(GetUserDir + '.config/ss-cloak-client/swproxy.sh') then
+  if (not SWPBox.Checked) and FileExists(GetUserDir +
+    '.config/ss-cloak-client/swproxy.sh') then
   begin
     RunCommand('/bin/bash', ['-c', '~/.config/ss-cloak-client/swproxy.sh unset'], S);
     DeleteFile(GetUserDir + '.config/ss-cloak-client/swproxy.sh');
@@ -405,7 +412,7 @@ begin
   else
   begin
     //Автозапуск самого прокси, поскольку при перезагрузке прокси будет недоступен
-  //  AutoStartBox.Checked := True;
+    //  AutoStartBox.Checked := True;
     //Делаем скрипт звпуска ~/.config/xraygui/swproxy.sh
     CreateSWProxy;
     //Запуск System-Wide Proxy если он уже работает

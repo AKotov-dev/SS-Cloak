@@ -5,6 +5,10 @@ msgstr "Content-Type: text/plain; charset=UTF-8"
 msgid "Autostart"
 msgstr ""
 
+#: tmainform.autostartbox.hint
+msgid "Proxy autostart on boot"
+msgstr ""
+
 #: tmainform.backupbtn.caption
 msgid "Client conf"
 msgstr ""

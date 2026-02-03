@@ -12,10 +12,12 @@ msgstr ""
 "X-Generator: Poedit 3.5\n"
 
 #: tmainform.autostartbox.caption
-#, fuzzy
-#| msgid "Autostart after reboot"
 msgid "Autostart"
-msgstr "Автостарт после перезагрузки"
+msgstr "Автостарт"
+
+#: tmainform.autostartbox.hint
+msgid "Proxy autostart on boot"
+msgstr "Автостарт прокси при загрузке"
 
 #: tmainform.backupbtn.caption
 msgid "Client conf"
