@@ -2,7 +2,7 @@ msgid ""
 msgstr "Content-Type: text/plain; charset=UTF-8"
 
 #: tmainform.autostartbox.caption
-msgid "Autostart after reboot"
+msgid "Autostart"
 msgstr ""
 
 #: tmainform.backupbtn.caption
@@ -36,6 +36,16 @@ msgstr ""
 
 #: tmainform.caption
 msgid "SS-Cloak-Client "
+msgstr ""
+
+#: tmainform.checkbox1.caption
+msgid "SWP"
+msgstr ""
+
+#: tmainform.checkbox1.hint
+msgid ""
+"System-wide proxy\n"
+"GNOME, MATE, Budgie, KDE"
 msgstr ""
 
 #: tmainform.createbtn.caption

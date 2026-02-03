@@ -16,6 +16,7 @@ type
     AutoStartBox: TCheckBox;
     CamouflageEdit: TComboBox;
     BypassBox: TComboBox;
+    CheckBox1: TCheckBox;
     Image1: TImage;
     Label7: TLabel;
     MethodComboBox: TComboBox;

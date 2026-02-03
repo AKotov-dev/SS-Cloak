@@ -16,6 +16,7 @@ type
     AutoStartBox: TCheckBox;
     CamouflageEdit: TComboBox;
     BypassBox: TComboBox;
+    CheckBox1: TCheckBox;
     Image1: TImage;
     Label7: TLabel;
     MethodComboBox: TComboBox;
@@ -104,6 +105,9 @@ begin
 
     S.Add('[proxy_all]');
     S.Add('[bypass_list]');
+    S.Add('127.0.0.1');
+    S.Add('localhost');
+    S.Add('::1');
     S.Add(Trim(BypassBox.Text));
 
     S.SaveToFile(GetUserDir + '.config/ss-cloak-client/bypass.acl');

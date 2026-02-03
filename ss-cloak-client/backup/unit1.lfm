@@ -156,9 +156,9 @@ object MainForm: TMainForm
     Left = 547
     Height = 32
     Top = 48
-    Width = 166
+    Width = 90
     BorderSpacing.Left = 8
-    Caption = 'Autostart after reboot'
+    Caption = 'Autostart'
     TabOrder = 5
     OnChange = AutoStartBoxChange
   end
@@ -547,6 +547,17 @@ object MainForm: TMainForm
     ShowHint = True
     ParentShowHint = False
     OnClick = BackupBtnClick
+  end
+  object CheckBox1: TCheckBox
+    Left = 662
+    Height = 32
+    Hint = 'System-wide proxy'#10'GNOME, MATE, Budgie, KDE'
+    Top = 46
+    Width = 62
+    Caption = 'SWP'
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 10
   end
   object IniPropStorage1: TIniPropStorage
     StoredValues = <>

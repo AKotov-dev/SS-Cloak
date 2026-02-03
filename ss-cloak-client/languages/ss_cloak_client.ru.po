@@ -12,7 +12,9 @@ msgstr ""
 "X-Generator: Poedit 3.5\n"
 
 #: tmainform.autostartbox.caption
-msgid "Autostart after reboot"
+#, fuzzy
+#| msgid "Autostart after reboot"
+msgid "Autostart"
 msgstr "Автостарт после перезагрузки"
 
 #: tmainform.backupbtn.caption
@@ -49,6 +51,18 @@ msgstr ""
 #: tmainform.caption
 msgid "SS-Cloak-Client "
 msgstr ""
+
+#: tmainform.checkbox1.caption
+msgid "SWP"
+msgstr ""
+
+#: tmainform.checkbox1.hint
+msgid ""
+"System-wide proxy\n"
+"GNOME, MATE, Budgie, KDE"
+msgstr ""
+"Системный прокси\n"
+"GNOME, MATE, Budgie, KDE"
 
 #: tmainform.createbtn.caption
 msgctxt "tmainform.createbtn.caption"
