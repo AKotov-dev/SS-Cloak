@@ -548,16 +548,20 @@ object MainForm: TMainForm
     ParentShowHint = False
     OnClick = BackupBtnClick
   end
-  object CheckBox1: TCheckBox
+  object SWPBox: TCheckBox
+    AnchorSideLeft.Control = ServerConfigs
+    AnchorSideTop.Control = StopBtn
+    AnchorSideTop.Side = asrCenter
     Left = 662
     Height = 32
     Hint = 'System-wide proxy'#10'GNOME, MATE, Budgie, KDE'
-    Top = 46
+    Top = 48
     Width = 62
     Caption = 'SWP'
     ParentShowHint = False
     ShowHint = True
     TabOrder = 10
+    OnChange = SWPBoxChange
   end
   object IniPropStorage1: TIniPropStorage
     StoredValues = <>

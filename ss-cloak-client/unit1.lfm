@@ -548,7 +548,7 @@ object MainForm: TMainForm
     ParentShowHint = False
     OnClick = BackupBtnClick
   end
-  object CheckBox1: TCheckBox
+  object SWPBox: TCheckBox
     AnchorSideLeft.Control = ServerConfigs
     AnchorSideTop.Control = StopBtn
     AnchorSideTop.Side = asrCenter
@@ -561,6 +561,7 @@ object MainForm: TMainForm
     ParentShowHint = False
     ShowHint = True
     TabOrder = 10
+    OnChange = SWPBoxChange
   end
   object IniPropStorage1: TIniPropStorage
     StoredValues = <>

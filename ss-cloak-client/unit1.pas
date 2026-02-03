@@ -16,7 +16,7 @@ type
     AutoStartBox: TCheckBox;
     CamouflageEdit: TComboBox;
     BypassBox: TComboBox;
-    CheckBox1: TCheckBox;
+    SWPBox: TCheckBox;
     Image1: TImage;
     Label7: TLabel;
     MethodComboBox: TComboBox;
@@ -45,6 +45,7 @@ type
     StopBtn: TSpeedButton;
     procedure AutoStartBoxChange(Sender: TObject);
     procedure BackupBtnClick(Sender: TObject);
+    procedure SWPBoxChange(Sender: TObject);
     procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -55,6 +56,7 @@ type
     procedure StopBtnClick(Sender: TObject);
     procedure StartProcess(command: string);
     procedure CreateBypass;
+    procedure CreateSWProxy;
 
   private
 
@@ -92,6 +94,86 @@ begin
     ExProcess.Execute;
   finally
     ExProcess.Free;
+  end;
+end;
+
+//Create ~/config/ss-cloak-client/swproxy.sh
+procedure TMainForm.CreateSWProxy;
+var
+  S: ansistring;
+  A: TStringList;
+begin
+  try
+    A := TStringList.Create;
+    A.Add('#!/bin/bash');
+    A.Add('');
+    A.Add('if [[ "$1" == "set" ]]; then');
+    A.Add('  echo "set proxy..."');
+    A.Add('');
+    A.Add('  # GNOME / GTK-based');
+    A.Add('  if [[ "$XDG_CURRENT_DESKTOP" =~ GNOME|Budgie|Cinnamon|MATE|XFCE|LXDE ]]; then');
+    A.Add('    gsettings set org.gnome.system.proxy mode manual');
+    A.Add('    gsettings set org.gnome.system.proxy.http  host ""');
+    A.Add('    gsettings set org.gnome.system.proxy.http  port 0');
+    A.Add('    gsettings set org.gnome.system.proxy.https host ""');
+    A.Add('    gsettings set org.gnome.system.proxy.https port 0');
+    A.Add('    gsettings set org.gnome.system.proxy.ftp   host ""');
+    A.Add('    gsettings set org.gnome.system.proxy.ftp   port 0');
+    A.Add('    gsettings set org.gnome.system.proxy.socks host "127.0.0.1"');
+    A.Add('    gsettings set org.gnome.system.proxy.socks port ' + LocalPortEdit.Text);
+    A.Add('    gsettings set org.gnome.system.proxy ignore-hosts "[' +
+      '''' + 'localhost' + '''' + ', ' + '''' + '127.0.0.1' + '''' +
+      ', ' + '''' + '::1' + '''' + ']"');
+    A.Add('  fi');
+    A.Add('');
+    A.Add('  # KDE Plasma');
+    A.Add('  if [[ "$XDG_CURRENT_DESKTOP" == KDE ]]; then');
+    A.Add('    if command -v kwriteconfig5 >/dev/null; then');
+    A.Add('      v=5');
+    A.Add('    elif command -v kwriteconfig6 >/dev/null; then');
+    A.Add('      v=6');
+    A.Add('    else');
+    A.Add('      echo "No kwriteconfig found"');
+    A.Add('      exit 1');
+    A.Add('  fi');
+    A.Add('');
+    A.Add('    kwriteconfig$v --file kioslaverc --group "Proxy Settings" --key ProxyType 1');
+    A.Add('    kwriteconfig$v --file kioslaverc --group "Proxy Settings" --key httpProxy  ""');
+    A.Add('    kwriteconfig$v --file kioslaverc --group "Proxy Settings" --key httpsProxy ""');
+    A.Add('    kwriteconfig$v --file kioslaverc --group "Proxy Settings" --key ftpProxy   ""');
+    A.Add('    kwriteconfig$v --file kioslaverc --group "Proxy Settings" --key socksProxy "socks5h://127.0.0.1:' + LocalPortEdit.Text + '"');
+    A.Add('    kwriteconfig$v --file kioslaverc --group "Proxy Settings" --key NoProxy    "['
+      + '''' + 'localhost' + '''' + ', ' + '''' + '127.0.0.1' + '''' +
+      ', ' + '''' + '::1' + '''' + ']"');
+    A.Add('  fi');
+    A.Add('else');
+    A.Add('  echo "unset proxy..."');
+    A.Add('');
+    A.Add('  # GNOME / GTK-based');
+    A.Add('  if [[ "$XDG_CURRENT_DESKTOP" =~ GNOME|Budgie|Cinnamon|MATE|XFCE|LXDE ]]; then');
+    A.Add('    gsettings set org.gnome.system.proxy mode none');
+    A.Add('  fi');
+    A.Add('');
+    A.Add('  # KDE Plasma');
+    A.Add('  if [[ "$XDG_CURRENT_DESKTOP" == KDE ]]; then');
+    A.Add('    if command -v kwriteconfig5 >/dev/null; then');
+    A.Add('      v=5');
+    A.Add('    elif command -v kwriteconfig6 >/dev/null; then');
+    A.Add('      v=6');
+    A.Add('    else');
+    A.Add('      echo "No kwriteconfig found"');
+    A.Add('      exit 1');
+    A.Add('    fi');
+    A.Add('');
+    A.Add('    kwriteconfig$v --file kioslaverc --group "Proxy Settings" --key ProxyType 0');
+    A.Add('  fi');
+    A.Add('fi');
+    A.Add('');
+
+    A.SaveToFile(GetUserDir + '.config/ss-cloak-client/swproxy.sh');
+    RunCommand('/bin/bash', ['-c', 'chmod +x ~/.config/ss-cloak-client/swproxy.sh'], S);
+  finally
+    A.Free;
   end;
 end;
 
@@ -264,6 +346,12 @@ begin
     if RunCommand('grep', ['^\.', config], S) then
       BypassBox.Text := Trim(S);
   end;
+
+  //SWP ?
+  if FileExists(GetUserDir + '.config/ss-cloak-client/swproxy.sh') then
+    SWPBox.Checked := True
+  else
+    SWPBox.Checked := False;
 end;
 
 procedure TMainForm.FormClose(Sender: TObject; var CloseAction: TCloseAction);
@@ -305,6 +393,33 @@ begin
     CopyFile(GetUserDir + '.config/ss-cloak-client/config.json',
       SaveDialog2.FileName, [cffOverwriteFile]);
   end;
+end;
+
+//SWP (включение/отключение системного прокси)
+procedure TMainForm.SWPBoxChange(Sender: TObject);
+var
+  S: ansistring;
+begin
+  Screen.Cursor := crHourGlass;
+  Application.ProcessMessages;
+
+  if (not SWPBox.Checked) and FileExists(GetUserDir +
+    '.config/ss-cloak-client/swproxy.sh') then
+  begin
+    RunCommand('/bin/bash', ['-c', '~/.config/ss-cloak-client/swproxy.sh unset'], S);
+    DeleteFile(GetUserDir + '.config/ss-cloak-client/swproxy.sh');
+  end
+  else
+  begin
+    //Автозапуск самого прокси, поскольку при перезагрузке прокси будет недоступен
+    //  AutoStartBox.Checked := True;
+    //Делаем скрипт звпуска ~/.config/xraygui/swproxy.sh
+    CreateSWProxy;
+    //Запуск System-Wide Proxy если он уже работает
+    if Shape1.Brush.Color <> clYellow then
+      RunCommand('/bin/bash', ['-c', '~/.config/ss-cloak-client/swproxy.sh set'], S);
+  end;
+  Screen.Cursor := crDefault;
 end;
 
 //MainForm, запуск потоков

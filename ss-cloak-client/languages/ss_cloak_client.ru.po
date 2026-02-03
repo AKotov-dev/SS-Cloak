@@ -52,18 +52,6 @@ msgstr ""
 msgid "SS-Cloak-Client "
 msgstr ""
 
-#: tmainform.checkbox1.caption
-msgid "SWP"
-msgstr ""
-
-#: tmainform.checkbox1.hint
-msgid ""
-"System-wide proxy\n"
-"GNOME, MATE, Budgie, KDE"
-msgstr ""
-"Системный прокси\n"
-"GNOME, MATE, Budgie, KDE"
-
 #: tmainform.createbtn.caption
 msgctxt "tmainform.createbtn.caption"
 msgid "Create conf"
@@ -177,6 +165,20 @@ msgstr "Лицензия: GPLv3   Автор: alex_q_2000 (C) 2026   URL: https:
 #: tmainform.stopbtn.caption
 msgid "Stop"
 msgstr "Стоп"
+
+#: tmainform.swpbox.caption
+msgctxt "tmainform.swpbox.caption"
+msgid "SWP"
+msgstr ""
+
+#: tmainform.swpbox.hint
+msgctxt "tmainform.swpbox.hint"
+msgid ""
+"System-wide proxy\n"
+"GNOME, MATE, Budgie, KDE"
+msgstr ""
+"Системный прокси\n"
+"GNOME, MATE, Budgie, KDE"
 
 #: tqrform.caption
 msgctxt "tqrform.caption"
