@@ -1,7 +1,7 @@
 # SS-Cloak
 Shadowsocks-Rust client (with GUI) and server (for VPS) with obfuscation.  
   
-**Dependencies:** systemd qrencode gtk2  
+**Dependencies:** systemd qrencode gtk2 (libgtk2.0-0 for Ubuntu)  
   
 **Work directories:**
 + Client: `~/.config/ss-cloak-client`; Service: `/etc/systemd/user/ss-cloak-client.service`
