@@ -155,7 +155,7 @@ object MainForm: TMainForm
     AnchorSideTop.Side = asrCenter
     Left = 547
     Height = 32
-    Hint = 'Autostart on reboot'
+    Hint = 'Proxy autostart on boot'
     Top = 48
     Width = 90
     BorderSpacing.Left = 8

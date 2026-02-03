@@ -119,7 +119,7 @@ object MainForm: TMainForm
     ParentFont = False
     ReadOnly = True
     ScrollBars = ssAutoBoth
-    TabOrder = 8
+    TabOrder = 9
     WantReturns = False
     WordWrap = False
   end
@@ -190,7 +190,7 @@ object MainForm: TMainForm
     Font.Height = -11
     Font.Name = 'Sans'
     ParentFont = False
-    TabOrder = 9
+    TabOrder = 10
   end
   object Label5: TLabel
     AnchorSideTop.Control = MethodComboBox
@@ -221,7 +221,7 @@ object MainForm: TMainForm
       '1.0.0.1,8.8.4.4'
       '9.9.9.9,149.112.112.112'
     )
-    TabOrder = 6
+    TabOrder = 7
     Text = '1.1.1.1,1.0.0.1'
   end
   object Label6: TLabel
@@ -254,7 +254,7 @@ object MainForm: TMainForm
     )
     ParentShowHint = False
     ShowHint = True
-    TabOrder = 7
+    TabOrder = 8
     Text = 'aes-128-gcm'
   end
   object CreateBtn: TSpeedButton
@@ -361,7 +361,7 @@ object MainForm: TMainForm
     Height = 37
     Hint = 'Bypassing domain zones'
     Top = 5
-    Width = 90
+    Width = 82
     BorderSpacing.Left = 2
     Font.Style = [fsBold]
     ItemHeight = 0
@@ -563,7 +563,7 @@ object MainForm: TMainForm
     Caption = 'SWP'
     ParentShowHint = False
     ShowHint = True
-    TabOrder = 10
+    TabOrder = 6
     OnChange = SWPBoxChange
   end
   object IniPropStorage1: TIniPropStorage
