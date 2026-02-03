@@ -228,6 +228,15 @@ procedure TMainForm.StartBtnClick(Sender: TObject);
 var
   JSONFile, Cmd, S: string;
 begin
+  //Если прокси включен и менялся порт
+  if SWPBox.Checked then
+  begin
+    //Делаем скрипт звпуска ~/.config/xraygui/swproxy.sh
+    CreateSWProxy;
+    //Запуск System-Wide Proxy если он уже работает
+    RunCommand('/bin/bash', ['-c', '~/.config/ss-cloak-client/swproxy.sh set'], S);
+  end;
+
   //Редактируем клиентский конфиг (если что-то менялось)
   JSONFile := GetUserDir + '.config/ss-cloak-client/config.json';
 
@@ -275,8 +284,14 @@ end;
 
 //Стоп
 procedure TMainForm.StopBtnClick(Sender: TObject);
+var
+  S: string;
 begin
   StartProcess('systemctl --user stop ss-cloak-client.service');
+
+  //Сброс System-Wide Proxy если он включен
+  if FileExists(GetUserDir + '.config/ss-cloak-client/swproxy.sh') then
+    RunCommand('/bin/bash', ['-c', '~/.config/ss-cloak-client/swproxy.sh reset'], S);
 end;
 
 procedure TMainForm.FormCreate(Sender: TObject);
@@ -374,8 +389,11 @@ begin
   Application.ProcessMessages;
 
   if not AutoStartBox.Checked then
+  begin
+    SWPBox.Checked := False;
     RunCommand('/bin/bash', ['-c',
-      'systemctl --user disable ss-cloak-client.service'], S)
+      'systemctl --user disable ss-cloak-client.service'], S);
+  end
   else
     RunCommand('/bin/bash', ['-c',
       'systemctl --user enable ss-cloak-client.service'], S);
