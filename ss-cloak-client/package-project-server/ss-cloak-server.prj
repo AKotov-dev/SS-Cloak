@@ -2,7 +2,7 @@
 name=ss-cloak-server
 
 [VERSION]
-version=0.3
+version=0.4
 
 [RELEASE]
 release=0.mrx9
@@ -19,7 +19,7 @@ group=Accessibility
 maintainer=Alex Kotov
 
 [VENDOR]
-vendor=alex_q_2000 (C) 2025
+vendor=alex_q_2000 (C) 2026
 
 [SUMMARY]
 summary=Shadowsocks-Rust + Cloak obfuscator Server
@@ -74,17 +74,22 @@ devtool=Shell
 toolversion=unknown
 
 [INFO]
-0=v0.3
-1=+ Update: ck-server-v2.11.0
-2=+ Update: ssserver-v1.23.5
-3=+ Сhanged the prefix of the package `ss-cloak-server` to `mrx9`
+0=v0.4
+1=+ Update: ck-server-2.12.0
+2=+ Update: ssserver-v1.24.0
+3=+ RPM and DEB packages
 4=
-5=**Note:** Before updating the server package, delete the previous one manually.
-6=
-7=v0.2
-8=+ Enable ss-cloak-server
-9=+ RPM and DEB packages
-10=
-11=v0.1
-12=+ Initial Release
-13=+ RPM and DEB packages
+5=v0.3
+6=+ Update: ck-server-v2.11.0
+7=+ Update: ssserver-v1.23.5
+8=+ Сhanged the prefix of the package `ss-cloak-server` to `mrx9`
+9=
+10=**Note:** Before updating the server package, delete the previous one manually.
+11=
+12=v0.2
+13=+ Enable ss-cloak-server
+14=+ RPM and DEB packages
+15=
+16=v0.1
+17=+ Initial Release
+18=+ RPM and DEB packages
