@@ -248,7 +248,10 @@ begin
     // ServerName (plugin_opts)
     if RunCommand('sed', ['-n', 's/.*ServerName=\([^;]*\).*/\1/p', config], S) then
       CamouflageEdit.Text := Trim(S);
-  end;
+  end
+  else
+    //Иначе блокируем запуск и ждём создания конфигурации клиента
+    StartBtn.Enabled := False;
 
   // bypass.acl
   config := GetUserDir + '.config/ss-cloak-client/bypass.acl';
@@ -414,6 +417,10 @@ begin
 
     //Upload Server Configs archive
     ServerConfigs.Click;
+
+    //Если конфиг клиента успешно создан - разрешить старт
+    if FileExists(GetUserDir + '.config/ss-cloak-client/config.json') then
+      StartBtn.Enabled := True;
   finally
     S.Free;
   end;
