@@ -50,7 +50,7 @@ In lightweight DEs or WMs (XFCE, LXDE, i3, IceWM, OpenBox), install [XDE-Proxy-G
 
 If `System-wide Proxy` is unavailable in your DE, browser extensions (e.g. `Socks5 Configurator)` may be used as a fallback.
 
-**Summary**
+### Summary
 - System-wide Proxy ≠ DNS protection
 - DNS must be encrypted separately
 - Proxy + encrypted DNS = predictable and clean behavior
