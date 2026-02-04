@@ -259,7 +259,7 @@ procedure TMainForm.StartBtnClick(Sender: TObject);
 var
   JSONFile, Cmd, S: string;
 begin
- // Application.ProcessMessages;
+  Application.ProcessMessages;
 
   //Если прокси включен и менялся порт
   if SWPBox.Checked then
@@ -324,6 +324,8 @@ procedure TMainForm.StopBtnClick(Sender: TObject);
 var
   S: string;
 begin
+  Application.ProcessMessages;
+
   StartProcess('systemctl --user stop ss-cloak-client.service gost.service');
 
   //Сброс System-Wide Proxy если он включен

@@ -25,7 +25,7 @@ object MainForm: TMainForm
     AnchorSideLeft.Side = asrBottom
     AnchorSideTop.Control = StartBtn
     AnchorSideTop.Side = asrCenter
-    Left = 320
+    Left = 325
     Height = 17
     Top = 15
     Width = 66
@@ -47,7 +47,7 @@ object MainForm: TMainForm
     AnchorSideTop.Control = StopBtn
     AnchorSideTop.Side = asrCenter
     AnchorSideRight.Control = LocalPortEdit
-    Left = 325
+    Left = 330
     Height = 17
     Top = 56
     Width = 61
@@ -76,7 +76,7 @@ object MainForm: TMainForm
     AnchorSideLeft.Side = asrBottom
     AnchorSideTop.Control = StartBtn
     AnchorSideTop.Side = asrCenter
-    Left = 388
+    Left = 393
     Height = 37
     Hint = 'Default: 443 (highly recommended)'
     Top = 5
@@ -93,7 +93,7 @@ object MainForm: TMainForm
     AnchorSideTop.Side = asrCenter
     AnchorSideRight.Control = ServerPortEdit
     AnchorSideRight.Side = asrBottom
-    Left = 388
+    Left = 393
     Height = 37
     Hint = 'Default: 1080'
     Top = 46
@@ -242,7 +242,7 @@ object MainForm: TMainForm
     Height = 37
     Hint = 'Encryption method'
     Top = 88
-    Width = 156
+    Width = 161
     Anchors = [akTop, akLeft, akRight]
     BorderSpacing.Left = 2
     ItemHeight = 0
