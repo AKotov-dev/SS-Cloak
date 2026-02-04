@@ -259,7 +259,8 @@ procedure TMainForm.StartBtnClick(Sender: TObject);
 var
   JSONFile, Cmd, S: string;
 begin
-  Application.ProcessMessages;
+  //От частого нажатия
+  //Application.ProcessMessages;
 
   //Если прокси включен и менялся порт
   if SWPBox.Checked then
@@ -311,7 +312,6 @@ begin
   //Пересоздаём ~/.config/ss-cloak-client/gost.conf
   CreateGostHTTP;
 
-
   //Быстрая очистка вывода перед стартом
   LogMemo.Clear;
 
@@ -324,7 +324,7 @@ procedure TMainForm.StopBtnClick(Sender: TObject);
 var
   S: string;
 begin
-  Application.ProcessMessages;
+  //Application.ProcessMessages;
 
   StartProcess('systemctl --user stop ss-cloak-client.service gost.service');
 

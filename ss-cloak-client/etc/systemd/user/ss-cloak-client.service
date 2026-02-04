@@ -1,0 +1,19 @@
+[Unit]
+Description=SS-Cloak Client Service
+Wants=network-online.target
+After=network.target
+
+[Service]
+Environment=RUST_LOG=shadowsocks=debug,shadowsocks_service=debug,mio=off,tokio=off,hyper=off,trust_dns=off
+Type=simple
+ExecStart=/bin/bash -c 'sslocal --log-without-time -c ~/.config/ss-cloak-client/config.json > ~/.config/ss-cloak-client/ss-cloak-client.log'
+# ExecStop=killall sslocal
+
+Restart=on-failure
+RestartSec=3
+# Ограничиваем ресурсы немного, опционально
+# LimitNOFILE=4096
+# LimitNPROC=512
+
+[Install]
+WantedBy=default.target

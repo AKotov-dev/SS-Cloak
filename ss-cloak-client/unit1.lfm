@@ -124,6 +124,7 @@ object MainForm: TMainForm
     WordWrap = False
   end
   object StartBtn: TSpeedButton
+    AnchorSideTop.Control = Owner
     AnchorSideRight.Control = Owner
     AnchorSideRight.Side = asrBottom
     Left = 811
@@ -131,6 +132,7 @@ object MainForm: TMainForm
     Top = 5
     Width = 100
     Anchors = [akTop, akRight]
+    BorderSpacing.Top = 5
     BorderSpacing.Right = 5
     Caption = 'Start'
     OnClick = StartBtnClick
