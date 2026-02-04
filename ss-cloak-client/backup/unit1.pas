@@ -57,6 +57,7 @@ type
     procedure StartProcess(command: string);
     procedure CreateBypass;
     procedure CreateSWProxy;
+    procedure CreateGostHTTP;
 
   private
 
@@ -113,12 +114,12 @@ begin
     A.Add('  # GNOME / GTK-based');
     A.Add('  if [[ "$XDG_CURRENT_DESKTOP" =~ GNOME|Budgie|Cinnamon|MATE|XFCE|LXDE ]]; then');
     A.Add('    gsettings set org.gnome.system.proxy mode manual');
-    A.Add('    gsettings set org.gnome.system.proxy.http  host ""');
-    A.Add('    gsettings set org.gnome.system.proxy.http  port 0');
-    A.Add('    gsettings set org.gnome.system.proxy.https host ""');
-    A.Add('    gsettings set org.gnome.system.proxy.https port 0');
-    A.Add('    gsettings set org.gnome.system.proxy.ftp   host ""');
-    A.Add('    gsettings set org.gnome.system.proxy.ftp   port 0');
+    A.Add('    gsettings set org.gnome.system.proxy.http  host "127.0.0.1"');
+    A.Add('    gsettings set org.gnome.system.proxy.http  port 8889');
+    A.Add('    gsettings set org.gnome.system.proxy.https host "127.0.0.1"');
+    A.Add('    gsettings set org.gnome.system.proxy.https port 8889');
+    A.Add('    gsettings set org.gnome.system.proxy.ftp   host "127.0.0.1"');
+    A.Add('    gsettings set org.gnome.system.proxy.ftp   port 8889');
     A.Add('    gsettings set org.gnome.system.proxy.socks host "127.0.0.1"');
     A.Add('    gsettings set org.gnome.system.proxy.socks port ' + LocalPortEdit.Text);
     A.Add('    gsettings set org.gnome.system.proxy ignore-hosts "[' +
@@ -138,9 +139,9 @@ begin
     A.Add('  fi');
     A.Add('');
     A.Add('    kwriteconfig$v --file kioslaverc --group "Proxy Settings" --key ProxyType 1');
-    A.Add('    kwriteconfig$v --file kioslaverc --group "Proxy Settings" --key httpProxy  ""');
-    A.Add('    kwriteconfig$v --file kioslaverc --group "Proxy Settings" --key httpsProxy ""');
-    A.Add('    kwriteconfig$v --file kioslaverc --group "Proxy Settings" --key ftpProxy   ""');
+    A.Add('    kwriteconfig$v --file kioslaverc --group "Proxy Settings" --key httpProxy  "http://127.0.0.1:8889"');
+    A.Add('    kwriteconfig$v --file kioslaverc --group "Proxy Settings" --key httpsProxy "http://127.0.0.1:8889"');
+    A.Add('    kwriteconfig$v --file kioslaverc --group "Proxy Settings" --key ftpProxy   "http://127.0.0.1:8889"');
     A.Add('    kwriteconfig$v --file kioslaverc --group "Proxy Settings" --key socksProxy "socks5h://127.0.0.1:' + LocalPortEdit.Text + '"');
     A.Add('    kwriteconfig$v --file kioslaverc --group "Proxy Settings" --key NoProxy    "['
       + '''' + 'localhost' + '''' + ', ' + '''' + '127.0.0.1' + '''' +
@@ -201,6 +202,33 @@ begin
     S.Free;
   end;
 end;
+
+//Создаём файл ~/.config/ss-cloak-client/gost.conf (HTTP:8889)
+procedure TMainForm.CreateGostHTTP;
+var
+  S: TStringList;
+begin
+  try
+    S := TStringList.Create;
+
+    S.Add('{');
+    S.Add('      "Debug": false,');
+    S.Add('      "Retries": 0,');
+    S.Add('      "ServeNodes": [');
+    S.Add('        "http://127.0.0.1:8889"');
+    S.Add('      ],');
+    S.Add('      "ChainNodes": [');
+    S.Add('        "socks5://127.0.0.1:' + LocalPortEdit.Text + '"');
+    S.Add('      ]');
+    S.Add('}');
+
+    S.SaveToFile(GetUserDir + '.config/ss-cloak-client/gost.conf');
+
+  finally
+    S.Free;
+  end;
+end;
+
 
 //Проверка чекбокса ClearBox (очистка кеш/cookies)
 function CheckClear: boolean;
@@ -275,14 +303,18 @@ begin
   else
     Exit;
 
-  //Создаём/обновляем ~/.config/ss-cloak-client/bypass.acl
+  //Пересоздаём ~/.config/ss-cloak-client/bypass.acl
   CreateBypass;
+
+  //Пересоздаём ~/.config/ss-cloak-client/gost.conf
+  CreateGostHTTP;
+
 
   //Быстрая очистка вывода перед стартом
   LogMemo.Clear;
 
-  //Запускаем сервис
-  StartProcess('systemctl --user restart ss-cloak-client.service');
+  //Перезапускаем сервисы SS:XXXX и HTTP:8889
+  StartProcess('systemctl --user restart ss-cloak-client.service gost.service');
 end;
 
 //Стоп
@@ -290,7 +322,7 @@ procedure TMainForm.StopBtnClick(Sender: TObject);
 var
   S: string;
 begin
-  StartProcess('systemctl --user stop ss-cloak-client.service');
+  StartProcess('systemctl --user stop ss-cloak-client.service gost.service');
 
   //Сброс System-Wide Proxy если он включен
   if FileExists(GetUserDir + '.config/ss-cloak-client/swproxy.sh') then
@@ -383,7 +415,7 @@ begin
   IniPropStorage1.Save;
 end;
 
-//Автостарт
+//Автостарт (ss-cloak-client/gost)
 procedure TMainForm.AutoStartBoxChange(Sender: TObject);
 var
   S: ansistring;
@@ -395,11 +427,11 @@ begin
   begin
     SWPBox.Checked := False;
     RunCommand('/bin/bash', ['-c',
-      'systemctl --user disable ss-cloak-client.service'], S);
+      'systemctl --user disable ss-cloak-client.service gost.service'], S);
   end
   else
     RunCommand('/bin/bash', ['-c',
-      'systemctl --user enable ss-cloak-client.service'], S);
+      'systemctl --user enable ss-cloak-client.service gost.service'], S);
   Screen.Cursor := crDefault;
 end;
 
@@ -472,7 +504,7 @@ begin
   if FileExists(GetUserDir + '.config/ss-cloak-client/config.json') then QRForm.Show;
 end;
 
-//Save Settings
+//Save Settings + конфигуратор конфигов
 procedure TMainForm.CreateBtnClick(Sender: TObject);
 var
   S: TStringList;
@@ -486,6 +518,7 @@ begin
     //Create ~/.config/ss-cloak-client/config-gen.sh
     S := TStringList.Create;
 
+    //Присвоение переменных
     S.Add('#!/bin/bash');
     S.Add('');
     S.Add('#settings');
@@ -513,6 +546,7 @@ begin
     S.Add('    \"local_address\": \"127.0.0.1\",');
     S.Add('    \"local_port\": $local_client_port,');
     S.Add('    \"method\": \"$encrypt_method\",');
+    S.Add('    \"mode\": \"tcp_and_udp\",');
     S.Add('    \"password\": \"$password\",');
     S.Add('    \"timeout\": 60,');
     S.Add('    \"nameserver\": \"$nameserver\",');
@@ -529,6 +563,7 @@ begin
     S.Add('{');
     S.Add('    \"server\": \"127.0.0.1\",');
     S.Add('    \"server_port\": 50346,');
+    S.Add('    \"mode\": \"tcp_and_udp\",');
     S.Add('    \"password\": \"$password\",');
     S.Add('    \"timeout\": 60,');
     S.Add('    \"method\": \"$encrypt_method\",');
