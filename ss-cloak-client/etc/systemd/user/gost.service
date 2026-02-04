@@ -1,0 +1,16 @@
+[Unit]
+Description=GOST HTTP-SOCKS5 Adapter
+Wants=network-online.target
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/local/bin/gost -C %h/.config/ss-cloak-client/gost.conf
+Restart=on-failure
+RestartSec=3
+# Ограничиваем ресурсы немного, опционально
+# LimitNOFILE=4096
+# LimitNPROC=512
+
+[Install]
+WantedBy=default.target
