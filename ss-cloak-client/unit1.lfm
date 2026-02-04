@@ -311,7 +311,7 @@ object MainForm: TMainForm
     AnchorSideBottom.Side = asrBottom
     Left = 711
     Height = 37
-    Hint = 'Get Server configurations'#10'~/.config/ss-cloak/client/server-conf.tar.gz'
+    Hint = 'Get archived Server configuration'
     Top = 89
     Width = 100
     Anchors = [akTop, akRight, akBottom]
@@ -572,7 +572,7 @@ object MainForm: TMainForm
     AnchorSideBottom.Side = asrBottom
     Left = 814
     Height = 37
-    Hint = 'Get Client configuration'#10'~/.config/ss-cloak-client/config.json'
+    Hint = 'Get the current Сlient configuration'
     Top = 89
     Width = 100
     Anchors = [akTop, akRight, akBottom]
