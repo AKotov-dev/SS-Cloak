@@ -2,7 +2,7 @@
 name=ss-cloak-client
 
 [VERSION]
-version=0.4
+version=0.4.1
 
 [RELEASE]
 release=0.mrx10
@@ -43,18 +43,20 @@ noarch=0
 deb=0
 
 [FILES]
-0=/usr/local/bin/ssurl
-1=/usr/local/bin/sslocal
-2=/usr/local/bin/ssserver
-3=/usr/local/bin/ssservice
-4=/usr/local/bin/ck-client
-5=/usr/local/bin/ck-server
-6=/usr/bin/ss-cloak-client
-7=/usr/share/icons/ss-cloak-client.png
-8=/etc/systemd/user/ss-cloak-client.service
-9=/usr/share/applications/ss-cloak-client.desktop
-10=/usr/share/ss-cloak-client/
-11=/usr/share/doc/ss-cloak-client/
+0=/usr/local/bin/gost
+1=/usr/local/bin/ssurl
+2=/usr/local/bin/sslocal
+3=/usr/local/bin/ssserver
+4=/usr/local/bin/ssservice
+5=/usr/local/bin/ck-client
+6=/usr/local/bin/ck-server
+7=/usr/bin/ss-cloak-client
+8=/etc/systemd/user/gost.service
+9=/usr/share/icons/ss-cloak-client.png
+10=/etc/systemd/user/ss-cloak-client.service
+11=/usr/share/applications/ss-cloak-client.desktop
+12=/usr/share/ss-cloak-client/
+13=/usr/share/doc/ss-cloak-client/
 
 [AFTERINSTALL]
 0=#!/bin/bash
@@ -79,35 +81,41 @@ devtool=Lazarus
 toolversion=4.4
 
 [INFO]
-0=v0.4
-1=+ Bypass domain zones
-2=+ System-wide proxy mode (SWP)
-3=+ Improved logging format
-4=+ List of camouflage domains
-5=+ Unloading client configuration
-6=+ Recompiling to Lazarus-4.4
-7=+ ck-server / ck-client-2.12.0
-8=+ shadowsocks-rust-1.24.0
-9=+ Self-contained RPM & DEB packages
-10=
-11=**Note:** RPM-packages for Mageia-9 (*.mrx9*) and Mageia-10 (*.mrx10). In Mageia-10, lib64proxy-kde has been replaced by lib64proxy1 / lib64proxy-gnome. DEB packages for Ubuntu >= 25.04.
-12=
-13=v0.3
-14=+ Recompiling to Lazarus-3.8
-15=+ Corrected filter when saving `server-conf.tar.gz`
-16=+ Update: shadowsocks-v1.23.5
-17=+ Update: ck-client/ck-server v2.11.0
-18=+ Сhanged the prefix of the package `ss-cloak-server` to `mrx9`
-19=+ RPM & DEB packages
-20=
-21=**Note:** Before updating the server package, delete the previous one manually.
-22=
-23=v0.2
-24=+ `ss-cloak-client.service` update
-25=+ `ss-cloak-server.service` update
-26=+ Getting QR code for connection
-27=+ RPM & DEB packages
+0=v0.4.1
+1=+ Cosmetic edits
+2=+ Added "tcp_and_udp" mode support
+3=+ Added local HTTP proxy on 127.0.0.1:8889 via gost tunnel
+4=+ Self-contained RPM & DEB packages
+5=
+6=v0.4
+7=+ Bypass domain zones
+8=+ System-wide proxy mode (SWP)
+9=+ Improved logging format
+10=+ List of camouflage domains
+11=+ Unloading client configuration
+12=+ Recompiling to Lazarus-4.4
+13=+ ck-server / ck-client-2.12.0
+14=+ shadowsocks-rust-1.24.0
+15=+ Self-contained RPM & DEB packages
+16=
+17=**Note:** RPM-packages for Mageia-9 (*.mrx9*) and Mageia-10 (*.mrx10). In Mageia-10, lib64proxy-kde has been replaced by lib64proxy1 / lib64proxy-gnome. DEB packages for Ubuntu >= 25.04.
+18=
+19=v0.3
+20=+ Recompiling to Lazarus-3.8
+21=+ Corrected filter when saving `server-conf.tar.gz`
+22=+ Update: shadowsocks-v1.23.5
+23=+ Update: ck-client/ck-server v2.11.0
+24=+ Сhanged the prefix of the package `ss-cloak-server` to `mrx9`
+25=+ RPM & DEB packages
+26=
+27=**Note:** Before updating the server package, delete the previous one manually.
 28=
-29=v0.1
-30=+ Initial Release
-31=+ RPM & DEB packages
+29=v0.2
+30=+ `ss-cloak-client.service` update
+31=+ `ss-cloak-server.service` update
+32=+ Getting QR code for connection
+33=+ RPM & DEB packages
+34=
+35=v0.1
+36=+ Initial Release
+37=+ RPM & DEB packages
