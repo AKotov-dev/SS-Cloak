@@ -28,7 +28,7 @@ object MainForm: TMainForm
     AnchorSideTop.Control = ServerPortEdit
     AnchorSideTop.Side = asrCenter
     AnchorSideRight.Control = ServerPortEdit
-    Left = 338
+    Left = 333
     Height = 17
     Top = 15
     Width = 66
@@ -53,7 +53,7 @@ object MainForm: TMainForm
     AnchorSideTop.Control = LocalPortEdit
     AnchorSideTop.Side = asrCenter
     AnchorSideRight.Control = LocalPortEdit
-    Left = 343
+    Left = 338
     Height = 17
     Top = 57
     Width = 61
@@ -85,7 +85,7 @@ object MainForm: TMainForm
     AnchorSideRight.Side = asrBottom
     AnchorSideBottom.Control = ServerEdit
     AnchorSideBottom.Side = asrBottom
-    Left = 406
+    Left = 401
     Height = 37
     Hint = 'Default: 443 (highly recommended)'
     Top = 5
@@ -103,7 +103,7 @@ object MainForm: TMainForm
     AnchorSideRight.Side = asrBottom
     AnchorSideBottom.Control = CamouflageEdit
     AnchorSideBottom.Side = asrBottom
-    Left = 406
+    Left = 401
     Height = 37
     Hint = 'Default: 1080'
     Top = 47
@@ -253,11 +253,11 @@ object MainForm: TMainForm
     AnchorSideLeft.Side = asrBottom
     AnchorSideTop.Control = MethodComboBox
     AnchorSideTop.Side = asrCenter
-    Left = 310
+    Left = 305
     Height = 17
     Top = 99
     Width = 47
-    BorderSpacing.Left = 30
+    BorderSpacing.Left = 25
     Caption = 'Method'
   end
   object MethodComboBox: TComboBox
@@ -268,7 +268,7 @@ object MainForm: TMainForm
     AnchorSideRight.Side = asrBottom
     AnchorSideBottom.Control = DNSComboBox
     AnchorSideBottom.Side = asrBottom
-    Left = 359
+    Left = 354
     Height = 37
     Hint = 'Encryption method'
     Top = 89

@@ -492,6 +492,8 @@ var
 begin
   IniPropStorage1.Restore;
 
+  QRBtn.Width := QRBtn.Height;
+
   AutoStartBox.Checked := CheckAutoStart;
 
   //Запуск потока проверки состояния локального порта
