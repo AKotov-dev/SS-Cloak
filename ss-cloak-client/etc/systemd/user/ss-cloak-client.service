@@ -6,8 +6,7 @@ After=network.target
 [Service]
 Environment=RUST_LOG=shadowsocks=debug,shadowsocks_service=debug,mio=off,tokio=off,hyper=off,trust_dns=off
 Type=simple
-ExecStart=/bin/bash -c 'sslocal --log-without-time -c ~/.config/ss-cloak-client/config.json > ~/.config/ss-cloak-client/ss-cloak-client.log'
-# ExecStop=killall sslocal
+ExecStart=/bin/bash -c 'sslocal --log-without-time -c ~/.config/ss-cloak-client/config.json | grep -a --line-buffered -vE "rlimit|CopyBuffer" | stdbuf -oL cut -f2- -d" " > ~/.config/ss-cloak-client/ss-cloak-client.log'
 
 Restart=on-failure
 RestartSec=3
