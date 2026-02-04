@@ -1,55 +1,61 @@
 object MainForm: TMainForm
-  Left = 301
-  Height = 665
-  Top = 127
-  Width = 916
+  Left = 299
+  Height = 686
+  Top = 126
+  Width = 962
   ActiveControl = ServerEdit
   Caption = 'SS-Cloak-Client '
-  ClientHeight = 665
-  ClientWidth = 916
+  ClientHeight = 686
+  ClientWidth = 962
   SessionProperties = 'Height;Left;SaveDialog1.InitialDir;Top;Width;SaveDialog2.InitialDir'
   LCLVersion = '4.4.0.0'
   OnClose = FormClose
   OnCreate = FormCreate
   OnShow = FormShow
   object Label1: TLabel
-    AnchorSideTop.Control = StartBtn
+    AnchorSideLeft.Control = Owner
+    AnchorSideTop.Control = ServerEdit
     AnchorSideTop.Side = asrCenter
     Left = 8
     Height = 17
-    Top = 14
+    Top = 15
     Width = 52
+    BorderSpacing.Left = 8
     Caption = 'Server IP'
   end
   object Label2: TLabel
     AnchorSideLeft.Side = asrBottom
-    AnchorSideTop.Control = StartBtn
+    AnchorSideTop.Control = ServerPortEdit
     AnchorSideTop.Side = asrCenter
-    Left = 327
+    AnchorSideRight.Control = ServerPortEdit
+    Left = 333
     Height = 17
-    Top = 14
+    Top = 15
     Width = 66
-    Anchors = [akTop]
+    Anchors = [akTop, akRight]
     BorderSpacing.Left = 10
+    BorderSpacing.Right = 2
     Caption = 'Server port'
   end
   object Label3: TLabel
-    AnchorSideTop.Control = StopBtn
+    AnchorSideLeft.Control = Owner
+    AnchorSideTop.Control = CamouflageEdit
     AnchorSideTop.Side = asrCenter
     Left = 8
     Height = 17
-    Top = 56
+    Top = 57
     Width = 73
+    BorderSpacing.Left = 8
     Caption = 'Сamouflage'
   end
   object Label4: TLabel
     AnchorSideLeft.Side = asrBottom
-    AnchorSideTop.Control = StopBtn
+    AnchorSideTop.Control = LocalPortEdit
     AnchorSideTop.Side = asrCenter
     AnchorSideRight.Control = LocalPortEdit
-    Left = 332
+    Left = 338
     Height = 17
-    Top = 56
+    Top = 57
     Width = 61
     Anchors = [akTop, akRight]
     BorderSpacing.Right = 2
@@ -58,60 +64,67 @@ object MainForm: TMainForm
   object ServerEdit: TEdit
     AnchorSideLeft.Control = Label1
     AnchorSideLeft.Side = asrBottom
-    AnchorSideTop.Control = StartBtn
-    AnchorSideTop.Side = asrCenter
+    AnchorSideTop.Control = Owner
     Left = 62
     Height = 37
     Hint = 'Specify the IP of your server'
-    Top = 4
+    Top = 5
     Width = 218
     BorderSpacing.Left = 2
+    BorderSpacing.Top = 5
     ParentShowHint = False
     ShowHint = True
     TabOrder = 0
     Text = '192.168.0.77'
   end
   object ServerPortEdit: TEdit
-    AnchorSideLeft.Control = Label2
     AnchorSideLeft.Side = asrBottom
-    AnchorSideTop.Control = StartBtn
+    AnchorSideTop.Control = ServerEdit
     AnchorSideTop.Side = asrCenter
-    Left = 395
+    AnchorSideRight.Control = MethodComboBox
+    AnchorSideRight.Side = asrBottom
+    AnchorSideBottom.Control = ServerEdit
+    AnchorSideBottom.Side = asrBottom
+    Left = 401
     Height = 37
     Hint = 'Default: 443 (highly recommended)'
-    Top = 4
-    Width = 113
-    BorderSpacing.Left = 2
+    Top = 5
+    Width = 114
+    Anchors = [akTop, akRight, akBottom]
     ParentShowHint = False
     ShowHint = True
     TabOrder = 1
     Text = '443'
   end
   object LocalPortEdit: TEdit
-    AnchorSideLeft.Control = ServerPortEdit
-    AnchorSideTop.Control = StopBtn
+    AnchorSideTop.Control = CamouflageEdit
     AnchorSideTop.Side = asrCenter
-    AnchorSideRight.Control = ServerPortEdit
+    AnchorSideRight.Control = MethodComboBox
     AnchorSideRight.Side = asrBottom
-    Left = 395
+    AnchorSideBottom.Control = CamouflageEdit
+    AnchorSideBottom.Side = asrBottom
+    Left = 401
     Height = 37
     Hint = 'Default: 1080'
-    Top = 46
-    Width = 113
-    Anchors = [akTop, akLeft, akRight]
+    Top = 47
+    Width = 114
+    Anchors = [akTop, akRight, akBottom]
     ParentShowHint = False
     ShowHint = True
     TabOrder = 4
     Text = '1080'
   end
   object LogMemo: TMemo
+    AnchorSideLeft.Control = Owner
     AnchorSideTop.Control = MethodComboBox
     AnchorSideTop.Side = asrBottom
+    AnchorSideRight.Control = Owner
+    AnchorSideRight.Side = asrBottom
+    AnchorSideBottom.Control = StaticText1
     Left = 0
-    Height = 510
-    Top = 135
-    Width = 916
-    Align = alBottom
+    Height = 530
+    Top = 136
+    Width = 962
     Anchors = [akTop, akLeft, akRight, akBottom]
     BorderSpacing.Top = 10
     Font.Height = -12
@@ -124,41 +137,43 @@ object MainForm: TMainForm
     WordWrap = False
   end
   object StartBtn: TSpeedButton
-    AnchorSideTop.Control = Owner
+    AnchorSideTop.Control = ServerEdit
     AnchorSideRight.Control = Owner
     AnchorSideRight.Side = asrBottom
-    Left = 811
-    Height = 35
+    AnchorSideBottom.Control = ServerEdit
+    AnchorSideBottom.Side = asrBottom
+    Left = 854
+    Height = 37
     Top = 5
     Width = 100
-    Anchors = [akTop, akRight]
-    BorderSpacing.Top = 5
-    BorderSpacing.Right = 5
+    Anchors = [akTop, akRight, akBottom]
+    BorderSpacing.Right = 8
     Caption = 'Start'
     OnClick = StartBtnClick
   end
   object StopBtn: TSpeedButton
+    AnchorSideTop.Control = CamouflageEdit
     AnchorSideRight.Control = Owner
     AnchorSideRight.Side = asrBottom
-    AnchorSideBottom.Control = LocalPortEdit
+    AnchorSideBottom.Control = CamouflageEdit
     AnchorSideBottom.Side = asrBottom
-    Left = 811
-    Height = 35
+    Left = 854
+    Height = 37
     Top = 47
     Width = 100
-    Anchors = [akTop, akRight]
-    BorderSpacing.Right = 5
+    Anchors = [akTop, akRight, akBottom]
+    BorderSpacing.Right = 8
     Caption = 'Stop'
     OnClick = StopBtnClick
   end
   object AutoStartBox: TCheckBox
     AnchorSideLeft.Control = CreateBtn
-    AnchorSideTop.Control = StopBtn
+    AnchorSideTop.Control = CamouflageEdit
     AnchorSideTop.Side = asrCenter
-    Left = 545
+    Left = 588
     Height = 32
     Hint = 'Proxy autostart on boot'
-    Top = 48
+    Top = 49
     Width = 90
     Caption = 'Autostart'
     ParentShowHint = False
@@ -170,9 +185,9 @@ object MainForm: TMainForm
     AnchorSideTop.Control = StartBtn
     AnchorSideTop.Side = asrCenter
     AnchorSideRight.Control = StartBtn
-    Left = 794
+    Left = 837
     Height = 12
-    Top = 16
+    Top = 17
     Width = 12
     Anchors = [akTop, akRight]
     BorderSpacing.Right = 5
@@ -181,10 +196,15 @@ object MainForm: TMainForm
     Shape = stCircle
   end
   object StaticText1: TStaticText
+    AnchorSideLeft.Control = Owner
+    AnchorSideRight.Control = Owner
+    AnchorSideRight.Side = asrBottom
+    AnchorSideBottom.Control = Owner
+    AnchorSideBottom.Side = asrBottom
     Left = 0
     Height = 20
-    Top = 645
-    Width = 916
+    Top = 666
+    Width = 962
     Align = alBottom
     Caption = 'License: GPLv3   Author: alex_q_2000 (C) 2026   URL: https://github.com/AKotov-dev/SS-Cloak'
     Font.Color = clGray
@@ -194,27 +214,30 @@ object MainForm: TMainForm
     TabOrder = 10
   end
   object Label5: TLabel
-    AnchorSideTop.Control = MethodComboBox
+    AnchorSideLeft.Control = Owner
+    AnchorSideTop.Control = DNSComboBox
     AnchorSideTop.Side = asrCenter
     Left = 8
     Height = 17
-    Top = 98
+    Top = 99
     Width = 26
+    BorderSpacing.Left = 8
     Caption = 'DNS'
   end
   object DNSComboBox: TComboBox
     AnchorSideLeft.Control = Label5
     AnchorSideLeft.Side = asrBottom
-    AnchorSideTop.Control = MethodComboBox
-    AnchorSideTop.Side = asrCenter
+    AnchorSideTop.Control = CamouflageEdit
+    AnchorSideTop.Side = asrBottom
     AnchorSideRight.Control = ServerEdit
     AnchorSideRight.Side = asrBottom
     Left = 36
     Height = 37
-    Top = 88
+    Top = 89
     Width = 244
     Anchors = [akTop, akLeft, akRight]
     BorderSpacing.Left = 2
+    BorderSpacing.Top = 5
     ItemHeight = 0
     Items.Strings = (
       '1.1.1.1,1.0.0.1'
@@ -226,27 +249,32 @@ object MainForm: TMainForm
     Text = '1.1.1.1,1.0.0.1'
   end
   object Label6: TLabel
+    AnchorSideLeft.Control = DNSComboBox
+    AnchorSideLeft.Side = asrBottom
     AnchorSideTop.Control = MethodComboBox
     AnchorSideTop.Side = asrCenter
-    AnchorSideRight.Control = MethodComboBox
-    Left = 298
+    Left = 305
     Height = 17
-    Top = 98
+    Top = 99
     Width = 47
-    Anchors = [akTop, akRight]
-    BorderSpacing.Right = 2
+    BorderSpacing.Left = 25
     Caption = 'Method'
   end
   object MethodComboBox: TComboBox
+    AnchorSideLeft.Control = Label6
     AnchorSideLeft.Side = asrBottom
+    AnchorSideTop.Control = DNSComboBox
     AnchorSideRight.Control = LocalPortEdit
     AnchorSideRight.Side = asrBottom
-    Left = 347
+    AnchorSideBottom.Control = DNSComboBox
+    AnchorSideBottom.Side = asrBottom
+    Left = 354
     Height = 37
     Hint = 'Encryption method'
-    Top = 88
+    Top = 89
     Width = 161
-    Anchors = [akTop, akRight]
+    Anchors = [akTop, akLeft, akBottom]
+    BorderSpacing.Left = 2
     ItemHeight = 0
     ItemIndex = 0
     Items.Strings = (
@@ -259,14 +287,14 @@ object MainForm: TMainForm
     Text = 'aes-128-gcm'
   end
   object CreateBtn: TSpeedButton
-    AnchorSideTop.Control = MethodComboBox
+    AnchorSideTop.Control = DNSComboBox
     AnchorSideRight.Control = ServerConfigs
-    AnchorSideBottom.Control = MethodComboBox
+    AnchorSideBottom.Control = DNSComboBox
     AnchorSideBottom.Side = asrBottom
-    Left = 545
+    Left = 588
     Height = 37
     Hint = 'Create Client and Server settings'#10'New UID, PublicKey, PrivateKey, BypassUID, etc.'
-    Top = 88
+    Top = 89
     Width = 120
     Anchors = [akTop, akRight, akBottom]
     BorderSpacing.Right = 3
@@ -277,14 +305,14 @@ object MainForm: TMainForm
   end
   object ServerConfigs: TSpeedButton
     AnchorSideLeft.Side = asrBottom
-    AnchorSideTop.Control = MethodComboBox
+    AnchorSideTop.Control = DNSComboBox
     AnchorSideRight.Control = BackupBtn
-    AnchorSideBottom.Control = MethodComboBox
+    AnchorSideBottom.Control = DNSComboBox
     AnchorSideBottom.Side = asrBottom
-    Left = 668
+    Left = 711
     Height = 37
     Hint = 'Get Server configurations'#10'~/.config/ss-cloak/client/server-conf.tar.gz'
-    Top = 88
+    Top = 89
     Width = 100
     Anchors = [akTop, akRight, akBottom]
     BorderSpacing.Right = 3
@@ -295,18 +323,18 @@ object MainForm: TMainForm
   end
   object QRBtn: TSpeedButton
     AnchorSideLeft.Side = asrBottom
-    AnchorSideTop.Control = MethodComboBox
+    AnchorSideTop.Control = DNSComboBox
     AnchorSideRight.Control = Owner
     AnchorSideRight.Side = asrBottom
-    AnchorSideBottom.Control = MethodComboBox
+    AnchorSideBottom.Control = DNSComboBox
     AnchorSideBottom.Side = asrBottom
-    Left = 874
+    Left = 917
     Height = 37
     Hint = 'Get connection QR code'
-    Top = 88
+    Top = 89
     Width = 37
     Anchors = [akTop, akRight, akBottom]
-    BorderSpacing.Right = 5
+    BorderSpacing.Right = 8
     Caption = 'QR'
     ShowHint = True
     ParentShowHint = False
@@ -315,7 +343,8 @@ object MainForm: TMainForm
   object CamouflageEdit: TComboBox
     AnchorSideLeft.Control = Label3
     AnchorSideLeft.Side = asrBottom
-    AnchorSideTop.Control = StopBtn
+    AnchorSideTop.Control = ServerEdit
+    AnchorSideTop.Side = asrBottom
     AnchorSideRight.Control = ServerEdit
     AnchorSideRight.Side = asrBottom
     Left = 83
@@ -325,6 +354,7 @@ object MainForm: TMainForm
     Width = 197
     Anchors = [akTop, akLeft, akRight]
     BorderSpacing.Left = 2
+    BorderSpacing.Top = 5
     ItemHeight = 0
     Items.Strings = (
       'www.bing.com'
@@ -345,23 +375,23 @@ object MainForm: TMainForm
   end
   object Label7: TLabel
     AnchorSideLeft.Control = CreateBtn
-    AnchorSideTop.Control = StartBtn
+    AnchorSideTop.Control = BypassBox
     AnchorSideTop.Side = asrCenter
-    Left = 545
+    Left = 588
     Height = 17
-    Top = 14
+    Top = 15
     Width = 41
     Caption = 'Bypass'
   end
   object BypassBox: TComboBox
     AnchorSideLeft.Control = Label7
     AnchorSideLeft.Side = asrBottom
-    AnchorSideTop.Control = StartBtn
+    AnchorSideTop.Control = ServerEdit
     AnchorSideTop.Side = asrCenter
-    Left = 588
+    Left = 631
     Height = 37
     Hint = 'Bypassing domain zones'
-    Top = 4
+    Top = 5
     Width = 82
     BorderSpacing.Left = 2
     Font.Style = [fsBold]
@@ -536,14 +566,14 @@ object MainForm: TMainForm
   end
   object BackupBtn: TSpeedButton
     AnchorSideLeft.Side = asrBottom
-    AnchorSideTop.Control = MethodComboBox
+    AnchorSideTop.Control = DNSComboBox
     AnchorSideRight.Control = QRBtn
-    AnchorSideBottom.Control = MethodComboBox
+    AnchorSideBottom.Control = DNSComboBox
     AnchorSideBottom.Side = asrBottom
-    Left = 771
+    Left = 814
     Height = 37
     Hint = 'Get Client configuration'#10'~/.config/ss-cloak-client/config.json'
-    Top = 88
+    Top = 89
     Width = 100
     Anchors = [akTop, akRight, akBottom]
     BorderSpacing.Right = 3
@@ -554,12 +584,13 @@ object MainForm: TMainForm
   end
   object SWPBox: TCheckBox
     AnchorSideLeft.Control = ServerConfigs
-    AnchorSideTop.Control = StopBtn
+    AnchorSideTop.Control = CamouflageEdit
     AnchorSideTop.Side = asrCenter
-    Left = 668
+    AnchorSideBottom.Side = asrCenter
+    Left = 711
     Height = 32
     Hint = 'System-wide proxy'#10'GNOME, MATE, Budgie, KDE'
-    Top = 48
+    Top = 49
     Width = 62
     Caption = 'SWP'
     ParentShowHint = False

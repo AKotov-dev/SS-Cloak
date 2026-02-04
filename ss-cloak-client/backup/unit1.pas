@@ -312,7 +312,6 @@ begin
   //Пересоздаём ~/.config/ss-cloak-client/gost.conf
   CreateGostHTTP;
 
-
   //Быстрая очистка вывода перед стартом
   LogMemo.Clear;
 

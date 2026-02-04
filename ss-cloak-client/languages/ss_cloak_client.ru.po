@@ -86,7 +86,7 @@ msgstr "Камуфляж"
 
 #: tmainform.label4.caption
 msgid "Local port"
-msgstr "Локальный порт"
+msgstr "Лок. порт"
 
 #: tmainform.label5.caption
 msgid "DNS"
