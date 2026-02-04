@@ -31,4 +31,4 @@ For `robust DNS protection against MITM attacks` when a proxy is `not used`, it 
 
 If `System‑wide Proxy` is not feasible in your desktop environment, a practical alternative is to use `browser‑level proxy extensions`, such as `Socks5 Configurator`.
   
-**Useful links:** [Shadowsocks-Rust](https://github.com/shadowsocks/shadowsocks-rust), [Cloak](https://github.com/cbeuw/Cloak). **Similar project:** [SS-Obfuscator](https://github.com/AKotov-dev/SS-Obfuscator).
+**Useful links:** [Shadowsocks-Rust](https://github.com/shadowsocks/shadowsocks-rust), [Cloak](https://github.com/cbeuw/Cloak), [GO Simple Tunnel](https://github.com/ginuerzh/gost). **Similar project:** [SS-Obfuscator](https://github.com/AKotov-dev/SS-Obfuscator).
