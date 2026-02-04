@@ -259,6 +259,8 @@ procedure TMainForm.StartBtnClick(Sender: TObject);
 var
   JSONFile, Cmd, S: string;
 begin
+ // Application.ProcessMessages;
+
   //Если прокси включен и менялся порт
   if SWPBox.Checked then
   begin
