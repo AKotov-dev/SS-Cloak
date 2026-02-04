@@ -3,6 +3,8 @@ Shadowsocks-Rust client (with GUI) and server (for VPS) with obfuscation.
   
 **Dependencies:** systemd qrencode gtk2 (libgtk2.0-0 for Ubuntu)  
   
+**Ports used:** `SOCKS5` - 127.0.0.1:1080 (can be changed), `HTTP` - 127.0.0.1:8889 (fixed, ver. >= 0.4.1)  
+  
 **Work directories:**
 + Client: `~/.config/ss-cloak-client`; Service: `/etc/systemd/user/ss-cloak-client.service`
 + Server: `/etc/ss-cloak-server`; Service: `/etc/systemd/system/ss-cloak-server.service`
