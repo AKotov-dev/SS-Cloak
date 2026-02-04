@@ -362,7 +362,6 @@ object MainForm: TMainForm
       'assets.cloudflare.com'
       'cdnjs.cloudflare.com'
       'cdn.jsdelivr.net'
-      'challenges.cloudflare.com'
       'fastly.jsdelivr.net'
       'fonts.googleapis.com'
       'fonts.gstatic.com'

@@ -14,7 +14,9 @@ msgid "Client conf"
 msgstr ""
 
 #: tmainform.backupbtn.hint
-msgid "Get the current Сlient configuration"
+msgid ""
+"Get the current Сlient configuration\n"
+"~/.config/ss-cloak-client/config.json"
 msgstr ""
 
 #: tmainform.bypassbox.hint
@@ -117,7 +119,9 @@ msgstr ""
 
 #: tmainform.serverconfigs.hint
 msgctxt "tmainform.serverconfigs.hint"
-msgid "Get archived Server configuration"
+msgid ""
+"Get archived Server configuration\n"
+"~/.config/ss-cloak-client/server-conf.tar.gz"
 msgstr ""
 
 #: tmainform.serveredit.hint

@@ -311,7 +311,7 @@ object MainForm: TMainForm
     AnchorSideBottom.Side = asrBottom
     Left = 711
     Height = 37
-    Hint = 'Get archived Server configuration'
+    Hint = 'Get archived Server configuration'#10'~/.config/ss-cloak-client/server-conf.tar.gz'
     Top = 89
     Width = 100
     Anchors = [akTop, akRight, akBottom]
@@ -360,8 +360,8 @@ object MainForm: TMainForm
       'ajax.aspnetcdn.com'
       'ajax.cloudflare.com'
       'assets.cloudflare.com'
-      'cdnjs.cloudflare.com'
       'cdn.jsdelivr.net'
+      'cdnjs.cloudflare.com'
       'fastly.jsdelivr.net'
       'fonts.googleapis.com'
       'fonts.gstatic.com'
@@ -577,7 +577,7 @@ object MainForm: TMainForm
     AnchorSideBottom.Side = asrBottom
     Left = 814
     Height = 37
-    Hint = 'Get the current Сlient configuration'
+    Hint = 'Get the current Сlient configuration'#10'~/.config/ss-cloak-client/config.json'
     Top = 89
     Width = 100
     Anchors = [akTop, akRight, akBottom]
