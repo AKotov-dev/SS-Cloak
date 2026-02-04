@@ -153,12 +153,11 @@ object MainForm: TMainForm
     AnchorSideLeft.Control = CreateBtn
     AnchorSideTop.Control = StopBtn
     AnchorSideTop.Side = asrCenter
-    Left = 547
+    Left = 539
     Height = 32
     Hint = 'Proxy autostart on boot'
     Top = 48
     Width = 90
-    BorderSpacing.Left = 8
     Caption = 'Autostart'
     ParentShowHint = False
     ShowHint = True

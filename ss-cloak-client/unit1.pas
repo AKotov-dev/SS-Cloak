@@ -472,7 +472,7 @@ begin
   if FileExists(GetUserDir + '.config/ss-cloak-client/config.json') then QRForm.Show;
 end;
 
-//Save Settings
+//Save Settings + конфигуратор конфигов
 procedure TMainForm.CreateBtnClick(Sender: TObject);
 var
   S: TStringList;
@@ -486,6 +486,7 @@ begin
     //Create ~/.config/ss-cloak-client/config-gen.sh
     S := TStringList.Create;
 
+    //Присвоение переменных
     S.Add('#!/bin/bash');
     S.Add('');
     S.Add('#settings');
@@ -513,6 +514,7 @@ begin
     S.Add('    \"local_address\": \"127.0.0.1\",');
     S.Add('    \"local_port\": $local_client_port,');
     S.Add('    \"method\": \"$encrypt_method\",');
+    S.Add('    \"mode\": \"tcp_and_udp\",');
     S.Add('    \"password\": \"$password\",');
     S.Add('    \"timeout\": 60,');
     S.Add('    \"nameserver\": \"$nameserver\",');
@@ -529,6 +531,7 @@ begin
     S.Add('{');
     S.Add('    \"server\": \"127.0.0.1\",');
     S.Add('    \"server_port\": 50346,');
+    S.Add('    \"mode\": \"tcp_and_udp\",');
     S.Add('    \"password\": \"$password\",');
     S.Add('    \"timeout\": 60,');
     S.Add('    \"method\": \"$encrypt_method\",');
