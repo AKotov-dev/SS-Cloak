@@ -600,6 +600,7 @@ object MainForm: TMainForm
   end
   object IniPropStorage1: TIniPropStorage
     StoredValues = <>
+    Active = False
     Left = 56
     Top = 152
   end

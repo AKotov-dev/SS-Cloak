@@ -355,6 +355,11 @@ begin
   if not DirectoryExists(GetUserDir + '.config/ss-cloak-client') then
     MkDir(GetUserDir + '.config/ss-cloak-client');
 
+  //Конфигурация формы
+  IniPropStorage1.IniFileName :=
+    GetUserDir + '.config/ss-cloak-client/ss-cloak-client.conf';
+  IniPropStorage1.Active := True;
+
   // Если конфигурация клиента существует - читаем настройки в поля
   config := GetUserDir + '.config/ss-cloak-client/config.json';
 
