@@ -330,7 +330,7 @@ object MainForm: TMainForm
     AnchorSideBottom.Side = asrBottom
     Left = 917
     Height = 37
-    Hint = 'Get connection QR code'
+    Hint = 'Get a connection QR code'
     Top = 89
     Width = 37
     Anchors = [akTop, akRight, akBottom]

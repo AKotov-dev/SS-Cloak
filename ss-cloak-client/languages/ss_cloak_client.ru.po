@@ -121,8 +121,8 @@ msgstr ""
 
 #: tmainform.qrbtn.hint
 msgctxt "tmainform.qrbtn.hint"
-msgid "Get connection QR code"
-msgstr "Получить QR-код"
+msgid "Get a connection QR code"
+msgstr "Получить QR-код подключения"
 
 #: tmainform.serverconfigs.caption
 msgctxt "tmainform.serverconfigs.caption"
