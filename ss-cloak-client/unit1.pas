@@ -526,6 +526,9 @@ begin
     //Stop Client
     StopBtn.Click;
 
+    //Отключение Автостарта и SWP
+    if AutoStartBox.Checked then AutoStartBox.Checked := False;
+
     //Create ~/.config/ss-cloak-client/config-gen.sh
     S := TStringList.Create;
 

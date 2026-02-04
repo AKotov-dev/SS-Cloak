@@ -357,19 +357,25 @@ object MainForm: TMainForm
     BorderSpacing.Top = 5
     ItemHeight = 0
     Items.Strings = (
-      'www.bing.com'
-      'www.duckduckgo.com'
-      'www.ecosia.org'
-      'www.yahoo.com'
-      'www.qwant.com'
+      'ajax.aspnetcdn.com'
+      'ajax.cloudflare.com'
+      'assets.cloudflare.com'
       'cdnjs.cloudflare.com'
-      'ajax.googleapis.com'
+      'cdn.jsdelivr.net'
+      'challenges.cloudflare.com'
+      'fastly.jsdelivr.net'
       'fonts.googleapis.com'
-      'www.jsdelivr.net'
-      'unpkg.com'
+      'fonts.gstatic.com'
+      'static.cloudflareinsights.com'
+      'statics.teams.cdn.office.net'
+      'www.bing.com'
+      'www.cloudflare.com'
+      'www.gstatic.com'
+      'www.microsoft.com'
     )
     ParentShowHint = False
     ShowHint = True
+    Sorted = True
     TabOrder = 3
     Text = 'www.bing.com'
   end

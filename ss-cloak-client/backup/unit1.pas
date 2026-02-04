@@ -357,7 +357,8 @@ begin
 
   //Конфигурация формы
   IniPropStorage1.IniFileName :=
-    GetUserDir + 'config/ss-cloak-client/ss-cloak-client.conf';
+    GetUserDir + '.config/ss-cloak-client/ss-cloak-client.conf';
+  IniPropStorage1.Active := True;
 
   // Если конфигурация клиента существует - читаем настройки в поля
   config := GetUserDir + '.config/ss-cloak-client/config.json';
@@ -524,6 +525,9 @@ begin
   try
     //Stop Client
     StopBtn.Click;
+
+    //Отключение Автостарта и SWP
+    if AutoStartBox.Checked then AutoStartBox.Checked := False;
 
     //Create ~/.config/ss-cloak-client/config-gen.sh
     S := TStringList.Create;
