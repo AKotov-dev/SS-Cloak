@@ -562,7 +562,7 @@ begin
     S.Add('    \"method\": \"$encrypt_method\",');
     S.Add('    \"mode\": \"tcp_and_udp\",');
     S.Add('    \"password\": \"$password\",');
-    S.Add('    \"timeout\": 60,');
+    S.Add('    \"timeout\": 120,');
     S.Add('    \"nameserver\": \"$nameserver\",');
     S.Add('    \"acl\": \"' + GetUserDir + '.config/ss-cloak-client/bypass.acl' + '\",');
     S.Add('    \"plugin\": \"ck-client\",');
@@ -579,7 +579,7 @@ begin
     S.Add('    \"server_port\": 50346,');
     S.Add('    \"mode\": \"tcp_and_udp\",');
     S.Add('    \"password\": \"$password\",');
-    S.Add('    \"timeout\": 60,');
+    S.Add('    \"timeout\": 240,');
     S.Add('    \"method\": \"$encrypt_method\",');
     S.Add('    \"dns\": \"$nameserver\",');
     S.Add('    \"plugin\": \"ck-server\",');

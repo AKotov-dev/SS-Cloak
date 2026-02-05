@@ -49,7 +49,9 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="Unit1"/>
-        <CursorPos X="13"/>
+        <IsVisibleTab Value="True"/>
+        <TopLine Value="552"/>
+        <CursorPos X="31" Y="565"/>
         <UsageCount Value="59"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -57,11 +59,9 @@
       <Unit>
         <Filename Value="start_trd.pas"/>
         <IsPartOfProject Value="True"/>
-        <IsVisibleTab Value="True"/>
-        <EditorIndex Value="1"/>
+        <EditorIndex Value="-1"/>
         <CursorPos X="17"/>
         <UsageCount Value="55"/>
-        <Loaded Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="portscan_trd.pas"/>
@@ -95,7 +95,7 @@
         <DefaultSyntaxHighlighter Value="LFM"/>
       </Unit>
     </Units>
-    <JumpHistory HistoryIndex="29">
+    <JumpHistory HistoryIndex="26">
       <Position>
         <Filename Value="unit1.pas"/>
         <Caret Line="534" Column="46" TopLine="211"/>
@@ -203,18 +203,6 @@
       <Position>
         <Filename Value="unit1.pas"/>
         <Caret Column="13"/>
-      </Position>
-      <Position>
-        <Filename Value="start_trd.pas"/>
-        <Caret Column="19"/>
-      </Position>
-      <Position>
-        <Filename Value="start_trd.pas"/>
-        <Caret Line="77" Column="27" TopLine="75"/>
-      </Position>
-      <Position>
-        <Filename Value="start_trd.pas"/>
-        <Caret Line="92" TopLine="62"/>
       </Position>
     </JumpHistory>
     <RunParams>
