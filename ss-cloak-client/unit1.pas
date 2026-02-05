@@ -262,6 +262,8 @@ begin
   //От частого нажатия
   //Application.ProcessMessages;
 
+  StartProcess('systemctl --user stop ss-cloak-client.service gost.service');
+
   //Если прокси включен и менялся порт
   if SWPBox.Checked then
   begin
@@ -316,7 +318,7 @@ begin
   LogMemo.Clear;
 
   //Перезапускаем сервисы SS:XXXX и HTTP:8889
-  StartProcess('systemctl --user restart ss-cloak-client.service gost.service');
+  StartProcess('systemctl --user start ss-cloak-client.service gost.service');
 end;
 
 //Стоп
