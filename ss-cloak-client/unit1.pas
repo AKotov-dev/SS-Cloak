@@ -299,6 +299,10 @@ begin
     Cmd := Format('sed -i ''s/"nameserver": *"[^"]*"/"nameserver": "%s"/'' "%s"',
       [DNSComboBox.Text, JSONFile]);
     RunCommand('bash', ['-c', Cmd], S);
+    //acl_home_user_path (для переноса на другие компы)
+    Cmd := Format('sed -i ''s/"acl": *"[^"]*"/"acl": "%s"/'' "%s"',
+      [GetUserDir + '.config/ss-cloak-client/bypass.acl', JSONFile]);
+    RunCommand('bash', ['-c', Cmd], S);
 
     //камуфляж
     Cmd := Format('sed -i ''s/ServerName=[^;]*/ServerName=%s/'' "%s"',

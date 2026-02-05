@@ -2,11 +2,11 @@ object MainForm: TMainForm
   Left = 299
   Height = 686
   Top = 126
-  Width = 962
+  Width = 959
   ActiveControl = ServerEdit
   Caption = 'SS-Cloak-Client '
   ClientHeight = 686
-  ClientWidth = 962
+  ClientWidth = 959
   SessionProperties = 'Height;Left;SaveDialog1.InitialDir;Top;Width;SaveDialog2.InitialDir'
   LCLVersion = '4.4.0.0'
   OnClose = FormClose
@@ -124,7 +124,7 @@ object MainForm: TMainForm
     Left = 0
     Height = 530
     Top = 136
-    Width = 962
+    Width = 959
     Anchors = [akTop, akLeft, akRight, akBottom]
     BorderSpacing.Top = 10
     Font.Height = -12
@@ -142,7 +142,7 @@ object MainForm: TMainForm
     AnchorSideRight.Side = asrBottom
     AnchorSideBottom.Control = ServerEdit
     AnchorSideBottom.Side = asrBottom
-    Left = 854
+    Left = 851
     Height = 37
     Hint = 'Start System-Wide Proxy + Autostart'
     Top = 5
@@ -160,7 +160,7 @@ object MainForm: TMainForm
     AnchorSideRight.Side = asrBottom
     AnchorSideBottom.Control = CamouflageEdit
     AnchorSideBottom.Side = asrBottom
-    Left = 854
+    Left = 851
     Height = 37
     Hint = 'Stop System-Wide Proxy - Autostart'
     Top = 47
@@ -176,7 +176,7 @@ object MainForm: TMainForm
     AnchorSideTop.Control = StartBtn
     AnchorSideTop.Side = asrCenter
     AnchorSideRight.Control = StartBtn
-    Left = 837
+    Left = 834
     Height = 12
     Top = 17
     Width = 12
@@ -195,7 +195,7 @@ object MainForm: TMainForm
     Left = 0
     Height = 20
     Top = 666
-    Width = 962
+    Width = 959
     Align = alBottom
     Caption = 'License: GPLv3   Author: alex_q_2000 (C) 2026   URL: https://github.com/AKotov-dev/SS-Cloak'
     Font.Color = clGray
@@ -282,7 +282,7 @@ object MainForm: TMainForm
     AnchorSideRight.Control = ServerConfigs
     AnchorSideBottom.Control = DNSComboBox
     AnchorSideBottom.Side = asrBottom
-    Left = 588
+    Left = 585
     Height = 37
     Hint = 'Create Client and Server settings'#10'New UID, PublicKey, PrivateKey, BypassUID, etc.'
     Top = 89
@@ -300,7 +300,7 @@ object MainForm: TMainForm
     AnchorSideRight.Control = BackupBtn
     AnchorSideBottom.Control = DNSComboBox
     AnchorSideBottom.Side = asrBottom
-    Left = 711
+    Left = 708
     Height = 37
     Hint = 'Get archived Server configuration'#10'~/.config/ss-cloak-client/server-conf.tar.gz'
     Top = 89
@@ -319,7 +319,7 @@ object MainForm: TMainForm
     AnchorSideRight.Side = asrBottom
     AnchorSideBottom.Control = DNSComboBox
     AnchorSideBottom.Side = asrBottom
-    Left = 917
+    Left = 914
     Height = 37
     Hint = 'Get a connection QR code'
     Top = 89
@@ -373,7 +373,7 @@ object MainForm: TMainForm
     AnchorSideLeft.Control = CreateBtn
     AnchorSideTop.Control = BypassBox
     AnchorSideTop.Side = asrCenter
-    Left = 588
+    Left = 585
     Height = 17
     Top = 15
     Width = 41
@@ -384,7 +384,7 @@ object MainForm: TMainForm
     AnchorSideLeft.Side = asrBottom
     AnchorSideTop.Control = ServerEdit
     AnchorSideTop.Side = asrCenter
-    Left = 631
+    Left = 628
     Height = 37
     Hint = 'Bypassing domain zones'
     Top = 5
@@ -566,7 +566,7 @@ object MainForm: TMainForm
     AnchorSideRight.Control = QRBtn
     AnchorSideBottom.Control = DNSComboBox
     AnchorSideBottom.Side = asrBottom
-    Left = 814
+    Left = 811
     Height = 37
     Hint = 'Get the current Сlient configuration'#10'~/.config/ss-cloak-client/config.json'
     Top = 89
@@ -582,7 +582,7 @@ object MainForm: TMainForm
     AnchorSideLeft.Control = CreateBtn
     AnchorSideTop.Control = CamouflageEdit
     AnchorSideTop.Side = asrCenter
-    Left = 588
+    Left = 585
     Height = 17
     Top = 57
     Width = 105
@@ -593,7 +593,7 @@ object MainForm: TMainForm
     AnchorSideLeft.Side = asrBottom
     AnchorSideTop.Control = CamouflageEdit
     AnchorSideTop.Side = asrCenter
-    Left = 695
+    Left = 692
     Height = 17
     Top = 57
     Width = 9
