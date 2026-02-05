@@ -28,7 +28,7 @@ object MainForm: TMainForm
     AnchorSideTop.Control = ServerPortEdit
     AnchorSideTop.Side = asrCenter
     AnchorSideRight.Control = ServerPortEdit
-    Left = 333
+    Left = 338
     Height = 17
     Top = 15
     Width = 66
@@ -53,7 +53,7 @@ object MainForm: TMainForm
     AnchorSideTop.Control = LocalPortEdit
     AnchorSideTop.Side = asrCenter
     AnchorSideRight.Control = LocalPortEdit
-    Left = 338
+    Left = 343
     Height = 17
     Top = 57
     Width = 61
@@ -85,7 +85,7 @@ object MainForm: TMainForm
     AnchorSideRight.Side = asrBottom
     AnchorSideBottom.Control = ServerEdit
     AnchorSideBottom.Side = asrBottom
-    Left = 401
+    Left = 406
     Height = 37
     Hint = 'Default: 443 (highly recommended)'
     Top = 5
@@ -103,7 +103,7 @@ object MainForm: TMainForm
     AnchorSideRight.Side = asrBottom
     AnchorSideBottom.Control = CamouflageEdit
     AnchorSideBottom.Side = asrBottom
-    Left = 401
+    Left = 406
     Height = 37
     Hint = 'Default: 1080'
     Top = 47
@@ -132,7 +132,7 @@ object MainForm: TMainForm
     ParentFont = False
     ReadOnly = True
     ScrollBars = ssAutoBoth
-    TabOrder = 9
+    TabOrder = 7
     WantReturns = False
     WordWrap = False
   end
@@ -144,11 +144,14 @@ object MainForm: TMainForm
     AnchorSideBottom.Side = asrBottom
     Left = 854
     Height = 37
+    Hint = 'Start System-Wide Proxy + Autostart'
     Top = 5
     Width = 100
     Anchors = [akTop, akRight, akBottom]
     BorderSpacing.Right = 8
     Caption = 'Start'
+    ShowHint = True
+    ParentShowHint = False
     OnClick = StartBtnClick
   end
   object StopBtn: TSpeedButton
@@ -159,27 +162,15 @@ object MainForm: TMainForm
     AnchorSideBottom.Side = asrBottom
     Left = 854
     Height = 37
+    Hint = 'Stop System-Wide Proxy - Autostart'
     Top = 47
     Width = 100
     Anchors = [akTop, akRight, akBottom]
     BorderSpacing.Right = 8
     Caption = 'Stop'
-    OnClick = StopBtnClick
-  end
-  object AutoStartBox: TCheckBox
-    AnchorSideLeft.Control = CreateBtn
-    AnchorSideTop.Control = CamouflageEdit
-    AnchorSideTop.Side = asrCenter
-    Left = 588
-    Height = 32
-    Hint = 'Proxy autostart on boot'
-    Top = 49
-    Width = 90
-    Caption = 'Autostart'
-    ParentShowHint = False
     ShowHint = True
-    TabOrder = 5
-    OnChange = AutoStartBoxChange
+    ParentShowHint = False
+    OnClick = StopBtnClick
   end
   object Shape1: TShape
     AnchorSideTop.Control = StartBtn
@@ -211,7 +202,7 @@ object MainForm: TMainForm
     Font.Height = -11
     Font.Name = 'Sans'
     ParentFont = False
-    TabOrder = 10
+    TabOrder = 8
   end
   object Label5: TLabel
     AnchorSideLeft.Control = Owner
@@ -245,7 +236,7 @@ object MainForm: TMainForm
       '1.0.0.1,8.8.4.4'
       '9.9.9.9,149.112.112.112'
     )
-    TabOrder = 7
+    TabOrder = 5
     Text = '1.1.1.1,1.0.0.1'
   end
   object Label6: TLabel
@@ -253,11 +244,11 @@ object MainForm: TMainForm
     AnchorSideLeft.Side = asrBottom
     AnchorSideTop.Control = MethodComboBox
     AnchorSideTop.Side = asrCenter
-    Left = 305
+    Left = 310
     Height = 17
     Top = 99
     Width = 47
-    BorderSpacing.Left = 25
+    BorderSpacing.Left = 30
     Caption = 'Method'
   end
   object MethodComboBox: TComboBox
@@ -268,7 +259,7 @@ object MainForm: TMainForm
     AnchorSideRight.Side = asrBottom
     AnchorSideBottom.Control = DNSComboBox
     AnchorSideBottom.Side = asrBottom
-    Left = 354
+    Left = 359
     Height = 37
     Hint = 'Encryption method'
     Top = 89
@@ -283,7 +274,7 @@ object MainForm: TMainForm
     )
     ParentShowHint = False
     ShowHint = True
-    TabOrder = 8
+    TabOrder = 6
     Text = 'aes-128-gcm'
   end
   object CreateBtn: TSpeedButton
@@ -586,22 +577,6 @@ object MainForm: TMainForm
     ShowHint = True
     ParentShowHint = False
     OnClick = BackupBtnClick
-  end
-  object SWPBox: TCheckBox
-    AnchorSideLeft.Control = ServerConfigs
-    AnchorSideTop.Control = CamouflageEdit
-    AnchorSideTop.Side = asrCenter
-    AnchorSideBottom.Side = asrCenter
-    Left = 711
-    Height = 32
-    Hint = 'System-wide proxy'#10'GNOME, MATE, Budgie, KDE'
-    Top = 49
-    Width = 62
-    Caption = 'SWP'
-    ParentShowHint = False
-    ShowHint = True
-    TabOrder = 6
-    OnChange = SWPBoxChange
   end
   object IniPropStorage1: TIniPropStorage
     StoredValues = <>

@@ -13,10 +13,8 @@ type
   { TMainForm }
 
   TMainForm = class(TForm)
-    AutoStartBox: TCheckBox;
     CamouflageEdit: TComboBox;
     BypassBox: TComboBox;
-    SWPBox: TCheckBox;
     Image1: TImage;
     Label7: TLabel;
     MethodComboBox: TComboBox;
@@ -43,9 +41,7 @@ type
     StartBtn: TSpeedButton;
     StaticText1: TStaticText;
     StopBtn: TSpeedButton;
-    procedure AutoStartBoxChange(Sender: TObject);
     procedure BackupBtnClick(Sender: TObject);
-    procedure SWPBoxChange(Sender: TObject);
     procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -269,17 +265,8 @@ begin
   //Останавливаем ssclient и gost
   StartProcess('systemctl --user stop ss-cloak-client.service gost.service');
 
-    //Быстрая очистка вывода перед стартом
+  //Быстрая очистка вывода перед стартом
   LogMemo.Clear;
-
-  //Если прокси включен и менялся порт
-  if SWPBox.Checked then
-  begin
-    //Делаем скрипт звпуска ~/.config/xraygui/swproxy.sh
-    CreateSWProxy;
-    //Запуск System-Wide Proxy если он уже работает
-    RunCommand('/bin/bash', ['-c', '~/.config/ss-cloak-client/swproxy.sh set'], S);
-  end;
 
   //Редактируем клиентский конфиг (если что-то менялось)
   JSONFile := GetUserDir + '.config/ss-cloak-client/config.json';
@@ -316,6 +303,11 @@ begin
   else
     Exit;
 
+  //Делаем скрипт звпуска ~/.config/xraygui/swproxy.sh
+  CreateSWProxy;
+  //Запуск System-Wide Proxy если он уже работает
+  RunCommand('/bin/bash', ['-c', '~/.config/ss-cloak-client/swproxy.sh set'], S);
+
   //Пересоздаём ~/.config/ss-cloak-client/bypass.acl
   CreateBypass;
 
@@ -324,6 +316,13 @@ begin
 
   //Запускаем сервисы SS:XXXX и HTTP:8889
   StartProcess('systemctl --user start ss-cloak-client.service gost.service');
+
+  //Активация System-Wide Proxy
+  RunCommand('/bin/bash', ['-c', '~/.config/ss-cloak-client/swproxy.sh set'], S);
+
+   //Включение Автозагрузки
+  RunCommand('/bin/bash', ['-c',
+      'systemctl --user enable ss-cloak-client.service gost.service'], S);
 
   LastStart := GetTickCount64;
 end;
@@ -335,14 +334,17 @@ var
 begin
   Application.ProcessMessages;
 
-  // Проверяем, прошло ли более 500 мс с последнего нажатия (Debounce)
-  if GetTickCount64 - LastStop < 500 then Exit;
+  // Проверяем, прошло ли более 1000 мс с последнего нажатия (Debounce)
+  if GetTickCount64 - LastStop < 1000 then Exit;
 
   StartProcess('systemctl --user stop ss-cloak-client.service gost.service');
 
-  //Сброс System-Wide Proxy если он включен
-  if FileExists(GetUserDir + '.config/ss-cloak-client/swproxy.sh') then
-    RunCommand('/bin/bash', ['-c', '~/.config/ss-cloak-client/swproxy.sh reset'], S);
+  //Сброс System-Wide Proxy
+  RunCommand('/bin/bash', ['-c', '~/.config/ss-cloak-client/swproxy.sh reset'], S);
+
+  //Отключение из автозагрузки
+  RunCommand('/bin/bash', ['-c',
+      'systemctl --user disable ss-cloak-client.service gost.service'], S);
 
   LastStop := GetTickCount64;
 end;
@@ -409,14 +411,8 @@ begin
       CamouflageEdit.Text := Trim(S);
   end
   else
-  begin
     //Иначе блокируем запуск и ждём создания конфигурации клиента
     StartBtn.Enabled := False;
-    AutoStartBox.Checked := False;
-    SWPBox.Checked := False;
-    AutoStartBox.Enabled := False;
-    SWPBox.Enabled := False;
-  end;
 
   // bypass.acl
   config := GetUserDir + '.config/ss-cloak-client/bypass.acl';
@@ -425,37 +421,11 @@ begin
     if RunCommand('grep', ['^\.', config], S) then
       BypassBox.Text := Trim(S);
   end;
-
-  //SWP ?
-  if FileExists(GetUserDir + '.config/ss-cloak-client/swproxy.sh') then
-    SWPBox.Checked := True
-  else
-    SWPBox.Checked := False;
 end;
 
 procedure TMainForm.FormClose(Sender: TObject; var CloseAction: TCloseAction);
 begin
   IniPropStorage1.Save;
-end;
-
-//Автостарт (ss-cloak-client/gost)
-procedure TMainForm.AutoStartBoxChange(Sender: TObject);
-var
-  S: ansistring;
-begin
-  Screen.Cursor := crHourGlass;
-  Application.ProcessMessages;
-
-  if not AutoStartBox.Checked then
-  begin
-    SWPBox.Checked := False;
-    RunCommand('/bin/bash', ['-c',
-      'systemctl --user disable ss-cloak-client.service gost.service'], S);
-  end
-  else
-    RunCommand('/bin/bash', ['-c',
-      'systemctl --user enable ss-cloak-client.service gost.service'], S);
-  Screen.Cursor := crDefault;
 end;
 
 procedure TMainForm.BackupBtnClick(Sender: TObject);
@@ -477,33 +447,6 @@ begin
   end;
 end;
 
-//SWP (включение/отключение системного прокси)
-procedure TMainForm.SWPBoxChange(Sender: TObject);
-var
-  S: ansistring;
-begin
-  Screen.Cursor := crHourGlass;
-  Application.ProcessMessages;
-
-  if (not SWPBox.Checked) and FileExists(GetUserDir +
-    '.config/ss-cloak-client/swproxy.sh') then
-  begin
-    RunCommand('/bin/bash', ['-c', '~/.config/ss-cloak-client/swproxy.sh unset'], S);
-    DeleteFile(GetUserDir + '.config/ss-cloak-client/swproxy.sh');
-  end
-  else
-  begin
-    //Автозапуск самого прокси, поскольку при перезагрузке прокси будет недоступен
-    AutoStartBox.Checked := True;
-    //Делаем скрипт звпуска ~/.config/xraygui/swproxy.sh
-    CreateSWProxy;
-    //Запуск System-Wide Proxy если он уже работает
-    if Shape1.Brush.Color <> clYellow then
-      RunCommand('/bin/bash', ['-c', '~/.config/ss-cloak-client/swproxy.sh set'], S);
-  end;
-  Screen.Cursor := crDefault;
-end;
-
 //MainForm, запуск потоков
 procedure TMainForm.FormShow(Sender: TObject);
 var
@@ -512,8 +455,6 @@ begin
   IniPropStorage1.Restore;
 
   QRBtn.Width := QRBtn.Height;
-
-  AutoStartBox.Checked := CheckAutoStart;
 
   //Запуск потока проверки состояния локального порта
   FPortScanThread := PortScan.Create(False);
@@ -539,9 +480,6 @@ begin
   try
     //Stop Client
     StopBtn.Click;
-
-    //Отключение Автостарта и SWP
-    if AutoStartBox.Checked then AutoStartBox.Checked := False;
 
     //Create ~/.config/ss-cloak-client/config-gen.sh
     S := TStringList.Create;
@@ -627,13 +565,10 @@ begin
     //Upload Server Configs archive
     ServerConfigs.Click;
 
-    //Если конфиг клиента успешно создан - разрешить старт и переключатели Autostart/SWP
+    //Если конфиг клиента успешно создан - разрешить старт и переключатель Autostart
     if FileExists(GetUserDir + '.config/ss-cloak-client/config.json') then
-    begin
       StartBtn.Enabled := True;
-      AutoStartBox.Enabled := True;
-      SWPBox.Enabled := True;
-    end;
+
   finally
     S.Free;
   end;

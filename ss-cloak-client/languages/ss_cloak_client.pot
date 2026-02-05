@@ -1,14 +1,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=UTF-8"
 
-#: tmainform.autostartbox.caption
-msgid "Autostart"
-msgstr ""
-
-#: tmainform.autostartbox.hint
-msgid "Proxy autostart on boot"
-msgstr ""
-
 #: tmainform.backupbtn.caption
 msgid "Client conf"
 msgstr ""
@@ -144,6 +136,10 @@ msgstr ""
 msgid "Start"
 msgstr ""
 
+#: tmainform.startbtn.hint
+msgid "Start System-Wide Proxy + Autostart"
+msgstr ""
+
 #: tmainform.statictext1.caption
 msgid "License: GPLv3   Author: alex_q_2000 (C) 2026   URL: https://github.com/AKotov-dev/SS-Cloak"
 msgstr ""
@@ -152,16 +148,8 @@ msgstr ""
 msgid "Stop"
 msgstr ""
 
-#: tmainform.swpbox.caption
-msgctxt "tmainform.swpbox.caption"
-msgid "SWP"
-msgstr ""
-
-#: tmainform.swpbox.hint
-msgctxt "tmainform.swpbox.hint"
-msgid ""
-"System-wide proxy\n"
-"GNOME, MATE, Budgie, KDE"
+#: tmainform.stopbtn.hint
+msgid "Stop System-Wide Proxy - Autostart"
 msgstr ""
 
 #: tqrform.caption
