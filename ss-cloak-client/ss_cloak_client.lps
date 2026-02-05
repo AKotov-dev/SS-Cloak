@@ -201,10 +201,6 @@
       </Position>
       <Position>
         <Filename Value="unit1.pas"/>
-        <Caret Line="63" Column="22" TopLine="181"/>
-      </Position>
-      <Position>
-        <Filename Value="unit1.pas"/>
         <Caret Line="263" Column="3" TopLine="258"/>
       </Position>
       <Position>
@@ -214,6 +210,10 @@
       <Position>
         <Filename Value="unit1.pas"/>
         <Caret Line="327" Column="12" TopLine="309"/>
+      </Position>
+      <Position>
+        <Filename Value="unit1.pas"/>
+        <Caret Column="13"/>
       </Position>
     </JumpHistory>
     <RunParams>

@@ -266,7 +266,11 @@ begin
   //Проверяем, прошло ли более 1000 мс с последнего нажатия (Debounce)
   if GetTickCount64 - LastStart < 2000 then Exit;
 
+  //Останавливаем ssclient и gost
   StartProcess('systemctl --user stop ss-cloak-client.service gost.service');
+
+  //Быстрая очистка вывода перед стартом
+  LogMemo.Clear;
 
   //Если прокси включен и менялся порт
   if SWPBox.Checked then
@@ -317,9 +321,6 @@ begin
 
   //Пересоздаём ~/.config/ss-cloak-client/gost.conf
   CreateGostHTTP;
-
-  //Быстрая очистка вывода перед стартом
-  LogMemo.Clear;
 
   //Запускаем сервисы SS:XXXX и HTTP:8889
   StartProcess('systemctl --user start ss-cloak-client.service gost.service');

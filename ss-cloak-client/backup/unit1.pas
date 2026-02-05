@@ -60,7 +60,7 @@ type
     procedure CreateGostHTTP;
 
   private
-    LastClick: QWord; //Debounce
+    LastStart, LastStop: QWord; //Debounce
 
   public
 
@@ -264,9 +264,13 @@ begin
   Application.ProcessMessages;
 
   //Проверяем, прошло ли более 1000 мс с последнего нажатия (Debounce)
-  if GetTickCount64 - LastClick < 2000 then Exit;
+  if GetTickCount64 - LastStart < 2000 then Exit;
 
+  //Останавливаем ssclient и gost
   StartProcess('systemctl --user stop ss-cloak-client.service gost.service');
+
+    //Быстрая очистка вывода перед стартом
+  LogMemo.Clear;
 
   //Если прокси включен и менялся порт
   if SWPBox.Checked then
@@ -318,13 +322,10 @@ begin
   //Пересоздаём ~/.config/ss-cloak-client/gost.conf
   CreateGostHTTP;
 
-  //Быстрая очистка вывода перед стартом
-  LogMemo.Clear;
-
   //Запускаем сервисы SS:XXXX и HTTP:8889
   StartProcess('systemctl --user start ss-cloak-client.service gost.service');
 
-  LastClick := GetTickCount64;
+  LastStart := GetTickCount64;
 end;
 
 //Стоп
@@ -334,11 +335,16 @@ var
 begin
   Application.ProcessMessages;
 
+  // Проверяем, прошло ли более 500 мс с последнего нажатия (Debounce)
+  if GetTickCount64 - LastStop < 500 then Exit;
+
   StartProcess('systemctl --user stop ss-cloak-client.service gost.service');
 
   //Сброс System-Wide Proxy если он включен
   if FileExists(GetUserDir + '.config/ss-cloak-client/swproxy.sh') then
     RunCommand('/bin/bash', ['-c', '~/.config/ss-cloak-client/swproxy.sh reset'], S);
+
+  LastStop := GetTickCount64;
 end;
 
 procedure TMainForm.FormCreate(Sender: TObject);
