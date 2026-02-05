@@ -1,16 +1,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=UTF-8"
 
-#: tmainform.backupbtn.caption
-msgid "Client conf"
-msgstr ""
-
-#: tmainform.backupbtn.hint
-msgid ""
-"Get the current Сlient configuration\n"
-"~/.config/ss-cloak-client/config.json"
-msgstr ""
-
 #: tmainform.bypassbox.hint
 msgctxt "tmainform.bypassbox.hint"
 msgid "Bypassing domain zones"
@@ -34,9 +24,24 @@ msgstr ""
 msgid "SS-Cloak-Client "
 msgstr ""
 
+#: tmainform.clientloadbtn.caption
+msgid "Load client"
+msgstr ""
+
+#: tmainform.clientsavebtn.caption
+msgid "Save client"
+msgstr ""
+
+#: tmainform.clientsavebtn.hint
+msgctxt "tmainform.clientsavebtn.hint"
+msgid ""
+"Get the current Сlient configuration\n"
+"~/.config/ss-cloak-client/config.json"
+msgstr ""
+
 #: tmainform.createbtn.caption
 msgctxt "tmainform.createbtn.caption"
-msgid "Create conf"
+msgid "Create configuration"
 msgstr ""
 
 #: tmainform.createbtn.hint
@@ -76,10 +81,6 @@ msgstr ""
 
 #: tmainform.label7.caption
 msgid "Bypass"
-msgstr ""
-
-#: tmainform.label8.caption
-msgid "Protection status:"
 msgstr ""
 
 #: tmainform.localportedit.hint
@@ -148,11 +149,6 @@ msgstr ""
 msgid "License: GPLv3   Author: alex_q_2000 (C) 2026   URL: https://github.com/AKotov-dev/SS-Cloak"
 msgstr ""
 
-#: tmainform.statuslabel.caption
-msgctxt "tmainform.statuslabel.caption"
-msgid "..."
-msgstr ""
-
 #: tmainform.stopbtn.caption
 msgid "Stop"
 msgstr ""
@@ -168,13 +164,5 @@ msgstr ""
 
 #: unit1.sgenerateconf
 msgid "Based on the entered data, a configuration link will be created for the Client (overwrite) and Server (downloadable archive for your VPS). Continue?"
-msgstr ""
-
-#: unit1.ssecstatusoff
-msgid "Disabled"
-msgstr ""
-
-#: unit1.ssecstatuson
-msgid "Enabled"
 msgstr ""
 

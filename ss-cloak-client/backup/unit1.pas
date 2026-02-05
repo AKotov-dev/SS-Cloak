@@ -17,13 +17,12 @@ type
     BypassBox: TComboBox;
     Image1: TImage;
     Label7: TLabel;
-    Label8: TLabel;
-    StatusLabel: TLabel;
     MethodComboBox: TComboBox;
     DNSComboBox: TComboBox;
     Label5: TLabel;
     Label6: TLabel;
     GenProcess: TProcess;
+    OpenDialog1: TOpenDialog;
     SaveDialog1: TSaveDialog;
     QRBtn: TSpeedButton;
     SaveDialog2: TSaveDialog;
@@ -39,11 +38,13 @@ type
     Shape1: TShape;
     CreateBtn: TSpeedButton;
     ServerConfigs: TSpeedButton;
-    BackupBtn: TSpeedButton;
+    ClientSaveBtn: TSpeedButton;
+    ClientLoadBtn: TSpeedButton;
     StartBtn: TSpeedButton;
     StaticText1: TStaticText;
     StopBtn: TSpeedButton;
-    procedure BackupBtnClick(Sender: TObject);
+    procedure ClientLoadBtnClick(Sender: TObject);
+    procedure ClientSaveBtnClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -70,9 +71,6 @@ var
 resourcestring
   SGenerateConf =
     'Based on the entered data, a configuration link will be created for the Client (overwrite) and Server (downloadable archive for your VPS). Continue?';
-
-  SSecStatusOn = 'Enabled';
-  SSecStatusOff = 'Disabled';
 
 implementation
 
@@ -299,6 +297,11 @@ begin
     Cmd := Format('sed -i ''s/"nameserver": *"[^"]*"/"nameserver": "%s"/'' "%s"',
       [DNSComboBox.Text, JSONFile]);
     RunCommand('bash', ['-c', Cmd], S);
+    //acl_home_user_path (для переноса на другие компы)
+    Cmd := Format('sed -i ''s/"acl": *"[^"]*"/"acl": "%s"/'' "%s"',
+      ['\/home\/' + GetEnvironmentVariable('USER') +
+      '\/.config\/ss-cloak-client\/bypass.acl', JSONFile]);
+    RunCommand('bash', ['-c', Cmd], S);
 
     //камуфляж
     Cmd := Format('sed -i ''s/ServerName=[^;]*/ServerName=%s/'' "%s"',
@@ -433,7 +436,7 @@ begin
   IniPropStorage1.Save;
 end;
 
-procedure TMainForm.BackupBtnClick(Sender: TObject);
+procedure TMainForm.ClientSaveBtnClick(Sender: TObject);
 begin
   if not FileExists(GetUserDir + '.config/ss-cloak-client/config.json') then Exit;
 
@@ -450,6 +453,15 @@ begin
     CopyFile(GetUserDir + '.config/ss-cloak-client/config.json',
       SaveDialog2.FileName, [cffOverwriteFile]);
   end;
+end;
+
+//Load Client Configuration
+procedure TMainForm.ClientLoadBtnClick(Sender: TObject);
+begin
+  if OpenDialog1.Execute then
+    if CopyFile(OpenDialog1.FileName, GetUserDir + '.config/ss-cloak-client/config.json',
+      [cffOverwriteFile]) then
+      StartBtn.Enabled := True;
 end;
 
 //MainForm, запуск потоков

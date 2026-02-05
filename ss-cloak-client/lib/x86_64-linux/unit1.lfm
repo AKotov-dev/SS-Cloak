@@ -1,13 +1,13 @@
 object MainForm: TMainForm
-  Left = 299
-  Height = 686
-  Top = 126
-  Width = 959
+  Left = 301
+  Height = 691
+  Top = 128
+  Width = 956
   ActiveControl = ServerEdit
   Caption = 'SS-Cloak-Client '
-  ClientHeight = 686
-  ClientWidth = 959
-  SessionProperties = 'Height;Left;SaveDialog1.InitialDir;Top;Width;SaveDialog2.InitialDir'
+  ClientHeight = 691
+  ClientWidth = 956
+  SessionProperties = 'Height;Left;SaveDialog1.InitialDir;SaveDialog2.InitialDir;Top;Width;OpenDialog1.InitialDir'
   LCLVersion = '4.4.0.0'
   OnClose = FormClose
   OnCreate = FormCreate
@@ -122,9 +122,9 @@ object MainForm: TMainForm
     AnchorSideRight.Side = asrBottom
     AnchorSideBottom.Control = StaticText1
     Left = 0
-    Height = 530
+    Height = 535
     Top = 136
-    Width = 959
+    Width = 956
     Anchors = [akTop, akLeft, akRight, akBottom]
     BorderSpacing.Top = 10
     Font.Height = -12
@@ -142,7 +142,7 @@ object MainForm: TMainForm
     AnchorSideRight.Side = asrBottom
     AnchorSideBottom.Control = ServerEdit
     AnchorSideBottom.Side = asrBottom
-    Left = 851
+    Left = 848
     Height = 37
     Hint = 'Start System-Wide Proxy + Autostart'
     Top = 5
@@ -160,7 +160,7 @@ object MainForm: TMainForm
     AnchorSideRight.Side = asrBottom
     AnchorSideBottom.Control = CamouflageEdit
     AnchorSideBottom.Side = asrBottom
-    Left = 851
+    Left = 848
     Height = 37
     Hint = 'Stop System-Wide Proxy - Autostart'
     Top = 47
@@ -176,7 +176,7 @@ object MainForm: TMainForm
     AnchorSideTop.Control = StartBtn
     AnchorSideTop.Side = asrCenter
     AnchorSideRight.Control = StartBtn
-    Left = 834
+    Left = 831
     Height = 12
     Top = 17
     Width = 12
@@ -194,8 +194,8 @@ object MainForm: TMainForm
     AnchorSideBottom.Side = asrBottom
     Left = 0
     Height = 20
-    Top = 666
-    Width = 959
+    Top = 671
+    Width = 956
     Align = alBottom
     Caption = 'License: GPLv3   Author: alex_q_2000 (C) 2026   URL: https://github.com/AKotov-dev/SS-Cloak'
     Font.Color = clGray
@@ -282,14 +282,14 @@ object MainForm: TMainForm
     AnchorSideRight.Control = ServerConfigs
     AnchorSideBottom.Control = DNSComboBox
     AnchorSideBottom.Side = asrBottom
-    Left = 585
+    Left = 569
     Height = 37
     Hint = 'Create Client and Server settings'#10'New UID, PublicKey, PrivateKey, BypassUID, etc.'
     Top = 89
-    Width = 120
+    Width = 207
     Anchors = [akTop, akRight, akBottom]
     BorderSpacing.Right = 3
-    Caption = 'Create conf'
+    Caption = 'Create configuration'
     ShowHint = True
     ParentShowHint = False
     OnClick = CreateBtnClick
@@ -297,16 +297,16 @@ object MainForm: TMainForm
   object ServerConfigs: TSpeedButton
     AnchorSideLeft.Side = asrBottom
     AnchorSideTop.Control = DNSComboBox
-    AnchorSideRight.Control = BackupBtn
+    AnchorSideRight.Control = QRBtn
     AnchorSideBottom.Control = DNSComboBox
     AnchorSideBottom.Side = asrBottom
-    Left = 708
+    Left = 779
     Height = 37
     Hint = 'Get archived Server configuration'#10'~/.config/ss-cloak-client/server-conf.tar.gz'
     Top = 89
-    Width = 100
+    Width = 128
     Anchors = [akTop, akRight, akBottom]
-    BorderSpacing.Right = 3
+    BorderSpacing.Right = 4
     Caption = 'Server conf'
     ShowHint = True
     ParentShowHint = False
@@ -319,7 +319,7 @@ object MainForm: TMainForm
     AnchorSideRight.Side = asrBottom
     AnchorSideBottom.Control = DNSComboBox
     AnchorSideBottom.Side = asrBottom
-    Left = 914
+    Left = 911
     Height = 37
     Hint = 'Get a connection QR code'
     Top = 89
@@ -373,7 +373,7 @@ object MainForm: TMainForm
     AnchorSideLeft.Control = CreateBtn
     AnchorSideTop.Control = BypassBox
     AnchorSideTop.Side = asrCenter
-    Left = 585
+    Left = 569
     Height = 17
     Top = 15
     Width = 41
@@ -384,11 +384,14 @@ object MainForm: TMainForm
     AnchorSideLeft.Side = asrBottom
     AnchorSideTop.Control = ServerEdit
     AnchorSideTop.Side = asrCenter
-    Left = 628
+    AnchorSideRight.Control = ClientLoadBtn
+    AnchorSideRight.Side = asrBottom
+    Left = 612
     Height = 37
     Hint = 'Bypassing domain zones'
     Top = 5
-    Width = 82
+    Width = 87
+    Anchors = [akTop, akLeft, akRight]
     BorderSpacing.Left = 2
     Font.Style = [fsBold]
     ItemHeight = 0
@@ -411,7 +414,7 @@ object MainForm: TMainForm
     Text = '.ru'
   end
   object Image1: TImage
-    Left = 512
+    Left = 216
     Height = 128
     Top = 120
     Width = 128
@@ -560,45 +563,38 @@ object MainForm: TMainForm
     }
     Visible = False
   end
-  object BackupBtn: TSpeedButton
+  object ClientSaveBtn: TSpeedButton
+    AnchorSideLeft.Control = ClientLoadBtn
     AnchorSideLeft.Side = asrBottom
-    AnchorSideTop.Control = DNSComboBox
-    AnchorSideRight.Control = QRBtn
-    AnchorSideBottom.Control = DNSComboBox
+    AnchorSideTop.Control = CamouflageEdit
+    AnchorSideRight.Control = StopBtn
+    AnchorSideBottom.Control = CamouflageEdit
     AnchorSideBottom.Side = asrBottom
-    Left = 811
+    Left = 707
     Height = 37
     Hint = 'Get the current Сlient configuration'#10'~/.config/ss-cloak-client/config.json'
-    Top = 89
-    Width = 100
-    Anchors = [akTop, akRight, akBottom]
-    BorderSpacing.Right = 3
-    Caption = 'Client conf'
+    Top = 47
+    Width = 130
+    Anchors = [akTop, akLeft, akRight, akBottom]
+    BorderSpacing.Left = 8
+    BorderSpacing.Right = 11
+    Caption = 'Save client'
     ShowHint = True
     ParentShowHint = False
-    OnClick = BackupBtnClick
+    OnClick = ClientSaveBtnClick
   end
-  object Label8: TLabel
+  object ClientLoadBtn: TSpeedButton
     AnchorSideLeft.Control = CreateBtn
     AnchorSideTop.Control = CamouflageEdit
-    AnchorSideTop.Side = asrCenter
-    Left = 585
-    Height = 17
-    Top = 57
-    Width = 105
-    Caption = 'Protection status:'
-  end
-  object StatusLabel: TLabel
-    AnchorSideLeft.Control = Label8
-    AnchorSideLeft.Side = asrBottom
-    AnchorSideTop.Control = CamouflageEdit
-    AnchorSideTop.Side = asrCenter
-    Left = 692
-    Height = 17
-    Top = 57
-    Width = 9
-    BorderSpacing.Left = 2
-    Caption = '...'
+    AnchorSideBottom.Control = CamouflageEdit
+    AnchorSideBottom.Side = asrBottom
+    Left = 569
+    Height = 37
+    Top = 47
+    Width = 130
+    Anchors = [akTop, akLeft, akBottom]
+    Caption = 'Load client'
+    OnClick = ClientLoadBtnClick
   end
   object IniPropStorage1: TIniPropStorage
     StoredValues = <>
@@ -639,6 +635,13 @@ object MainForm: TMainForm
     Filter = 'Client config [.json]|*.json'
     Options = [ofOverwritePrompt, ofEnableSizing, ofViewDetail]
     Left = 352
+    Top = 152
+  end
+  object OpenDialog1: TOpenDialog
+    FileName = 'config.json'
+    Filter = 'Client config [.json]|*.json'
+    Options = [ofOverwritePrompt, ofEnableSizing, ofViewDetail]
+    Left = 456
     Top = 152
   end
 end
