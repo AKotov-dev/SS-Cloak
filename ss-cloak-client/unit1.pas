@@ -60,6 +60,7 @@ type
     procedure CreateGostHTTP;
 
   private
+    LastStart, LastStop: QWord; //Debounce
 
   public
 
@@ -254,13 +255,16 @@ begin
     Result := False;
 end;
 
-//Start
+//Старт
 procedure TMainForm.StartBtnClick(Sender: TObject);
 var
   JSONFile, Cmd, S: string;
 begin
   //От частого нажатия
-  //Application.ProcessMessages;
+  Application.ProcessMessages;
+
+  //Проверяем, прошло ли более 1000 мс с последнего нажатия (Debounce)
+  if GetTickCount64 - LastStart < 2000 then Exit;
 
   StartProcess('systemctl --user stop ss-cloak-client.service gost.service');
 
@@ -317,8 +321,10 @@ begin
   //Быстрая очистка вывода перед стартом
   LogMemo.Clear;
 
-  //Перезапускаем сервисы SS:XXXX и HTTP:8889
+  //Запускаем сервисы SS:XXXX и HTTP:8889
   StartProcess('systemctl --user start ss-cloak-client.service gost.service');
+
+  LastStart := GetTickCount64;
 end;
 
 //Стоп
@@ -326,13 +332,18 @@ procedure TMainForm.StopBtnClick(Sender: TObject);
 var
   S: string;
 begin
-  //Application.ProcessMessages;
+  Application.ProcessMessages;
+
+  // Проверяем, прошло ли более 500 мс с последнего нажатия (Debounce)
+  if GetTickCount64 - LastStop < 500 then Exit;
 
   StartProcess('systemctl --user stop ss-cloak-client.service gost.service');
 
   //Сброс System-Wide Proxy если он включен
   if FileExists(GetUserDir + '.config/ss-cloak-client/swproxy.sh') then
     RunCommand('/bin/bash', ['-c', '~/.config/ss-cloak-client/swproxy.sh reset'], S);
+
+  LastStop := GetTickCount64;
 end;
 
 procedure TMainForm.FormCreate(Sender: TObject);

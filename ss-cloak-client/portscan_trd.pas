@@ -53,7 +53,7 @@ begin
     ResultStr.LoadFromStream(ScanProcess.Output);
     Synchronize(@ShowStatus);
 
-    Sleep(1000);
+    Sleep(800);
   finally
     ResultStr.Free;
     ScanProcess.Free;

@@ -60,6 +60,7 @@ type
     procedure CreateGostHTTP;
 
   private
+    LastClick: QWord; //Debounce
 
   public
 
@@ -254,13 +255,18 @@ begin
     Result := False;
 end;
 
-//Start
+//Старт
 procedure TMainForm.StartBtnClick(Sender: TObject);
 var
   JSONFile, Cmd, S: string;
 begin
   //От частого нажатия
-  //Application.ProcessMessages;
+  Application.ProcessMessages;
+
+  //Проверяем, прошло ли более 1000 мс с последнего нажатия (Debounce)
+  if GetTickCount64 - LastClick < 2000 then Exit;
+
+  StartProcess('systemctl --user stop ss-cloak-client.service gost.service');
 
   //Если прокси включен и менялся порт
   if SWPBox.Checked then
@@ -315,8 +321,10 @@ begin
   //Быстрая очистка вывода перед стартом
   LogMemo.Clear;
 
-  //Перезапускаем сервисы SS:XXXX и HTTP:8889
-  StartProcess('systemctl --user restart ss-cloak-client.service gost.service');
+  //Запускаем сервисы SS:XXXX и HTTP:8889
+  StartProcess('systemctl --user start ss-cloak-client.service gost.service');
+
+  LastClick := GetTickCount64;
 end;
 
 //Стоп
@@ -324,7 +332,7 @@ procedure TMainForm.StopBtnClick(Sender: TObject);
 var
   S: string;
 begin
-  //Application.ProcessMessages;
+  Application.ProcessMessages;
 
   StartProcess('systemctl --user stop ss-cloak-client.service gost.service');
 
