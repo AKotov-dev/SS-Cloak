@@ -17,6 +17,8 @@ type
     BypassBox: TComboBox;
     Image1: TImage;
     Label7: TLabel;
+    Label8: TLabel;
+    StatusLabel: TLabel;
     MethodComboBox: TComboBox;
     DNSComboBox: TComboBox;
     Label5: TLabel;
@@ -68,6 +70,9 @@ var
 resourcestring
   SGenerateConf =
     'Based on the entered data, a configuration link will be created for the Client (overwrite) and Server (downloadable archive for your VPS). Continue?';
+
+  SSecStatusOn = 'Enabled';
+  SSecStatusOff = 'Disabled';
 
 implementation
 
@@ -320,9 +325,9 @@ begin
   //Активация System-Wide Proxy
   RunCommand('/bin/bash', ['-c', '~/.config/ss-cloak-client/swproxy.sh set'], S);
 
-   //Включение Автозагрузки
+  //Включение Автозагрузки
   RunCommand('/bin/bash', ['-c',
-      'systemctl --user enable ss-cloak-client.service gost.service'], S);
+    'systemctl --user enable ss-cloak-client.service gost.service'], S);
 
   LastStart := GetTickCount64;
 end;
@@ -344,7 +349,7 @@ begin
 
   //Отключение из автозагрузки
   RunCommand('/bin/bash', ['-c',
-      'systemctl --user disable ss-cloak-client.service gost.service'], S);
+    'systemctl --user disable ss-cloak-client.service gost.service'], S);
 
   LastStop := GetTickCount64;
 end;

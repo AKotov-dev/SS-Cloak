@@ -78,6 +78,10 @@ msgstr ""
 msgid "Bypass"
 msgstr ""
 
+#: tmainform.label8.caption
+msgid "Protection status:"
+msgstr ""
+
 #: tmainform.localportedit.hint
 msgid "Default: 1080"
 msgstr ""
@@ -144,6 +148,11 @@ msgstr ""
 msgid "License: GPLv3   Author: alex_q_2000 (C) 2026   URL: https://github.com/AKotov-dev/SS-Cloak"
 msgstr ""
 
+#: tmainform.statuslabel.caption
+msgctxt "tmainform.statuslabel.caption"
+msgid "..."
+msgstr ""
+
 #: tmainform.stopbtn.caption
 msgid "Stop"
 msgstr ""
@@ -159,5 +168,13 @@ msgstr ""
 
 #: unit1.sgenerateconf
 msgid "Based on the entered data, a configuration link will be created for the Client (overwrite) and Server (downloadable archive for your VPS). Continue?"
+msgstr ""
+
+#: unit1.ssecstatusoff
+msgid "Disabled"
+msgstr ""
+
+#: unit1.ssecstatuson
+msgid "Enabled"
 msgstr ""
 

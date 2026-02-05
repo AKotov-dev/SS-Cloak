@@ -578,6 +578,28 @@ object MainForm: TMainForm
     ParentShowHint = False
     OnClick = BackupBtnClick
   end
+  object Label8: TLabel
+    AnchorSideLeft.Control = CreateBtn
+    AnchorSideTop.Control = CamouflageEdit
+    AnchorSideTop.Side = asrCenter
+    Left = 588
+    Height = 17
+    Top = 57
+    Width = 105
+    Caption = 'Protection status:'
+  end
+  object StatusLabel: TLabel
+    AnchorSideLeft.Control = Label8
+    AnchorSideLeft.Side = asrBottom
+    AnchorSideTop.Control = CamouflageEdit
+    AnchorSideTop.Side = asrCenter
+    Left = 695
+    Height = 17
+    Top = 57
+    Width = 9
+    BorderSpacing.Left = 2
+    Caption = '...'
+  end
   object IniPropStorage1: TIniPropStorage
     StoredValues = <>
     Active = False

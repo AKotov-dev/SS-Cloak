@@ -69,11 +69,13 @@ begin
     begin
       Shape1.Brush.Color := clLime;
       LocalPortEdit.Enabled := False;
+      StatusLabel.Caption := SSecStatusOn;
     end
     else
     begin
       Shape1.Brush.Color := clYellow;
       LocalPortEdit.Enabled := True;
+      StatusLabel.Caption := SSecStatusOff;
     end;
 
     Shape1.Repaint;

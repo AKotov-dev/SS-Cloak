@@ -92,6 +92,10 @@ msgstr "Метод"
 msgid "Bypass"
 msgstr "Байпас"
 
+#: tmainform.label8.caption
+msgid "Protection status:"
+msgstr "Статус защиты:"
+
 #: tmainform.localportedit.hint
 msgid "Default: 1080"
 msgstr "По умолчанию: 1080"
@@ -160,6 +164,11 @@ msgstr "Старт Системного Прокси + Автостарт"
 msgid "License: GPLv3   Author: alex_q_2000 (C) 2026   URL: https://github.com/AKotov-dev/SS-Cloak"
 msgstr "Лицензия: GPLv3   Автор: alex_q_2000 (C) 2026   URL: https://github.com/AKotov-dev/SS-Cloak"
 
+#: tmainform.statuslabel.caption
+msgctxt "tmainform.statuslabel.caption"
+msgid "..."
+msgstr ""
+
 #: tmainform.stopbtn.caption
 msgid "Stop"
 msgstr "Стоп"
@@ -176,3 +185,11 @@ msgstr "QR-код"
 #: unit1.sgenerateconf
 msgid "Based on the entered data, a configuration link will be created for the Client (overwrite) and Server (downloadable archive for your VPS). Continue?"
 msgstr "На основании введённых данных будет создана связка конфигураций для Клиента (перезапись) и Сервера (выгружаемый архив для вашего VPS). Продолжить?"
+
+#: unit1.ssecstatusoff
+msgid "Disabled"
+msgstr "Отключено"
+
+#: unit1.ssecstatuson
+msgid "Enabled"
+msgstr "Включено"

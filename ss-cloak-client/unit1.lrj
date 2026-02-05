@@ -32,5 +32,7 @@
 {"hash":242882515,"name":"tmainform.bypassbox.hint","sourcebytes":[66,121,112,97,115,115,105,110,103,32,100,111,109,97,105,110,32,122,111,110,101,115],"value":"Bypassing domain zones"},
 {"hash":13717,"name":"tmainform.bypassbox.text","sourcebytes":[46,114,117],"value":".ru"},
 {"hash":163904718,"name":"tmainform.backupbtn.hint","sourcebytes":[71,101,116,32,116,104,101,32,99,117,114,114,101,110,116,32,208,161,108,105,101,110,116,32,99,111,110,102,105,103,117,114,97,116,105,111,110,10,126,47,46,99,111,110,102,105,103,47,115,115,45,99,108,111,97,107,45,99,108,105,101,110,116,47,99,111,110,102,105,103,46,106,115,111,110],"value":"Get the current \u0421lient configuration\n~/.config/ss-cloak-client/config.json"},
-{"hash":86821766,"name":"tmainform.backupbtn.caption","sourcebytes":[67,108,105,101,110,116,32,99,111,110,102],"value":"Client conf"}
+{"hash":86821766,"name":"tmainform.backupbtn.caption","sourcebytes":[67,108,105,101,110,116,32,99,111,110,102],"value":"Client conf"},
+{"hash":92272298,"name":"tmainform.label8.caption","sourcebytes":[80,114,111,116,101,99,116,105,111,110,32,115,116,97,116,117,115,58],"value":"Protection status:"},
+{"hash":12558,"name":"tmainform.statuslabel.caption","sourcebytes":[46,46,46],"value":"..."}
 ]}

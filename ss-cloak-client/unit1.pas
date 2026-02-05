@@ -17,6 +17,8 @@ type
     BypassBox: TComboBox;
     Image1: TImage;
     Label7: TLabel;
+    Label8: TLabel;
+    StatusLabel: TLabel;
     MethodComboBox: TComboBox;
     DNSComboBox: TComboBox;
     Label5: TLabel;
@@ -68,6 +70,9 @@ var
 resourcestring
   SGenerateConf =
     'Based on the entered data, a configuration link will be created for the Client (overwrite) and Server (downloadable archive for your VPS). Continue?';
+
+  SSecStatusOn = 'Enabled';
+  SSecStatusOff = 'Disabled';
 
 implementation
 

@@ -53,7 +53,7 @@ begin
     ResultStr.LoadFromStream(ScanProcess.Output);
     Synchronize(@ShowStatus);
 
-    Sleep(1000);
+    Sleep(800);
   finally
     ResultStr.Free;
     ScanProcess.Free;
@@ -69,11 +69,13 @@ begin
     begin
       Shape1.Brush.Color := clLime;
       LocalPortEdit.Enabled := False;
+      StatusLabel.Caption:=SSecStatusOn;
     end
     else
     begin
       Shape1.Brush.Color := clYellow;
       LocalPortEdit.Enabled := True;
+      StatusLabel.Caption:=SSecStatusOff;
     end;
 
     Shape1.Repaint;
