@@ -1,12 +1,12 @@
 object MainForm: TMainForm
-  Left = 304
+  Left = 301
   Height = 691
-  Top = 132
-  Width = 950
+  Top = 125
+  Width = 956
   ActiveControl = ServerEdit
   Caption = 'SS-Cloak-Client '
   ClientHeight = 691
-  ClientWidth = 950
+  ClientWidth = 956
   SessionProperties = 'Height;Left;SaveDialog1.InitialDir;SaveDialog2.InitialDir;Top;Width;OpenDialog1.InitialDir'
   LCLVersion = '4.4.0.0'
   OnClose = FormClose
@@ -124,7 +124,7 @@ object MainForm: TMainForm
     Left = 0
     Height = 535
     Top = 136
-    Width = 950
+    Width = 956
     Anchors = [akTop, akLeft, akRight, akBottom]
     BorderSpacing.Top = 10
     Font.Height = -12
@@ -142,7 +142,7 @@ object MainForm: TMainForm
     AnchorSideRight.Side = asrBottom
     AnchorSideBottom.Control = ServerEdit
     AnchorSideBottom.Side = asrBottom
-    Left = 842
+    Left = 848
     Height = 37
     Hint = 'Start System-Wide Proxy + Autostart'
     Top = 5
@@ -160,7 +160,7 @@ object MainForm: TMainForm
     AnchorSideRight.Side = asrBottom
     AnchorSideBottom.Control = CamouflageEdit
     AnchorSideBottom.Side = asrBottom
-    Left = 842
+    Left = 848
     Height = 37
     Hint = 'Stop System-Wide Proxy - Autostart'
     Top = 47
@@ -176,7 +176,7 @@ object MainForm: TMainForm
     AnchorSideTop.Control = StartBtn
     AnchorSideTop.Side = asrCenter
     AnchorSideRight.Control = StartBtn
-    Left = 825
+    Left = 831
     Height = 12
     Top = 17
     Width = 12
@@ -195,7 +195,7 @@ object MainForm: TMainForm
     Left = 0
     Height = 20
     Top = 671
-    Width = 950
+    Width = 956
     Align = alBottom
     Caption = 'License: GPLv3   Author: alex_q_2000 (C) 2026   URL: https://github.com/AKotov-dev/SS-Cloak'
     Font.Color = clGray
@@ -282,14 +282,14 @@ object MainForm: TMainForm
     AnchorSideRight.Control = ServerConfigs
     AnchorSideBottom.Control = DNSComboBox
     AnchorSideBottom.Side = asrBottom
-    Left = 563
+    Left = 569
     Height = 37
     Hint = 'Create Client and Server settings'#10'New UID, PublicKey, PrivateKey, BypassUID, etc.'
     Top = 89
     Width = 207
     Anchors = [akTop, akRight, akBottom]
     BorderSpacing.Right = 3
-    Caption = 'Create configuration'
+    Caption = 'Create configurations'
     ShowHint = True
     ParentShowHint = False
     OnClick = CreateBtnClick
@@ -300,7 +300,7 @@ object MainForm: TMainForm
     AnchorSideRight.Control = QRBtn
     AnchorSideBottom.Control = DNSComboBox
     AnchorSideBottom.Side = asrBottom
-    Left = 773
+    Left = 779
     Height = 37
     Hint = 'Get archived Server configuration'#10'~/.config/ss-cloak-client/server-conf.tar.gz'
     Top = 89
@@ -319,7 +319,7 @@ object MainForm: TMainForm
     AnchorSideRight.Side = asrBottom
     AnchorSideBottom.Control = DNSComboBox
     AnchorSideBottom.Side = asrBottom
-    Left = 905
+    Left = 911
     Height = 37
     Hint = 'Get a connection QR code'
     Top = 89
@@ -373,7 +373,7 @@ object MainForm: TMainForm
     AnchorSideLeft.Control = CreateBtn
     AnchorSideTop.Control = BypassBox
     AnchorSideTop.Side = asrCenter
-    Left = 563
+    Left = 569
     Height = 17
     Top = 15
     Width = 41
@@ -384,9 +384,9 @@ object MainForm: TMainForm
     AnchorSideLeft.Side = asrBottom
     AnchorSideTop.Control = ServerEdit
     AnchorSideTop.Side = asrCenter
-    AnchorSideRight.Control = ClientLoadBtn
+    AnchorSideRight.Control = LoadClientBtn
     AnchorSideRight.Side = asrBottom
-    Left = 606
+    Left = 612
     Height = 37
     Hint = 'Bypassing domain zones'
     Top = 5
@@ -563,14 +563,14 @@ object MainForm: TMainForm
     }
     Visible = False
   end
-  object ClientSaveBtn: TSpeedButton
-    AnchorSideLeft.Control = ClientLoadBtn
+  object SaveClientBtn: TSpeedButton
+    AnchorSideLeft.Control = LoadClientBtn
     AnchorSideLeft.Side = asrBottom
     AnchorSideTop.Control = CamouflageEdit
     AnchorSideRight.Control = StopBtn
     AnchorSideBottom.Control = CamouflageEdit
     AnchorSideBottom.Side = asrBottom
-    Left = 701
+    Left = 707
     Height = 37
     Hint = 'Get the current Сlient configuration'#10'~/.config/ss-cloak-client/config.json'
     Top = 47
@@ -581,20 +581,23 @@ object MainForm: TMainForm
     Caption = 'Save client'
     ShowHint = True
     ParentShowHint = False
-    OnClick = ClientSaveBtnClick
+    OnClick = SaveClientBtnClick
   end
-  object ClientLoadBtn: TSpeedButton
+  object LoadClientBtn: TSpeedButton
     AnchorSideLeft.Control = CreateBtn
     AnchorSideTop.Control = CamouflageEdit
     AnchorSideBottom.Control = CamouflageEdit
     AnchorSideBottom.Side = asrBottom
-    Left = 563
+    Left = 569
     Height = 37
+    Hint = 'Load the Сlient configuration to'#10'~/.config/ss-cloak-client/config.json'
     Top = 47
     Width = 130
     Anchors = [akTop, akLeft, akBottom]
     Caption = 'Load client'
-    OnClick = ClientLoadBtnClick
+    ShowHint = True
+    ParentShowHint = False
+    OnClick = LoadClientBtnClick
   end
   object IniPropStorage1: TIniPropStorage
     StoredValues = <>

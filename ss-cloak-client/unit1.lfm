@@ -1,7 +1,7 @@
 object MainForm: TMainForm
   Left = 301
   Height = 691
-  Top = 128
+  Top = 125
   Width = 956
   ActiveControl = ServerEdit
   Caption = 'SS-Cloak-Client '
@@ -289,7 +289,7 @@ object MainForm: TMainForm
     Width = 207
     Anchors = [akTop, akRight, akBottom]
     BorderSpacing.Right = 3
-    Caption = 'Create configuration'
+    Caption = 'Create configurations'
     ShowHint = True
     ParentShowHint = False
     OnClick = CreateBtnClick
@@ -384,7 +384,7 @@ object MainForm: TMainForm
     AnchorSideLeft.Side = asrBottom
     AnchorSideTop.Control = ServerEdit
     AnchorSideTop.Side = asrCenter
-    AnchorSideRight.Control = ClientLoadBtn
+    AnchorSideRight.Control = LoadClientBtn
     AnchorSideRight.Side = asrBottom
     Left = 612
     Height = 37
@@ -563,8 +563,8 @@ object MainForm: TMainForm
     }
     Visible = False
   end
-  object ClientSaveBtn: TSpeedButton
-    AnchorSideLeft.Control = ClientLoadBtn
+  object SaveClientBtn: TSpeedButton
+    AnchorSideLeft.Control = LoadClientBtn
     AnchorSideLeft.Side = asrBottom
     AnchorSideTop.Control = CamouflageEdit
     AnchorSideRight.Control = StopBtn
@@ -581,20 +581,23 @@ object MainForm: TMainForm
     Caption = 'Save client'
     ShowHint = True
     ParentShowHint = False
-    OnClick = ClientSaveBtnClick
+    OnClick = SaveClientBtnClick
   end
-  object ClientLoadBtn: TSpeedButton
+  object LoadClientBtn: TSpeedButton
     AnchorSideLeft.Control = CreateBtn
     AnchorSideTop.Control = CamouflageEdit
     AnchorSideBottom.Control = CamouflageEdit
     AnchorSideBottom.Side = asrBottom
     Left = 569
     Height = 37
+    Hint = 'Load the Сlient configuration to'#10'~/.config/ss-cloak-client/config.json'
     Top = 47
     Width = 130
     Anchors = [akTop, akLeft, akBottom]
     Caption = 'Load client'
-    OnClick = ClientLoadBtnClick
+    ShowHint = True
+    ParentShowHint = False
+    OnClick = LoadClientBtnClick
   end
   object IniPropStorage1: TIniPropStorage
     StoredValues = <>

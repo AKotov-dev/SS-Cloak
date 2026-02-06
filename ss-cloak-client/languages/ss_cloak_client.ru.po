@@ -34,27 +34,9 @@ msgstr ""
 msgid "SS-Cloak-Client "
 msgstr ""
 
-#: tmainform.clientloadbtn.caption
-msgid "Load client"
-msgstr ""
-
-#: tmainform.clientsavebtn.caption
-msgid "Save client"
-msgstr ""
-
-#: tmainform.clientsavebtn.hint
-#, fuzzy
-msgctxt "tmainform.clientsavebtn.hint"
-msgid ""
-"Get the current Сlient configuration\n"
-"~/.config/ss-cloak-client/config.json"
-msgstr ""
-"Получить актуальную конфигурацию Клиента\n"
-"~/.config/ss-cloak-client/config.json"
-
 #: tmainform.createbtn.caption
 msgctxt "tmainform.createbtn.caption"
-msgid "Create configuration"
+msgid "Create configurations"
 msgstr ""
 
 #: tmainform.createbtn.hint
@@ -98,6 +80,18 @@ msgstr "Метод"
 msgid "Bypass"
 msgstr "Байпас"
 
+#: tmainform.loadclientbtn.caption
+msgctxt "tmainform.loadclientbtn.caption"
+msgid "Load client"
+msgstr ""
+
+#: tmainform.loadclientbtn.hint
+msgctxt "tmainform.loadclientbtn.hint"
+msgid ""
+"Load the Сlient configuration to\n"
+"~/.config/ss-cloak-client/config.json"
+msgstr ""
+
 #: tmainform.localportedit.hint
 msgid "Default: 1080"
 msgstr "По умолчанию: 1080"
@@ -123,6 +117,18 @@ msgstr ""
 msgctxt "tmainform.qrbtn.hint"
 msgid "Get a connection QR code"
 msgstr "Получить QR-код подключения"
+
+#: tmainform.saveclientbtn.caption
+msgctxt "tmainform.saveclientbtn.caption"
+msgid "Save client"
+msgstr ""
+
+#: tmainform.saveclientbtn.hint
+msgctxt "tmainform.saveclientbtn.hint"
+msgid ""
+"Get the current Сlient configuration\n"
+"~/.config/ss-cloak-client/config.json"
+msgstr ""
 
 #: tmainform.serverconfigs.caption
 msgctxt "tmainform.serverconfigs.caption"
@@ -182,4 +188,8 @@ msgstr "QR-код"
 #: unit1.sgenerateconf
 msgid "Based on the entered data, a configuration link will be created for the Client (overwrite) and Server (downloadable archive for your VPS). Continue?"
 msgstr "На основании введённых данных будет создана связка конфигураций для Клиента (перезапись) и Сервера (выгружаемый архив для вашего VPS). Продолжить?"
+
+#: unit1.soverwriteconf
+msgid "Configuration file already exists. Overwrite?"
+msgstr ""
 

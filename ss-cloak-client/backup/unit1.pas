@@ -38,13 +38,13 @@ type
     Shape1: TShape;
     CreateBtn: TSpeedButton;
     ServerConfigs: TSpeedButton;
-    ClientSaveBtn: TSpeedButton;
-    ClientLoadBtn: TSpeedButton;
+    SaveClientBtn: TSpeedButton;
+    LoadClientBtn: TSpeedButton;
     StartBtn: TSpeedButton;
     StaticText1: TStaticText;
     StopBtn: TSpeedButton;
-    procedure ClientLoadBtnClick(Sender: TObject);
-    procedure ClientSaveBtnClick(Sender: TObject);
+    procedure LoadClientBtnClick(Sender: TObject);
+    procedure SaveClientBtnClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -57,6 +57,7 @@ type
     procedure CreateBypass;
     procedure CreateSWProxy;
     procedure CreateGostHTTP;
+    procedure LoadClientConfig;
 
   private
     LastStart, LastStop: QWord; //Debounce
@@ -71,6 +72,8 @@ var
 resourcestring
   SGenerateConf =
     'Based on the entered data, a configuration link will be created for the Client (overwrite) and Server (downloadable archive for your VPS). Continue?';
+
+  SOverwriteConf = 'Configuration file already exists. Overwrite?';
 
 implementation
 
@@ -95,6 +98,60 @@ begin
     ExProcess.Execute;
   finally
     ExProcess.Free;
+  end;
+end;
+
+//Загрузка конфигурации клиента и байпас
+procedure TMainForm.LoadClientConfig;
+var
+  S, config: string;
+begin
+  // Если конфигурация клиента существует - читаем настройки в поля
+  config := GetUserDir + '.config/ss-cloak-client/config.json';
+
+  if FileExists(config) then
+  begin
+    // server
+    if RunCommand('sed', ['-n',
+      's/.*"server"[[:space:]]*:[[:space:]]*"\([^"]*\)".*/\1/p', config], S) then
+      ServerEdit.Text := Trim(S);
+
+    // server_port
+    if RunCommand('sed', ['-n',
+      's/.*"server_port"[[:space:]]*:[[:space:]]*\([0-9]*\).*/\1/p', config], S) then
+      ServerPortEdit.Text := Trim(S);
+
+    // local_port
+    if RunCommand('sed', ['-n',
+      's/.*"local_port"[[:space:]]*:[[:space:]]*\([0-9]*\).*/\1/p', config], S) then
+      LocalPortEdit.Text := Trim(S);
+
+    // method
+    if RunCommand('sed', ['-n',
+      's/.*"method"[[:space:]]*:[[:space:]]*"\([^"]*\)".*/\1/p', config], S) then
+      MethodComboBox.Text := Trim(S);
+
+    // nameserver
+    if RunCommand('sed', ['-n',
+      's/.*"nameserver"[[:space:]]*:[[:space:]]*"\([^"]*\)".*/\1/p', config], S) then
+      DNSComboBox.Text := Trim(S);
+
+    // ServerName (plugin_opts)
+    if RunCommand('sed', ['-n', 's/.*ServerName=\([^;]*\).*/\1/p', config], S) then
+      CamouflageEdit.Text := Trim(S);
+
+    StartBtn.Enabled := True;
+  end
+  else
+    //Иначе блокируем запуск и ждём создания конфигурации клиента
+    StartBtn.Enabled := False;
+
+  // bypass.acl
+  config := GetUserDir + '.config/ss-cloak-client/bypass.acl';
+  if FileExists(config) then
+  begin
+    if RunCommand('grep', ['^\.', config], S) then
+      BypassBox.Text := Trim(S);
   end;
 end;
 
@@ -359,7 +416,6 @@ end;
 
 procedure TMainForm.FormCreate(Sender: TObject);
 var
-  S, config: string;
   bmp: TBitmap;
 begin
   // Устраняем баг иконки приложения
@@ -384,51 +440,8 @@ begin
     GetUserDir + '.config/ss-cloak-client/ss-cloak-client.conf';
   IniPropStorage1.Active := True;
 
-  // Если конфигурация клиента существует - читаем настройки в поля
-  config := GetUserDir + '.config/ss-cloak-client/config.json';
-
-  if FileExists(config) then
-  begin
-    // server
-    if RunCommand('sed', ['-n',
-      's/.*"server"[[:space:]]*:[[:space:]]*"\([^"]*\)".*/\1/p', config], S) then
-      ServerEdit.Text := Trim(S);
-
-    // server_port
-    if RunCommand('sed', ['-n',
-      's/.*"server_port"[[:space:]]*:[[:space:]]*\([0-9]*\).*/\1/p', config], S) then
-      ServerPortEdit.Text := Trim(S);
-
-    // local_port
-    if RunCommand('sed', ['-n',
-      's/.*"local_port"[[:space:]]*:[[:space:]]*\([0-9]*\).*/\1/p', config], S) then
-      LocalPortEdit.Text := Trim(S);
-
-    // method
-    if RunCommand('sed', ['-n',
-      's/.*"method"[[:space:]]*:[[:space:]]*"\([^"]*\)".*/\1/p', config], S) then
-      MethodComboBox.Text := Trim(S);
-
-    // nameserver
-    if RunCommand('sed', ['-n',
-      's/.*"nameserver"[[:space:]]*:[[:space:]]*"\([^"]*\)".*/\1/p', config], S) then
-      DNSComboBox.Text := Trim(S);
-
-    // ServerName (plugin_opts)
-    if RunCommand('sed', ['-n', 's/.*ServerName=\([^;]*\).*/\1/p', config], S) then
-      CamouflageEdit.Text := Trim(S);
-  end
-  else
-    //Иначе блокируем запуск и ждём создания конфигурации клиента
-    StartBtn.Enabled := False;
-
-  // bypass.acl
-  config := GetUserDir + '.config/ss-cloak-client/bypass.acl';
-  if FileExists(config) then
-  begin
-    if RunCommand('grep', ['^\.', config], S) then
-      BypassBox.Text := Trim(S);
-  end;
+  //Загрузка конфигурации клиента и байпас
+  LoadClientConfig;
 end;
 
 procedure TMainForm.FormClose(Sender: TObject; var CloseAction: TCloseAction);
@@ -436,7 +449,7 @@ begin
   IniPropStorage1.Save;
 end;
 
-procedure TMainForm.ClientSaveBtnClick(Sender: TObject);
+procedure TMainForm.SaveClientBtnClick(Sender: TObject);
 begin
   if not FileExists(GetUserDir + '.config/ss-cloak-client/config.json') then Exit;
 
@@ -456,12 +469,24 @@ begin
 end;
 
 //Load Client Configuration
-procedure TMainForm.ClientLoadBtnClick(Sender: TObject);
+procedure TMainForm.LoadClientBtnClick(Sender: TObject);
+var
+  config: string;
+  canCopy: boolean;
 begin
-  if OpenDialog1.Execute then
-    if CopyFile(OpenDialog1.FileName, GetUserDir + '.config/ss-cloak-client/config.json',
-      [cffOverwriteFile]) then
-      StartBtn.Enabled := True;
+  config := GetUserDir + '.config/ss-cloak-client/config.json';
+
+  if not OpenDialog1.Execute then
+    Exit;
+
+  canCopy := True;
+
+  if FileExists(config) then
+    canCopy := MessageDlg(SOverwriteConf, mtConfirmation, [mbYes, mbNo], 0) = mrYes;
+
+  if canCopy then
+    if CopyFile(OpenDialog1.FileName, config, [cffOverwriteFile]) then
+      LoadClientConfig;
 end;
 
 //MainForm, запуск потоков

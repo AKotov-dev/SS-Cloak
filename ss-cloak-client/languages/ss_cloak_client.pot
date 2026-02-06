@@ -24,24 +24,9 @@ msgstr ""
 msgid "SS-Cloak-Client "
 msgstr ""
 
-#: tmainform.clientloadbtn.caption
-msgid "Load client"
-msgstr ""
-
-#: tmainform.clientsavebtn.caption
-msgid "Save client"
-msgstr ""
-
-#: tmainform.clientsavebtn.hint
-msgctxt "tmainform.clientsavebtn.hint"
-msgid ""
-"Get the current Сlient configuration\n"
-"~/.config/ss-cloak-client/config.json"
-msgstr ""
-
 #: tmainform.createbtn.caption
 msgctxt "tmainform.createbtn.caption"
-msgid "Create configuration"
+msgid "Create configurations"
 msgstr ""
 
 #: tmainform.createbtn.hint
@@ -83,6 +68,18 @@ msgstr ""
 msgid "Bypass"
 msgstr ""
 
+#: tmainform.loadclientbtn.caption
+msgctxt "tmainform.loadclientbtn.caption"
+msgid "Load client"
+msgstr ""
+
+#: tmainform.loadclientbtn.hint
+msgctxt "tmainform.loadclientbtn.hint"
+msgid ""
+"Load the Сlient configuration to\n"
+"~/.config/ss-cloak-client/config.json"
+msgstr ""
+
 #: tmainform.localportedit.hint
 msgid "Default: 1080"
 msgstr ""
@@ -107,6 +104,18 @@ msgstr ""
 #: tmainform.qrbtn.hint
 msgctxt "tmainform.qrbtn.hint"
 msgid "Get a connection QR code"
+msgstr ""
+
+#: tmainform.saveclientbtn.caption
+msgctxt "tmainform.saveclientbtn.caption"
+msgid "Save client"
+msgstr ""
+
+#: tmainform.saveclientbtn.hint
+msgctxt "tmainform.saveclientbtn.hint"
+msgid ""
+"Get the current Сlient configuration\n"
+"~/.config/ss-cloak-client/config.json"
 msgstr ""
 
 #: tmainform.serverconfigs.caption
@@ -164,5 +173,9 @@ msgstr ""
 
 #: unit1.sgenerateconf
 msgid "Based on the entered data, a configuration link will be created for the Client (overwrite) and Server (downloadable archive for your VPS). Continue?"
+msgstr ""
+
+#: unit1.soverwriteconf
+msgid "Configuration file already exists. Overwrite?"
 msgstr ""
 
