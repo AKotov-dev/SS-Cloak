@@ -9,7 +9,7 @@ Shadowsocks-Rust client (with GUI) and server (for VPS) with obfuscation.
 + Client: `~/.config/ss-cloak-client`; Service: `/etc/systemd/user/ss-cloak-client.service`
 + Server: `/etc/ss-cloak-server`; Service: `/etc/systemd/system/ss-cloak-server.service`
 
-![](https://github.com/AKotov-dev/SS-Cloak/blob/main/Screenshot1.png)  
+![](https://github.com/AKotov-dev/SS-Cloak/blob/main/Screenshot2.png)  
   
 SS-Cloak-Server
 --
