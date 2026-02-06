@@ -24,6 +24,7 @@ implementation
 
 uses Unit1;
 
+//Опрос порта SOCKS5
 procedure PortScan.Execute;
 var
   ScanProcess: TProcess;
@@ -66,11 +67,13 @@ begin
   end;
 end;
 
+//Безопасное чтение порта
 procedure PortScan.ReadPort;
 begin
   FPortValue := MainForm.LocalPortEdit.Text;
 end;
 
+//Индикация
 procedure PortScan.ShowStatus;
 begin
   with MainForm do
@@ -86,7 +89,7 @@ begin
       LocalPortEdit.Enabled := True;
     end;
 
-    Shape1.Invalidate; // лучше чем Repaint
+    Shape1.Invalidate; //лучше чем Repaint
   end;
 end;
 

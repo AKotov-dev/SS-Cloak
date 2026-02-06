@@ -89,7 +89,7 @@ begin
       LocalPortEdit.Enabled := True;
     end;
 
-    Shape1.Invalidate; //лучше чем Repaint
+    Shape1.Repaint;
   end;
 end;
 
