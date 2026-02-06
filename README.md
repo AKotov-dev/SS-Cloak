@@ -17,7 +17,7 @@ Rent a VPS with a foreign IP address and install a package on it `ss-cloak-serve
 
 SS-Cloak-Client
 --
-Install the `ss-cloak-client` package to your computer, launch the GUI, enter the IP address / Port of your server and click the `Create conf` button. The Client configuration files will be created and you will be prompted to save the `server-conf.tar.gz` archive in order to place the `config.json` and `ckserver.json` files on the server in the working directory `/etc/ss-cloak-server`. With each click of the `Create conf` button, new/unique Client and Server configurations are created with automatic change of `PublicKey`, `PrivateKey`, `Password`, `UID`, etc.  
+Install the `ss-cloak-client` package to your computer, launch the GUI, enter the IP address / Port of your server and click the `Create configurations` button. The Client configuration files will be created and you will be prompted to save the `server-conf.tar.gz` archive in order to place the `config.json` and `ckserver.json` files on the server in the working directory `/etc/ss-cloak-server`. With each click of the `Create conf` button, new/unique Client and Server configurations are created with automatic change of `PublicKey`, `PrivateKey`, `Password`, `UID`, etc.  
   
 After that, start the server: `systemctl restart ss-cloak-server` and the client (`Start` button). Set up a connection in your browser via the SOCKS5 proxy 127.0.0.1:1080. Also check the box `Send DNS requests via SOCKS5 proxy`. When using `SWP` (System-wide proxy) mode, `Chromium-based` browsers receive proxy settings `automatically`: the proxy is `enabled and disabled on the fly`, without the need for manual intervention. You can check your new location here: https://whoer.net
 
