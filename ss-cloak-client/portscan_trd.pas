@@ -51,7 +51,9 @@ begin
     ScanProcess.Execute;
 
     ResultStr.LoadFromStream(ScanProcess.Output);
-    Synchronize(@ShowStatus);
+
+    if not Terminated then
+      Synchronize(@ShowStatus);
 
     Sleep(800);
   finally
