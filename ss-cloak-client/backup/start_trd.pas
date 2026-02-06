@@ -24,8 +24,8 @@ uses Unit1;
 procedure ShowLogTRD.Execute;
 var
   ExProcess: TProcess;
-  Buffer: array[0..255] of Byte;
-  ReadCnt: LongInt;
+  Buffer: array[0..255] of byte;
+  ReadCnt: longint;
   S, Line: string;
   P: SizeInt;
 begin
@@ -39,11 +39,12 @@ begin
 
     ExProcess.Executable := 'bash';
     ExProcess.Parameters.Add('-c');
+
     ExProcess.Parameters.Add(
       '[[ -f ~/.config/ss-cloak-client/ss-cloak-client.log ]] || touch ' +
       '~/.config/ss-cloak-client/ss-cloak-client.log && ' +
-      'tail -n 100 -f ~/.config/ss-cloak-client/ss-cloak-client.log'
-    );
+      'tail -n 100 -f ~/.config/ss-cloak-client/ss-cloak-client.log ' +
+      '2> >(grep -v truncated >&2)');
 
     ExProcess.Options := [poUsePipes, poStderrToOutPut];
     ExProcess.Execute;
@@ -92,10 +93,10 @@ end;
 
 procedure ShowLogTRD.ShowLog;
 var
-  i: Integer;
+  i: integer;
 begin
   for i := 0 to Result.Count - 1 do
-    MainForm.LogMemo.Lines.Add(Result[i]);
+    MainForm.LogMemo.Lines.Add(#9 + Result[i]);
 
   Result.Clear;
 
@@ -108,4 +109,3 @@ begin
 end;
 
 end.
-

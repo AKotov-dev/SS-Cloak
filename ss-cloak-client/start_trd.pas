@@ -39,11 +39,6 @@ begin
 
     ExProcess.Executable := 'bash';
     ExProcess.Parameters.Add('-c');
-  {  ExProcess.Parameters.Add(
-      '[[ -f ~/.config/ss-cloak-client/ss-cloak-client.log ]] || touch ' +
-      '~/.config/ss-cloak-client/ss-cloak-client.log && ' +
-      'tail -n 100 -f ~/.config/ss-cloak-client/ss-cloak-client.log'
-    ); }
 
     ExProcess.Parameters.Add(
       '[[ -f ~/.config/ss-cloak-client/ss-cloak-client.log ]] || touch ' +
@@ -101,7 +96,7 @@ var
   i: integer;
 begin
   for i := 0 to Result.Count - 1 do
-    MainForm.LogMemo.Lines.Add(Result[i]);
+    MainForm.LogMemo.Lines.Add(' ' + Result[i]);
 
   Result.Clear;
 
