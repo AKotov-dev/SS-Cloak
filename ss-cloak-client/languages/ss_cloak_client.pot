@@ -76,7 +76,7 @@ msgstr ""
 #: tmainform.loadclientbtn.hint
 msgctxt "tmainform.loadclientbtn.hint"
 msgid ""
-"Load the Сlient configuration to\n"
+"Load the Сlient configuration\n"
 "~/.config/ss-cloak-client/config.json"
 msgstr ""
 
@@ -114,7 +114,7 @@ msgstr ""
 #: tmainform.saveclientbtn.hint
 msgctxt "tmainform.saveclientbtn.hint"
 msgid ""
-"Get the current Сlient configuration\n"
+"Save the Сlient configuration\n"
 "~/.config/ss-cloak-client/config.json"
 msgstr ""
 

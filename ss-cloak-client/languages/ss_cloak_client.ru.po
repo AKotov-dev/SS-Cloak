@@ -88,9 +88,11 @@ msgstr ""
 #: tmainform.loadclientbtn.hint
 msgctxt "tmainform.loadclientbtn.hint"
 msgid ""
-"Load the Сlient configuration to\n"
+"Load the Сlient configuration\n"
 "~/.config/ss-cloak-client/config.json"
 msgstr ""
+"Загрузить конфигурацию Клиента\n"
+"~/.config/ss-cloak-client/config.json"
 
 #: tmainform.localportedit.hint
 msgid "Default: 1080"
@@ -126,9 +128,11 @@ msgstr ""
 #: tmainform.saveclientbtn.hint
 msgctxt "tmainform.saveclientbtn.hint"
 msgid ""
-"Get the current Сlient configuration\n"
+"Save the Сlient configuration\n"
 "~/.config/ss-cloak-client/config.json"
 msgstr ""
+"Сохранить конфигурацию Клиента\n"
+"~/.config/ss-cloak-client/config.json"
 
 #: tmainform.serverconfigs.caption
 msgctxt "tmainform.serverconfigs.caption"
@@ -191,5 +195,4 @@ msgstr "На основании введённых данных будет со�
 
 #: unit1.soverwriteconf
 msgid "Configuration file already exists. Overwrite?"
-msgstr ""
-
+msgstr "Конфигурация существует. Перезаписать?"

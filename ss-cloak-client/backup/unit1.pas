@@ -486,7 +486,10 @@ begin
 
   if canCopy then
     if CopyFile(OpenDialog1.FileName, config, [cffOverwriteFile]) then
+    begin
+      StopBtn.Click;
       LoadClientConfig;
+    end;
 end;
 
 //MainForm, запуск потоков
