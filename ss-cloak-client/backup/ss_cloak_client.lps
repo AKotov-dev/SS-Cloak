@@ -38,9 +38,10 @@
       <Unit>
         <Filename Value="ss_cloak_client.pas"/>
         <IsPartOfProject Value="True"/>
-        <EditorIndex Value="-1"/>
+        <EditorIndex Value="3"/>
         <CursorPos X="27"/>
         <UsageCount Value="64"/>
+        <Loaded Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="unit1.pas"/>
@@ -49,6 +50,7 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="Unit1"/>
+        <IsVisibleTab Value="True"/>
         <CursorPos X="13"/>
         <UsageCount Value="64"/>
         <Loaded Value="True"/>
@@ -57,15 +59,15 @@
       <Unit>
         <Filename Value="start_trd.pas"/>
         <IsPartOfProject Value="True"/>
-        <EditorIndex Value="-1"/>
+        <EditorIndex Value="4"/>
         <CursorPos X="17"/>
         <UsageCount Value="60"/>
+        <Loaded Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="portscan_trd.pas"/>
         <IsPartOfProject Value="True"/>
-        <IsVisibleTab Value="True"/>
-        <EditorIndex Value="1"/>
+        <EditorIndex Value="2"/>
         <CursorPos X="20"/>
         <UsageCount Value="60"/>
         <Loaded Value="True"/>
@@ -77,9 +79,10 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="Unit2"/>
-        <EditorIndex Value="-1"/>
+        <EditorIndex Value="1"/>
         <CursorPos X="13"/>
         <UsageCount Value="47"/>
+        <Loaded Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="/usr/share/fpcsrc/rtl/objpas/sysutils/finah.inc"/>
@@ -95,7 +98,7 @@
         <DefaultSyntaxHighlighter Value="LFM"/>
       </Unit>
     </Units>
-    <JumpHistory HistoryIndex="29">
+    <JumpHistory HistoryIndex="25">
       <Position>
         <Filename Value="unit1.pas"/>
         <Caret Line="439" Column="5" TopLine="429"/>
@@ -199,22 +202,6 @@
       <Position>
         <Filename Value="unit1.pas"/>
         <Caret Line="619" Column="23" TopLine="612"/>
-      </Position>
-      <Position>
-        <Filename Value="portscan_trd.pas"/>
-        <Caret Line="57" Column="25" TopLine="52"/>
-      </Position>
-      <Position>
-        <Filename Value="portscan_trd.pas"/>
-        <Caret Line="64" Column="9" TopLine="63"/>
-      </Position>
-      <Position>
-        <Filename Value="portscan_trd.pas"/>
-        <Caret Line="52" Column="10" TopLine="35"/>
-      </Position>
-      <Position>
-        <Filename Value="portscan_trd.pas"/>
-        <Caret Line="51" Column="43" TopLine="36"/>
       </Position>
     </JumpHistory>
     <RunParams>
