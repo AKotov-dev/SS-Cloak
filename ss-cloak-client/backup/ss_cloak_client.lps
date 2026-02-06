@@ -40,7 +40,7 @@
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="27"/>
-        <UsageCount Value="64"/>
+        <UsageCount Value="68"/>
       </Unit>
       <Unit>
         <Filename Value="unit1.pas"/>
@@ -49,8 +49,9 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="Unit1"/>
-        <CursorPos X="13"/>
-        <UsageCount Value="64"/>
+        <TopLine Value="314"/>
+        <CursorPos X="3" Y="319"/>
+        <UsageCount Value="68"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit>
@@ -59,7 +60,7 @@
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="17"/>
-        <UsageCount Value="60"/>
+        <UsageCount Value="64"/>
       </Unit>
       <Unit>
         <Filename Value="portscan_trd.pas"/>
@@ -67,7 +68,7 @@
         <IsVisibleTab Value="True"/>
         <EditorIndex Value="1"/>
         <CursorPos X="20"/>
-        <UsageCount Value="60"/>
+        <UsageCount Value="64"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
@@ -79,7 +80,7 @@
         <UnitName Value="Unit2"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="13"/>
-        <UsageCount Value="47"/>
+        <UsageCount Value="51"/>
       </Unit>
       <Unit>
         <Filename Value="/usr/share/fpcsrc/rtl/objpas/sysutils/finah.inc"/>
@@ -94,68 +95,14 @@
         <UsageCount Value="10"/>
         <DefaultSyntaxHighlighter Value="LFM"/>
       </Unit>
+      <Unit>
+        <Filename Value="../../.cache/.fr-7KGMK3/SS-Cloak-0.4/ss-cloak-client/portscan_trd.pas"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos Y="16"/>
+        <UsageCount Value="10"/>
+      </Unit>
     </Units>
-    <JumpHistory HistoryIndex="25">
-      <Position>
-        <Filename Value="unit1.pas"/>
-        <Caret Line="439" Column="5" TopLine="429"/>
-      </Position>
-      <Position>
-        <Filename Value="unit1.pas"/>
-        <Caret Line="318" Column="13" TopLine="304"/>
-      </Position>
-      <Position>
-        <Filename Value="unit1.pas"/>
-        <Caret Line="430" TopLine="428"/>
-      </Position>
-      <Position>
-        <Filename Value="unit1.pas"/>
-        <Caret Line="429" TopLine="427"/>
-      </Position>
-      <Position>
-        <Filename Value="unit1.pas"/>
-        <Caret Line="410" TopLine="397"/>
-      </Position>
-      <Position>
-        <Filename Value="unit1.pas"/>
-        <Caret Line="455" TopLine="440"/>
-      </Position>
-      <Position>
-        <Filename Value="unit1.pas"/>
-        <Caret Line="479" TopLine="466"/>
-      </Position>
-      <Position>
-        <Filename Value="unit1.pas"/>
-        <Caret Column="13"/>
-      </Position>
-      <Position>
-        <Filename Value="unit1.pas"/>
-        <Caret Line="74" Column="26" TopLine="58"/>
-      </Position>
-      <Position>
-        <Filename Value="unit1.pas"/>
-        <Caret Column="13"/>
-      </Position>
-      <Position>
-        <Filename Value="unit1.pas"/>
-        <Caret Line="71" TopLine="58"/>
-      </Position>
-      <Position>
-        <Filename Value="unit1.pas"/>
-        <Caret Line="72" TopLine="59"/>
-      </Position>
-      <Position>
-        <Filename Value="unit1.pas"/>
-        <Caret Line="73" TopLine="60"/>
-      </Position>
-      <Position>
-        <Filename Value="unit1.pas"/>
-        <Caret Line="441" Column="3" TopLine="439"/>
-      </Position>
-      <Position>
-        <Filename Value="unit1.pas"/>
-        <Caret Line="462" Column="90" TopLine="439"/>
-      </Position>
+    <JumpHistory HistoryIndex="29">
       <Position>
         <Filename Value="unit1.pas"/>
         <Caret Line="448" Column="45" TopLine="433"/>
@@ -199,6 +146,82 @@
       <Position>
         <Filename Value="unit1.pas"/>
         <Caret Line="619" Column="23" TopLine="612"/>
+      </Position>
+      <Position>
+        <Filename Value="unit1.pas"/>
+        <Caret Column="13"/>
+      </Position>
+      <Position>
+        <Filename Value="portscan_trd.pas"/>
+        <Caret Column="20"/>
+      </Position>
+      <Position>
+        <Filename Value="unit1.pas"/>
+        <Caret Line="326" Column="78" TopLine="314"/>
+      </Position>
+      <Position>
+        <Filename Value="unit1.pas"/>
+        <Caret Line="327" Column="78" TopLine="315"/>
+      </Position>
+      <Position>
+        <Filename Value="unit1.pas"/>
+        <Caret Line="395" Column="27" TopLine="376"/>
+      </Position>
+      <Position>
+        <Filename Value="unit1.pas"/>
+        <Caret Line="324" Column="36" TopLine="314"/>
+      </Position>
+      <Position>
+        <Filename Value="portscan_trd.pas"/>
+        <Caret Line="65" Column="47" TopLine="57"/>
+      </Position>
+      <Position>
+        <Filename Value="portscan_trd.pas"/>
+        <Caret Line="13" Column="23"/>
+      </Position>
+      <Position>
+        <Filename Value="portscan_trd.pas"/>
+        <Caret Line="43" Column="26" TopLine="33"/>
+      </Position>
+      <Position>
+        <Filename Value="portscan_trd.pas"/>
+        <Caret Line="16" Column="5" TopLine="7"/>
+      </Position>
+      <Position>
+        <Filename Value="unit1.pas"/>
+        <Caret Line="98" Column="3" TopLine="53"/>
+      </Position>
+      <Position>
+        <Filename Value="portscan_trd.pas"/>
+        <Caret Line="80" Column="41" TopLine="72"/>
+      </Position>
+      <Position>
+        <Filename Value="unit1.pas"/>
+        <Caret Line="321" Column="3" TopLine="315"/>
+      </Position>
+      <Position>
+        <Filename Value="portscan_trd.pas"/>
+        <Caret Line="4" Column="17"/>
+      </Position>
+      <Position>
+        <Filename Value="portscan_trd.pas"/>
+        <Caret Line="33" Column="16" TopLine="30"/>
+      </Position>
+      <Position>
+        <Filename Value="portscan_trd.pas"/>
+        <Caret Line="52" Column="52" TopLine="31"/>
+      </Position>
+      <Position>
+        <Filename Value="unit1.pas"/>
+        <Caret Line="393" TopLine="387"/>
+      </Position>
+      <Position>
+        <Filename Value="unit1.pas"/>
+        <Caret Line="392" TopLine="310"/>
+      </Position>
+      <Position>
+        <Filename Value="unit1.pas"/>
+        <Caret Line="400" Column="3" TopLine="395"/>
       </Position>
     </JumpHistory>
     <RunParams>

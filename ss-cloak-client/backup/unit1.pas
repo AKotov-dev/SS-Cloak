@@ -17,6 +17,7 @@ type
     BypassBox: TComboBox;
     Image1: TImage;
     Label7: TLabel;
+    Label8: TLabel;
     MethodComboBox: TComboBox;
     DNSComboBox: TComboBox;
     Label5: TLabel;
@@ -94,7 +95,7 @@ begin
     ExProcess.Executable := '/bin/bash';
     ExProcess.Parameters.Add('-c');
     ExProcess.Parameters.Add(command);
-    //  ExProcess.Options := ExProcess.Options + [poWaitOnExit];
+    ExProcess.Options := ExProcess.Options + [poWaitOnExit];
     ExProcess.Execute;
   finally
     ExProcess.Free;
@@ -316,11 +317,12 @@ procedure TMainForm.StartBtnClick(Sender: TObject);
 var
   JSONFile, Cmd, S: string;
 begin
-  //От частого нажатия
-  Application.ProcessMessages;
-
   //Проверяем, прошло ли более 1000 мс с последнего нажатия (Debounce)
-  if GetTickCount64 - LastStart < 2000 then Exit;
+  if GetTickCount64 - LastStart < 1000 then Exit;
+
+  Label8.Visible := True;
+  Shape1.Brush.Color := clYellow;
+  Application.ProcessMessages;
 
   //Останавливаем ssclient и gost
   StartProcess('systemctl --user stop ss-cloak-client.service gost.service');
@@ -388,6 +390,8 @@ begin
   //Включение Автозагрузки
   RunCommand('/bin/bash', ['-c',
     'systemctl --user enable ss-cloak-client.service gost.service'], S);
+
+  label8.Visible := False;
 
   LastStart := GetTickCount64;
 end;

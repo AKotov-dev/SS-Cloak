@@ -196,3 +196,4 @@ msgstr "На основании введённых данных будет со�
 #: unit1.soverwriteconf
 msgid "Configuration file already exists. Overwrite?"
 msgstr "Конфигурация существует. Перезаписать?"
+

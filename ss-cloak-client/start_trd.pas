@@ -9,6 +9,7 @@ uses
 
 type
   ShowLogTRD = class(TThread)
+
   protected
     Result: TStringList;
 

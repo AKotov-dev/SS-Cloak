@@ -96,7 +96,7 @@ var
   i: integer;
 begin
   for i := 0 to Result.Count - 1 do
-    MainForm.LogMemo.Lines.Add(#9 + Result[i]);
+    MainForm.LogMemo.Lines.Add(' ' + Result[i]);
 
   Result.Clear;
 
