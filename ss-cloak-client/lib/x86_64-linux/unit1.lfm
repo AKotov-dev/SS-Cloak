@@ -542,7 +542,7 @@ object MainForm: TMainForm
     Height = 37
     Hint = 'Bypassing domain zones'
     Top = 5
-    Width = 87
+    Width = 90
     Anchors = [akTop, akLeft, akRight]
     BorderSpacing.Left = 2
     Font.Style = [fsBold]
@@ -722,14 +722,14 @@ object MainForm: TMainForm
     AnchorSideRight.Control = StopBtn
     AnchorSideBottom.Control = CamouflageEdit
     AnchorSideBottom.Side = asrBottom
-    Left = 704
+    Left = 707
     Height = 37
     Hint = 'Save the Сlient configuration'#10'~/.config/ss-cloak-client/config.json'
     Top = 47
     Width = 133
     Anchors = [akTop, akLeft, akRight, akBottom]
     BorderSpacing.Left = 8
-    BorderSpacing.Right = 11
+    BorderSpacing.Right = 8
     Caption = 'Save client'
     Glyph.Data = {
       36090000424D3609000000000000360000002800000018000000180000000100
@@ -820,7 +820,7 @@ object MainForm: TMainForm
     Height = 37
     Hint = 'Load the Сlient configuration'#10'~/.config/ss-cloak-client/config.json'
     Top = 47
-    Width = 130
+    Width = 133
     Anchors = [akTop, akLeft, akBottom]
     Caption = 'Load client'
     Glyph.Data = {
