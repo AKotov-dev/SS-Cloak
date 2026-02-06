@@ -94,15 +94,7 @@
         <DefaultSyntaxHighlighter Value="LFM"/>
       </Unit>
     </Units>
-    <JumpHistory HistoryIndex="27">
-      <Position>
-        <Filename Value="unit1.pas"/>
-        <Caret Line="441" Column="5" TopLine="427"/>
-      </Position>
-      <Position>
-        <Filename Value="unit1.pas"/>
-        <Caret Line="339" Column="55" TopLine="325"/>
-      </Position>
+    <JumpHistory HistoryIndex="25">
       <Position>
         <Filename Value="unit1.pas"/>
         <Caret Line="439" Column="5" TopLine="429"/>

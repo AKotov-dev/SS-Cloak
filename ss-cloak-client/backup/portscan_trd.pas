@@ -5,67 +5,77 @@ unit portscan_trd;
 interface
 
 uses
-  Classes, Forms, Controls, SysUtils, Process, Graphics;
+  Classes, SysUtils, Process, Graphics;
 
 type
   PortScan = class(TThread)
   private
-
-    { Private declarations }
-  protected
-  var
+    FPortValue: string;
     ResultStr: TStringList;
 
-    procedure Execute; override;
+    procedure ReadPort;
     procedure ShowStatus;
 
+  protected
+    procedure Execute; override;
   end;
 
 implementation
 
-uses unit1;
-
-  { TRD }
+uses Unit1;
 
 procedure PortScan.Execute;
 var
   ScanProcess: TProcess;
 begin
-  FreeOnTerminate := True; //Уничтожать по завершении
+  FreeOnTerminate := True;
 
-  while not Terminated do
+  ResultStr := TStringList.Create;
+  ScanProcess := TProcess.Create(nil);
+
   try
-    ResultStr := TStringList.Create;
-
-    ScanProcess := TProcess.Create(nil);
-
     ScanProcess.Executable := '/bin/bash';
     ScanProcess.Parameters.Add('-c');
-    ScanProcess.Options := [poUsePipes, poWaitOnExit]; // poStderrToOutPut,
+    ScanProcess.Options := [poUsePipes, poWaitOnExit];
 
-    //Проверка локального порта клиента
-    ScanProcess.Parameters.Add(
-      '[[ $(ss -ltn | grep 127.0.0.1:' + MainForm.LocalPortEdit.Text +
-      ') ]] && echo "yes"');
+    while not Terminated do
+    begin
+      // читаем порт из UI безопасно
+      Synchronize(@ReadPort);
 
-    ScanProcess.Execute;
+      ResultStr.Clear;
+      ScanProcess.Parameters.Clear;
+      ScanProcess.Parameters.Add('-c');
 
-    ResultStr.LoadFromStream(ScanProcess.Output);
-    Synchronize(@ShowStatus);
+      ScanProcess.Parameters.Add(
+        'ss -ltn | grep -q "127\.0\.0\.1:' + FPortValue + ' " && echo yes');
 
-    Sleep(800);
+      ScanProcess.Execute;
+
+      ResultStr.LoadFromStream(ScanProcess.Output);
+
+      if not Terminated then
+        Synchronize(@ShowStatus);
+
+      Sleep(800);
+    end;
+
   finally
-    ResultStr.Free;
     ScanProcess.Free;
+    ResultStr.Free;
   end;
 end;
 
-//Отображение статуса
+procedure PortScan.ReadPort;
+begin
+  FPortValue := MainForm.LocalPortEdit.Text;
+end;
+
 procedure PortScan.ShowStatus;
 begin
   with MainForm do
   begin
-    if ResultStr.Count <> 0 then
+    if ResultStr.Count > 0 then
     begin
       Shape1.Brush.Color := clLime;
       LocalPortEdit.Enabled := False;
@@ -76,7 +86,7 @@ begin
       LocalPortEdit.Enabled := True;
     end;
 
-    Shape1.Repaint;
+    Shape1.Invalidate; // лучше чем Repaint
   end;
 end;
 
