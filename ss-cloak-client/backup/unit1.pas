@@ -17,7 +17,6 @@ type
     BypassBox: TComboBox;
     Image1: TImage;
     Label7: TLabel;
-    Label8: TLabel;
     MethodComboBox: TComboBox;
     DNSComboBox: TComboBox;
     Label5: TLabel;
@@ -320,7 +319,6 @@ begin
   //Проверяем, прошло ли более 1000 мс с последнего нажатия (Debounce)
   if GetTickCount64 - LastStart < 1000 then Exit;
 
-  Label8.Visible := True;
   Shape1.Brush.Color := clYellow;
   Application.ProcessMessages;
 
@@ -390,8 +388,6 @@ begin
   //Включение Автозагрузки
   RunCommand('/bin/bash', ['-c',
     'systemctl --user enable ss-cloak-client.service gost.service'], S);
-
-  label8.Visible := False;
 
   LastStart := GetTickCount64;
 end;

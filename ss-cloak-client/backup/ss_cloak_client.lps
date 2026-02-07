@@ -38,10 +38,9 @@
       <Unit>
         <Filename Value="ss_cloak_client.pas"/>
         <IsPartOfProject Value="True"/>
-        <EditorIndex Value="3"/>
+        <EditorIndex Value="-1"/>
         <CursorPos X="27"/>
         <UsageCount Value="68"/>
-        <Loaded Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="unit1.pas"/>
@@ -50,6 +49,7 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="Unit1"/>
+        <IsVisibleTab Value="True"/>
         <CursorPos X="13"/>
         <UsageCount Value="68"/>
         <Loaded Value="True"/>
@@ -58,19 +58,16 @@
       <Unit>
         <Filename Value="start_trd.pas"/>
         <IsPartOfProject Value="True"/>
-        <IsVisibleTab Value="True"/>
-        <EditorIndex Value="4"/>
+        <EditorIndex Value="-1"/>
         <CursorPos X="17"/>
         <UsageCount Value="64"/>
-        <Loaded Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="portscan_trd.pas"/>
         <IsPartOfProject Value="True"/>
-        <EditorIndex Value="2"/>
+        <EditorIndex Value="-1"/>
         <CursorPos X="20"/>
         <UsageCount Value="64"/>
-        <Loaded Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="unit2.pas"/>
@@ -79,10 +76,9 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="Unit2"/>
-        <EditorIndex Value="1"/>
+        <EditorIndex Value="-1"/>
         <CursorPos X="13"/>
         <UsageCount Value="51"/>
-        <Loaded Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="/usr/share/fpcsrc/rtl/objpas/sysutils/finah.inc"/>

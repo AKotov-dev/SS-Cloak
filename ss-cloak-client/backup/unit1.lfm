@@ -903,19 +903,6 @@ object MainForm: TMainForm
     ParentShowHint = False
     OnClick = LoadClientBtnClick
   end
-  object Label8: TLabel
-    AnchorSideTop.Control = Shape1
-    AnchorSideTop.Side = asrCenter
-    AnchorSideRight.Control = Shape1
-    Left = 803
-    Height = 17
-    Top = 15
-    Width = 24
-    Anchors = [akTop, akRight]
-    BorderSpacing.Right = 4
-    Caption = '>>>'
-    Visible = False
-  end
   object IniPropStorage1: TIniPropStorage
     StoredValues = <>
     Active = False
