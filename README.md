@@ -27,7 +27,7 @@ Starting with `ss-cloak-client v0.4.1`, automatic `system-wide proxy` and `domai
 
 The SWP mode hermetically seals the `GUI session`, including DNS resolution (browsers and other GUI applications). However, in desktop environments based on `gsettings + libproxy`, the `env/CLI` layer receives proxy variables as `all_proxy/ALL_PROXY=socks://…`. This results in `SOCKS4‑level usage`, meaning `DNS resolution is performed locally`, unlike `socks5h://`, where DNS is resolved through the proxy.
   
-![](https://github.com/AKotov-dev/SS-Cloak/blob/main/scheme.png)  
+![](https://github.com/AKotov-dev/SS-Cloak/blob/main/scheme1.png)  
   
 For `reliable use of System‑wide Proxy mode` in `XFCE`, `LXDE` (as well as `i3, IceWM, OpenBox`), it is strongly recommended to install [XDE‑Proxy‑GUI](https://github.com/AKotov-dev/xde-proxy-gui), which ensures correct and consistent proxy handling in GUI sessions.
 
