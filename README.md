@@ -26,7 +26,9 @@ After that, start the server: `systemctl restart ss-cloak-server` and the client
 Starting with `ss-cloak-client v0.4.1`, automatic `system-wide proxy` and `domain zone bypass` (direct connections bypassing proxies, such as `.ru`, `.ir`, etc.) were introduced. `SWP` starts immediately after clicking the `Start` button, and the server switches to `autostart mode` after a computer reboot. Clicking the `Stop` button disables proxy autostart and `SWP` mode. 
 
 The SWP mode hermetically seals the `GUI session`, including DNS resolution (browsers and other GUI applications). However, in desktop environments based on `gsettings + libproxy`, the `env/CLI` layer receives proxy variables as `all_proxy/ALL_PROXY=socks://…`. This results in `SOCKS4‑level usage`, meaning `DNS resolution is performed locally`, unlike `socks5h://`, where DNS is resolved through the proxy.
-
+  
+![](https://github.com/AKotov-dev/SS-Cloak/blob/main/scheme.png)  
+  
 For `reliable use of System‑wide Proxy mode` in `XFCE`, `LXDE` (as well as `i3, IceWM, OpenBox`), it is strongly recommended to install [XDE‑Proxy‑GUI](https://github.com/AKotov-dev/xde-proxy-gui), which ensures correct and consistent proxy handling in GUI sessions.
 
 For `robust DNS protection against MITM attacks` when a proxy is `not used`, it is `recommended` to use [DNSCrypt‑GUI](https://github.com/AKotov-dev/dnscrypt-gui).
