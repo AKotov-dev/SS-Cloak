@@ -32,7 +32,8 @@ The SWP mode hermetically seals the `GUI session`, including DNS resolution (bro
 For `reliable use of System‑wide Proxy mode` in `XFCE`, `LXDE` (as well as `i3, IceWM, OpenBox`), it is strongly recommended to install [XDE‑Proxy‑GUI](https://github.com/AKotov-dev/xde-proxy-gui), which ensures correct and consistent proxy handling in GUI sessions.
 
 For `robust DNS protection against MITM attacks` when a proxy is `not used`, it is `recommended` to use [DNSCrypt‑GUI](https://github.com/AKotov-dev/dnscrypt-gui).
-
+  
+**Note**
 + If System‑wide Proxy is not feasible in your desktop environment, a practical alternative is to use browser‑level proxy extensions, such as `Socks5 Configurator`
 + To switch proxies on the fly, use Chromium-based browsers (Chrome, Chromium, Brave, Edge). Firefox in most cases requires manual proxy activation and configuration
 + When setting up a proxy, don't forget about the presence of a firewall
