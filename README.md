@@ -34,9 +34,9 @@ For `reliable use of System‑wide Proxy mode` in `XFCE`, `LXDE` (as well as `i3
 For `robust DNS protection against MITM attacks` when a proxy is `not used`, it is `recommended` to use [DNSCrypt‑GUI](https://github.com/AKotov-dev/dnscrypt-gui).
   
 **Note**
-+ If System‑wide Proxy is not feasible in your desktop environment, a practical alternative is to use browser‑level proxy extensions, such as `Socks5 Configurator`
-+ To switch proxies on the fly, use Chromium-based browsers (Chrome, Chromium, Brave, Edge). Firefox in most cases requires manual proxy activation and configuration
-+ When setting up a proxy, don't forget about the presence of a firewall
++ If System‑wide Proxy is not feasible in your desktop environment, a practical alternative is to use browser‑level proxy extensions, such as `Socks5 Configurator`.
++ To switch proxies on the fly, use `Chromium-based browsers` (Chrome, Chromium, Brave, Edge, etc.). Firefox in most cases requires manual proxy activation and configuration.
++ When setting up a proxy, don't forget about the presence of a `firewall`.
 + By default, the `.ru` zone is bypassed. If complete anonymity is required, select any other zone from the list and click `Start`.
   
 **Useful links:** [Shadowsocks-Rust](https://github.com/shadowsocks/shadowsocks-rust), [Cloak](https://github.com/cbeuw/Cloak), [GO Simple Tunnel](https://github.com/ginuerzh/gost). **Similar project:** [SS-Obfuscator](https://github.com/AKotov-dev/SS-Obfuscator).
