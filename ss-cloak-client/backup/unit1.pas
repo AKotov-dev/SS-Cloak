@@ -557,7 +557,7 @@ begin
     S.Add('    \"local_address\": \"127.0.0.1\",');
     S.Add('    \"local_port\": $local_client_port,');
     S.Add('    \"method\": \"$encrypt_method\",');
-    S.Add('    \"mode\": \"tcp_and_udp\",');
+    S.Add('    \"mode\": \"tcp_only\",');
     S.Add('    \"password\": \"$password\",');
     S.Add('    \"timeout\": 150,');
     S.Add('    \"nameserver\": \"$nameserver\",');
@@ -574,7 +574,7 @@ begin
     S.Add('{');
     S.Add('    \"server\": \"127.0.0.1\",');
     S.Add('    \"server_port\": 50346,');
-    S.Add('    \"mode\": \"tcp_and_udp\",');
+    S.Add('    \"mode\": \"tcp_only\",');
     S.Add('    \"password\": \"$password\",');
     S.Add('    \"timeout\": 300,');
     S.Add('    \"method\": \"$encrypt_method\",');
