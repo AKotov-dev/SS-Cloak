@@ -38,5 +38,6 @@ For `robust DNS protection against MITM attacks` when a proxy is `not used`, it 
 + To switch proxies on the fly, use `Chromium-based browsers` (Chrome, Chromium, Brave, Edge, etc.). Firefox in most cases requires manual proxy activation and configuration.
 + When setting up a proxy, don't forget about the presence of a `firewall`.
 + By default, the `.ru` zone is bypassed. If complete anonymity is required, select any other zone from the list and click `Start`.
++ For Android smartphones, it is convenient to use [shadowsocks-android](https://github.com/shadowsocks/shadowsocks-android/releases) + [Cloak-android](https://github.com/cbeuw/Cloak-android/releases).
   
 **Useful links:** [Shadowsocks-Rust](https://github.com/shadowsocks/shadowsocks-rust), [Cloak](https://github.com/cbeuw/Cloak), [GO Simple Tunnel](https://github.com/ginuerzh/gost). **Similar project:** [SS-Obfuscator](https://github.com/AKotov-dev/SS-Obfuscator).
