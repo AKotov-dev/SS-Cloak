@@ -1,4 +1,4 @@
-unit portscan_trd;
+unit service_state_trd;
 
 {$mode objfpc}{$H+}
 
@@ -8,7 +8,7 @@ uses
   Classes, Forms, Controls, SysUtils, Process, Graphics;
 
 type
-  PortScan = class(TThread)
+  ServiceState = class(TThread)
   private
 
     { Private declarations }
@@ -27,7 +27,7 @@ uses unit1;
 
   { TRD }
 
-procedure PortScan.Execute;
+procedure ServiceState.Execute;
 var
   ScanProcess: TProcess;
 begin
@@ -39,19 +39,21 @@ begin
 
     ScanProcess := TProcess.Create(nil);
 
-    ScanProcess.Executable := '/bin/bash';
-    ScanProcess.Parameters.Add('-c');
+    ScanProcess.Executable := 'systemctl';
+    ScanProcess.Parameters.Add('--user');
+    ScanProcess.Parameters.Add('is-active');
+    ScanProcess.Parameters.Add('ss-cloak-client.service');
+
+
     ScanProcess.Options := [poUsePipes, poWaitOnExit]; // poStderrToOutPut,
 
-    //Проверка локального порта клиента
-    ScanProcess.Parameters.Add(
-      '[[ $(ss -ltn | grep 127.0.0.1:' + MainForm.LocalPortEdit.Text +
-      ') ]] && echo "yes"');
-
+    //Получение статуса сервиса
     ScanProcess.Execute;
 
     ResultStr.LoadFromStream(ScanProcess.Output);
-    Synchronize(@ShowStatus);
+
+    if ResultStr.Count <> 0 then
+      Synchronize(@ShowStatus);
 
     Sleep(1000);
   finally
@@ -61,20 +63,14 @@ begin
 end;
 
 //Отображение статуса
-procedure PortScan.ShowStatus;
+procedure ServiceState.ShowStatus;
 begin
   with MainForm do
   begin
-    if ResultStr.Count <> 0 then
-    begin
-      Shape1.Brush.Color := clLime;
-      LocalPortEdit.Enabled := False;
-    end
+    if Trim(ResultStr.Text) = 'active' then
+      Shape1.Brush.Color := clLime
     else
-    begin
       Shape1.Brush.Color := clYellow;
-      LocalPortEdit.Enabled := True;
-    end;
 
     Shape1.Repaint;
   end;

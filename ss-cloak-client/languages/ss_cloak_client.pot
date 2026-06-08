@@ -166,6 +166,10 @@ msgstr ""
 msgid "Stop System-Wide Proxy - Autostart"
 msgstr ""
 
+#: tqrform.barcodeqr1.text
+msgid "NaiveGUI"
+msgstr ""
+
 #: tqrform.caption
 msgctxt "tqrform.caption"
 msgid "QR code"

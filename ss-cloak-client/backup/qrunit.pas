@@ -1,4 +1,4 @@
-unit Unit2;
+unit QRUnit;
 
 {$mode ObjFPC}{$H+}
 
@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, FileUtil, ExtCtrls,
-  AsyncProcess, ubarcodes, Process;
+  ubarcodes, Process;
 
 type
 

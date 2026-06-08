@@ -4,7 +4,7 @@
     <Version Value="12"/>
     <General>
       <SessionStorage Value="InProjectDir"/>
-      <Title Value="SS-Cloak-Client v0.4.1 (ck-client v2.12.0)"/>
+      <Title Value="SS-Cloak-Client v0.5 (ck-client v2.12.0)"/>
       <Scaled Value="True"/>
       <ResourceType Value="res"/>
       <UseXPManifest Value="True"/>
@@ -68,6 +68,9 @@
     </RunParams>
     <RequiredPackages>
       <Item>
+        <PackageName Value="lazbarcodes"/>
+      </Item>
+      <Item>
         <PackageName Value="FCL"/>
       </Item>
       <Item>
@@ -92,16 +95,16 @@
         <IsPartOfProject Value="True"/>
       </Unit>
       <Unit>
-        <Filename Value="portscan_trd.pas"/>
-        <IsPartOfProject Value="True"/>
-      </Unit>
-      <Unit>
-        <Filename Value="unit2.pas"/>
+        <Filename Value="qrunit.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="QRForm"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <UnitName Value="Unit2"/>
+        <UnitName Value="QRUnit"/>
+      </Unit>
+      <Unit>
+        <Filename Value="service_state_trd.pas"/>
+        <IsPartOfProject Value="True"/>
       </Unit>
     </Units>
   </ProjectOptions>

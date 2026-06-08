@@ -77,7 +77,7 @@ resourcestring
 
 implementation
 
-uses unit2, start_trd, portscan_trd;
+uses unit2, start_trd, service_state_trd;
 
   {$R *.lfm}
 
@@ -494,20 +494,16 @@ end;
 
 //MainForm, запуск потоков
 procedure TMainForm.FormShow(Sender: TObject);
-var
-  FShowLogTRD, FPortScanThread: TThread;
 begin
   IniPropStorage1.Restore;
 
   QRBtn.Width := QRBtn.Height;
 
-  //Запуск потока проверки состояния локального порта
-  FPortScanThread := PortScan.Create(False);
-  FPortScanThread.Priority := tpNormal;
+  //Запуск потока проверки состояния сервиса ss-cloak-client
+  ServiceState.Create(False);
 
   //Запуск поток непрерывного чтения лога
-  FShowLogTRD := ShowLogTRD.Create(False);
-  FShowLogTRD.Priority := tpNormal;
+  ShowLogTRD.Create(False);
 end;
 
 procedure TMainForm.QRBtnClick(Sender: TObject);
@@ -557,13 +553,14 @@ begin
     S.Add('    \"local_address\": \"127.0.0.1\",');
     S.Add('    \"local_port\": $local_client_port,');
     S.Add('    \"method\": \"$encrypt_method\",');
-    S.Add('    \"mode\": \"tcp_only\",');
+    //tcp + udp
+    S.Add('    \"mode\": \"tcp_and_udp\",');
     S.Add('    \"password\": \"$password\",');
     S.Add('    \"timeout\": 150,');
     S.Add('    \"nameserver\": \"$nameserver\",');
     S.Add('    \"acl\": \"' + GetUserDir + '.config/ss-cloak-client/bypass.acl' + '\",');
     S.Add('    \"plugin\": \"ck-client\",');
-    S.Add('    \"plugin_opts\": \"Transport=direct;ProxyMethod=shadowsocks;EncryptionMethod=$encrypt_method;UID=$ck_uid;PublicKey=$public_key;ServerName=$redirect_url;BrowserSig=$browser;NumConn=6;StreamTimeout=300\"');
+    S.Add('    \"plugin_opts\": \"Transport=direct;ProxyMethod=shadowsocks;EncryptionMethod=plain;UID=$ck_uid;PublicKey=$public_key;ServerName=$redirect_url;BrowserSig=$browser;NumConn=2;StreamTimeout=300\"');
     S.Add('}');
     S.Add('">~/.config/ss-cloak-client/config.json');
     S.Add('');
@@ -574,7 +571,8 @@ begin
     S.Add('{');
     S.Add('    \"server\": \"127.0.0.1\",');
     S.Add('    \"server_port\": 50346,');
-    S.Add('    \"mode\": \"tcp_only\",');
+    //tcp + udp
+    S.Add('    \"mode\": \"tcp_and_udp\",');
     S.Add('    \"password\": \"$password\",');
     S.Add('    \"timeout\": 300,');
     S.Add('    \"method\": \"$encrypt_method\",');
@@ -587,7 +585,8 @@ begin
     S.Add('echo "\');
     S.Add('{');
     S.Add('  \"ProxyBook\": {');
-    S.Add('    \"shadowsocks\": [\"tcp\",\"127.0.0.1:50346\"]');
+    //tcp + udp
+    S.Add('    \"shadowsocks\": [\"tcp\",\"udp\",\"127.0.0.1:50346\"]');
     S.Add('  },');
     S.Add('  \"BypassUID\": [');
     S.Add('    \"$ck_uid\"');

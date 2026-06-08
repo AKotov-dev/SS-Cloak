@@ -6,15 +6,14 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, FileUtil, ExtCtrls,
-  AsyncProcess;
+  ubarcodes, Process;
 
 type
 
   { TQRForm }
 
   TQRForm = class(TForm)
-    GetQR: TAsyncProcess;
-    Image1: TImage;
+    BarcodeQR1: TBarcodeQR;
     procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
     procedure FormShow(Sender: TObject);
   private
@@ -28,13 +27,31 @@ var
 
 implementation
 
-{$R *.lfm}
+uses Unit1;
 
-{ TQRForm }
+  {$R *.lfm}
+
+  { TQRForm }
 
 procedure TQRForm.FormShow(Sender: TObject);
+var
+  S: string;
 begin
-  Image1.Picture := nil;
+  //Квадрат
+  QRForm.Width := QRForm.Height;
+
+  //В центр
+  QRForm.Left := MainForm.Left + MainForm.Width div 2 - QRForm.Width div 2;
+  QRForm.Top := MainForm.Top + MainForm.Height div 2 - QRForm.Height div 2;
+
+  // RunCommand('bash', ['-c', 'ssurl --encode ~/.config/ss-cloak-client/config.json'], S);
+
+  RunCommand('ssurl', ['--encode', GetUserDir + '.config/ss-cloak-client/config.json'],
+    s, [powaitonexit]);
+
+  BarcodeQR1.Text := Trim(S);
+
+ { Image1.Picture := nil;
 
   //Получаем текст URL
   GetQR.Parameters.Clear;
@@ -47,7 +64,8 @@ begin
 
   //Выводим картинку
   if FileExists(GetUserDir + '.config/ss-cloak-client/qr.xpm') then
-    Image1.Picture.LoadFromFile(GetUserDir + '.config/ss-cloak-client/qr.xpm');
+    Image1.Picture.LoadFromFile(GetUserDir + '.config/ss-cloak-client/qr.xpm');}
+
 end;
 
 procedure TQRForm.FormClose(Sender: TObject; var CloseAction: TCloseAction);

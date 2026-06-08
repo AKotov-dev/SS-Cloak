@@ -1,7 +1,7 @@
 object MainForm: TMainForm
   Left = 301
   Height = 691
-  Top = 125
+  Top = 116
   Width = 956
   ActiveControl = ServerEdit
   Caption = 'SS-Cloak-Client '
@@ -28,7 +28,7 @@ object MainForm: TMainForm
     AnchorSideTop.Control = ServerPortEdit
     AnchorSideTop.Side = asrCenter
     AnchorSideRight.Control = ServerPortEdit
-    Left = 338
+    Left = 362
     Height = 17
     Top = 15
     Width = 66
@@ -53,7 +53,7 @@ object MainForm: TMainForm
     AnchorSideTop.Control = LocalPortEdit
     AnchorSideTop.Side = asrCenter
     AnchorSideRight.Control = LocalPortEdit
-    Left = 343
+    Left = 367
     Height = 17
     Top = 57
     Width = 61
@@ -85,7 +85,7 @@ object MainForm: TMainForm
     AnchorSideRight.Side = asrBottom
     AnchorSideBottom.Control = ServerEdit
     AnchorSideBottom.Side = asrBottom
-    Left = 406
+    Left = 430
     Height = 37
     Hint = 'Default: 443 (highly recommended)'
     Top = 5
@@ -103,7 +103,7 @@ object MainForm: TMainForm
     AnchorSideRight.Side = asrBottom
     AnchorSideBottom.Control = CamouflageEdit
     AnchorSideBottom.Side = asrBottom
-    Left = 406
+    Left = 430
     Height = 37
     Hint = 'Default: 1080'
     Top = 47
@@ -263,14 +263,17 @@ object MainForm: TMainForm
     Height = 37
     Hint = 'Encryption method'
     Top = 89
-    Width = 161
+    Width = 185
     Anchors = [akTop, akLeft, akBottom]
     BorderSpacing.Left = 2
     ItemHeight = 0
-    ItemIndex = 0
     Items.Strings = (
       'aes-128-gcm'
       'aes-256-gcm'
+      'chacha20-ietf-poly1305'
+      '2022-blake3-aes-128-gcm'
+      '2022-blake3-aes-256-gcm'
+      ''
     )
     ParentShowHint = False
     ShowHint = True
@@ -566,7 +569,7 @@ object MainForm: TMainForm
     Text = '.ru'
   end
   object Image1: TImage
-    Left = 216
+    Left = 200
     Height = 128
     Top = 120
     Width = 128
