@@ -47,7 +47,7 @@ begin
   // RunCommand('bash', ['-c', 'ssurl --encode ~/.config/ss-cloak-client/config.json'], S);
 
   RunCommand('ssurl', ['--encode', GetUserDir + '.config/ss-cloak-client/config.json'],
-    s, [powaitonexit]);
+    S, [powaitonexit]);
 
   BarcodeQR1.Text := Trim(S);
 
@@ -70,7 +70,7 @@ end;
 
 procedure TQRForm.FormClose(Sender: TObject; var CloseAction: TCloseAction);
 begin
- // DeleteFile(GetUserDir + '.config/ss-cloak-client/qr.xpm');
+  // DeleteFile(GetUserDir + '.config/ss-cloak-client/qr.xpm');
 end;
 
 end.

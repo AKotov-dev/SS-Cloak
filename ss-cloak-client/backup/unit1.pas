@@ -77,7 +77,7 @@ resourcestring
 
 implementation
 
-uses unit2, start_trd, service_state_trd;
+uses QRUnit, start_trd, service_state_trd;
 
   {$R *.lfm}
 

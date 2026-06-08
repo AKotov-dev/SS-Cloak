@@ -59,7 +59,7 @@
         <Filename Value="start_trd.pas"/>
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="-1"/>
-        <CursorPos X="17"/>
+        <CursorPos X="18"/>
         <UsageCount Value="65"/>
       </Unit>
       <Unit>
@@ -70,16 +70,14 @@
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="QRUnit"/>
         <EditorIndex Value="-1"/>
-        <TopLine Value="44"/>
-        <CursorPos X="4" Y="73"/>
+        <CursorPos X="15"/>
         <UsageCount Value="52"/>
       </Unit>
       <Unit>
         <Filename Value="service_state_trd.pas"/>
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="-1"/>
-        <TopLine Value="7"/>
-        <CursorPos X="3" Y="11"/>
+        <CursorPos X="25"/>
         <UsageCount Value="21"/>
       </Unit>
       <Unit>

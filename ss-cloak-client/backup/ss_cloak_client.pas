@@ -12,7 +12,7 @@ uses
   Forms,
   Unit1,
   start_trd,
-  unit2, service_state_trd { you can add units after this };
+  QRUnit, service_state_trd { you can add units after this };
 
   {$R *.res}
 

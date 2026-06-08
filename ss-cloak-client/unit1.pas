@@ -286,7 +286,7 @@ begin
   end;
 end;
 
-
+{
 //Проверка чекбокса ClearBox (очистка кеш/cookies)
 function CheckClear: boolean;
 begin
@@ -310,6 +310,8 @@ begin
   else
     Result := False;
 end;
+
+}
 
 //Старт
 procedure TMainForm.StartBtnClick(Sender: TObject);

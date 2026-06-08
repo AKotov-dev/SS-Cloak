@@ -12,14 +12,15 @@ uses
   Forms,
   Unit1,
   start_trd,
-  QRUnit, service_state_trd { you can add units after this };
+  QRUnit,
+  service_state_trd { you can add units after this };
 
   {$R *.res}
 
 begin
   RequireDerivedFormResource := True;
-  Application.Title:='SS-Cloak-Client v0.5 (ck-client v2.12.0)';
-  Application.Scaled:=True;
+  Application.Title := 'SS-Cloak-Client v0.5 (ck-client v2.12.0)';
+  Application.Scaled := True;
   Application.Initialize;
   Application.CreateForm(TMainForm, MainForm);
   Application.CreateForm(TQRForm, QRForm);
