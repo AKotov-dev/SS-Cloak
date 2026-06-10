@@ -146,12 +146,15 @@ begin
     //Иначе блокируем запуск и ждём создания конфигурации клиента
     StartBtn.Enabled := False;
 
-  // bypass.acl
+  // bypass.acl (Поддержка домена .рф)
   config := GetUserDir + '.config/ss-cloak-client/bypass.acl';
   if FileExists(config) then
   begin
     if RunCommand('grep', ['^\.', config], S) then
+    begin
+      if Pos('.ru', S) > 0 then S := '.ru';
       BypassBox.Text := Trim(S);
+    end;
   end;
 end;
 
@@ -251,7 +254,10 @@ begin
     //    S.Add('localhost');
     //    S.Add('::1');
 
+    //Поддержка домена .рф (если .ru)
     S.Add(Trim(BypassBox.Text));
+    if Trim(BypassBox.Text) = '.ru' then
+      S.Add('.xn--p1ai');
 
     S.SaveToFile(GetUserDir + '.config/ss-cloak-client/bypass.acl');
 
