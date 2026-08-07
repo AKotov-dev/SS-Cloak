@@ -34,6 +34,7 @@ For `reliable use of System‑wide Proxy mode` in `XFCE`, `LXDE` (as well as `i3
 For `robust DNS protection against MITM attacks` when a proxy is `not used`, it is `recommended` to use [DNSCrypt‑GUI](https://github.com/AKotov-dev/dnscrypt-gui).
   
 **Note**
++ The `2022-blake3-aes-128-gcm` and `2022-blake3-aes-256-gcm` encryption methods require time synchronization on the server and client. Time zones are irrelevant. A difference of 30 minutes will result in a disconnection.
 + If System‑wide Proxy is not feasible in your desktop environment, a practical alternative is to use browser‑level proxy extensions, such as `Socks5 Configurator`.
 + To switch proxies on the fly, use `Chromium-based browsers` (Chrome, Chromium, Brave, Edge, etc.). Firefox in most cases requires manual proxy activation and configuration.
 + When setting up a proxy, don't forget about the presence of a `firewall`.
