@@ -1,7 +1,7 @@
 object MainForm: TMainForm
-  Left = 301
+  Left = 307
   Height = 691
-  Top = 116
+  Top = 97
   Width = 956
   ActiveControl = ServerEdit
   Caption = 'SS-Cloak-Client '

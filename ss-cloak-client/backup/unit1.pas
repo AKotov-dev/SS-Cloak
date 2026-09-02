@@ -56,7 +56,6 @@ type
     procedure StartProcess(command: string);
     procedure CreateBypass;
     procedure CreateSWProxy;
-    procedure CreateGostHTTP;
     procedure LoadClientConfig;
 
   private
@@ -123,7 +122,7 @@ begin
 
     // local_port
     if RunCommand('sed', ['-n',
-      's/.*"local_port"[[:space:]]*:[[:space:]]*\([0-9]*\).*/\1/p', config], S) then
+      's/.*"local_port"[[:space:]]*:[[:space:]]*\([0-9]*\).*/\1/p | head -n1', config], S) then
       LocalPortEdit.Text := Trim(S);
 
     // method
@@ -146,7 +145,7 @@ begin
     //Иначе блокируем запуск и ждём создания конфигурации клиента
     StartBtn.Enabled := False;
 
-  // bypass.acl (Поддержка .рф)
+  // bypass.acl (Поддержка домена .рф)
   config := GetUserDir + '.config/ss-cloak-client/bypass.acl';
   if FileExists(config) then
   begin
@@ -266,59 +265,6 @@ begin
   end;
 end;
 
-//Создаём файл ~/.config/ss-cloak-client/gost.conf (HTTP:8889)
-procedure TMainForm.CreateGostHTTP;
-var
-  S: TStringList;
-begin
-  try
-    S := TStringList.Create;
-
-    S.Add('{');
-    S.Add('      "Debug": false,');
-    S.Add('      "Retries": 0,');
-    S.Add('      "ServeNodes": [');
-    S.Add('        "http://127.0.0.1:8889"');
-    S.Add('      ],');
-    S.Add('      "ChainNodes": [');
-    S.Add('        "socks5://127.0.0.1:' + LocalPortEdit.Text + '"');
-    S.Add('      ]');
-    S.Add('}');
-
-    S.SaveToFile(GetUserDir + '.config/ss-cloak-client/gost.conf');
-
-  finally
-    S.Free;
-  end;
-end;
-
-{
-//Проверка чекбокса ClearBox (очистка кеш/cookies)
-function CheckClear: boolean;
-begin
-  if FileExists(GetUserDir + '.config/ss-cloak-client/clear') then
-    Result := True
-  else
-    Result := False;
-end;
-
-//Проверка чекбокса AutoStart
-function CheckAutoStart: boolean;
-var
-  S: ansistring;
-begin
-  RunCommand('bash', ['-c',
-    '[[ -n $(systemctl --user is-enabled ss-cloak-client | grep "enabled") ]] && echo "yes"'],
-    S);
-
-  if Trim(S) = 'yes' then
-    Result := True
-  else
-    Result := False;
-end;
-
-}
-
 //Старт
 procedure TMainForm.StartBtnClick(Sender: TObject);
 var
@@ -330,8 +276,8 @@ begin
   Shape1.Brush.Color := clYellow;
   Application.ProcessMessages;
 
-  //Останавливаем ssclient и gost
-  StartProcess('systemctl --user stop ss-cloak-client.service gost.service');
+  //Останавливаем ssclient
+  StartProcess('systemctl --user stop ss-cloak-client.service');
 
   //Быстрая очистка вывода перед стартом
   LogMemo.Clear;
@@ -350,10 +296,12 @@ begin
     Cmd := Format('sed -i ''s/"server_port": *[0-9]*/"server_port": %s/'' "%s"',
       [ServerPortEdit.Text, JSONFile]);
     RunCommand('bash', ['-c', Cmd], S);
-    //local_port
-    Cmd := Format('sed -i ''s/"local_port": *[0-9]*/"local_port": %s/'' "%s"',
+
+    //local_port - строка 17 (раздел socks5, http = 8889 не меняем)
+    Cmd := Format('sed -i ''17s/"local_port": *[0-9]*/"local_port": %s/'' "%s"',
       [LocalPortEdit.Text, JSONFile]);
     RunCommand('bash', ['-c', Cmd], S);
+
     //method
     Cmd := Format('sed -i ''s/"method": *"[^"]*"/"method": "%s"/'' "%s"',
       [MethodComboBox.Text, JSONFile]);
@@ -384,18 +332,15 @@ begin
   //Пересоздаём ~/.config/ss-cloak-client/bypass.acl
   CreateBypass;
 
-  //Пересоздаём ~/.config/ss-cloak-client/gost.conf
-  CreateGostHTTP;
-
   //Запускаем сервисы SS:XXXX и HTTP:8889
-  StartProcess('systemctl --user start ss-cloak-client.service gost.service');
+  StartProcess('systemctl --user start ss-cloak-client.service');
 
   //Активация System-Wide Proxy
   RunCommand('/bin/bash', ['-c', '~/.config/ss-cloak-client/swproxy.sh set'], S);
 
   //Включение Автозагрузки
   RunCommand('/bin/bash', ['-c',
-    'systemctl --user enable ss-cloak-client.service gost.service'], S);
+    'systemctl --user enable ss-cloak-client.service'], S);
 
   LastStart := GetTickCount64;
 end;
@@ -410,14 +355,14 @@ begin
   // Проверяем, прошло ли более 1000 мс с последнего нажатия (Debounce)
   if GetTickCount64 - LastStop < 1000 then Exit;
 
-  StartProcess('systemctl --user stop ss-cloak-client.service gost.service');
+  StartProcess('systemctl --user stop ss-cloak-client.service');
 
   //Сброс System-Wide Proxy
   RunCommand('/bin/bash', ['-c', '~/.config/ss-cloak-client/swproxy.sh reset'], S);
 
   //Отключение из автозагрузки
   RunCommand('/bin/bash', ['-c',
-    'systemctl --user disable ss-cloak-client.service gost.service'], S);
+    'systemctl --user disable ss-cloak-client.service'], S);
 
   LastStop := GetTickCount64;
 end;
@@ -439,9 +384,8 @@ begin
   MainForm.Caption := Application.Title;
 
   //Создаём каталоги настроек
-  if not DirectoryExists(GetUserDir + '.config') then MkDir(GetUserDir + '.config');
   if not DirectoryExists(GetUserDir + '.config/ss-cloak-client') then
-    MkDir(GetUserDir + '.config/ss-cloak-client');
+    ForceDirectories(GetUserDir + '.config/ss-cloak-client');
 
   //Конфигурация формы
   IniPropStorage1.IniFileName :=
@@ -558,8 +502,8 @@ begin
     S.Add('{');
     S.Add('    \"server\": \"$server_ip\",');
     S.Add('    \"server_port\": $server_port,');
-    S.Add('    \"local_address\": \"127.0.0.1\",');
-    S.Add('    \"local_port\": $local_client_port,');
+    //    S.Add('    \"local_address\": \"127.0.0.1\",');
+    //    S.Add('    \"local_port\": $local_client_port,');
     S.Add('    \"method\": \"$encrypt_method\",');
     //tcp + udp
     S.Add('    \"mode\": \"tcp_and_udp\",');
@@ -568,7 +512,22 @@ begin
     S.Add('    \"nameserver\": \"$nameserver\",');
     S.Add('    \"acl\": \"' + GetUserDir + '.config/ss-cloak-client/bypass.acl' + '\",');
     S.Add('    \"plugin\": \"ck-client\",');
-    S.Add('    \"plugin_opts\": \"Transport=direct;ProxyMethod=shadowsocks;EncryptionMethod=plain;UID=$ck_uid;PublicKey=$public_key;ServerName=$redirect_url;BrowserSig=$browser;NumConn=2;StreamTimeout=300\"');
+    S.Add('    \"plugin_opts\": \"Transport=direct;ProxyMethod=shadowsocks;EncryptionMethod=plain;UID=$ck_uid;PublicKey=$public_key;ServerName=$redirect_url;BrowserSig=$browser;NumConn=2;StreamTimeout=300\",');
+    //Локальные порты Socks5 и HTTP
+    S.Add('');
+    S.Add('     \"locals\": [');
+    S.Add('         {');
+    S.Add('              \"protocol\": \"socks\",');
+    S.Add('              \"local_address\": \"127.0.0.1\",');
+    S.Add('              \"local_port\": $local_client_port,');
+    S.Add('              \"mode\": \"tcp_and_udp\"');
+    S.Add('         },');
+    S.Add('         {');
+    S.Add('              \"protocol\": \"http\",');
+    S.Add('              \"local_address\": \"127.0.0.1\",');
+    S.Add('              \"local_port\": 8889');
+    S.Add('         }');
+    S.Add('                 ]');
     S.Add('}');
     S.Add('">~/.config/ss-cloak-client/config.json');
     S.Add('');
