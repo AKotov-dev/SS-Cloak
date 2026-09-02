@@ -1,7 +1,7 @@
 # SS-Cloak
 Shadowsocks-Rust client (with GUI) and server (for VPS) with obfuscation.  
   
-**Dependencies:** systemd, gtk2, qrencode, lib64proxy-gnome, (libgtk2.0-0, libproxy1v5 for Ubuntu)  
+**Dependencies:** systemd, gtk2, lib64proxy-gnome, (libgtk2.0-0, libproxy1v5 for Ubuntu)  
   
 **Client ports:** `SOCKS5` - 127.0.0.1:1080 (changeable), `HTTP` - 127.0.0.1:8889 (fixed, ver. >= 0.4.1)  
   
