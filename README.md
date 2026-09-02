@@ -39,4 +39,4 @@ For `robust DNS protection against MITM attacks` when a proxy is `not used`, it 
 + By default, the `.ru /.рф` zone is bypassed. If complete anonymity is required, select any other zone from the list and click `Start`.
 + For Android smartphones, it is convenient to use [Exclave](https://github.com/ExclaveNetwork/Exclave/releases) + [Cloak-android](https://github.com/cbeuw/Cloak-android/releases).
   
-**Useful links:** [Shadowsocks-Rust](https://github.com/shadowsocks/shadowsocks-rust), [Cloak](https://github.com/cbeuw/Cloak), [GO Simple Tunnel](https://github.com/ginuerzh/gost). **Similar project:** [SS-Obfuscator](https://github.com/AKotov-dev/SS-Obfuscator).
+**Useful links:** [Shadowsocks-Rust](https://github.com/shadowsocks/shadowsocks-rust), [Cloak](https://github.com/cbeuw/Cloak). **Similar project:** [SS-Obfuscator](https://github.com/AKotov-dev/SS-Obfuscator).
