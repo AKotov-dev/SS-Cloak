@@ -75,7 +75,7 @@ toolversion=unknown
 
 [INFO]
 0=v0.5
-1=+ Update: sserver-1.25.0
+1=+ Update: sserver-1.25.0 (musl)
 2=+ RPM and DEB packages
 3=
 4=v0.4
